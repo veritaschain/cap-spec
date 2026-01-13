@@ -8,6 +8,13 @@
 
 ---
 
+## World-First Verification Report
+
+- **CAP World-First Claims – Final Consolidated Research Report**
+  https://github.com/veritaschain/cap-spec/blob/main/docs/CAP_WorldFirst_Final_Consolidated_Report.md
+
+---
+
 ## What is CAP?
 
 **CAP (Content / Creative AI Profile)** is a domain-specific profile within the [VAP (Verifiable AI Provenance Framework)](https://github.com/veritaschain/vap-framework), establishing cryptographically verifiable audit trails for AI workflows in content and creative industries.
