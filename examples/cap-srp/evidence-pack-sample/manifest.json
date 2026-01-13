@@ -1,0 +1,50 @@
+{
+  "packId": "019467b0-0000-7000-0000-000000000000",
+  "chainId": "019467a0-0000-7000-0000-000000000000",
+  "capVersion": "0.2.0",
+  "srpVersion": "0.2.0",
+  "generatedAt": "2026-01-10T23:59:59.999Z",
+  "period": {
+    "start": "2026-01-10T00:00:00.000Z",
+    "end": "2026-01-10T23:59:59.999Z"
+  },
+  "eventCount": {
+    "total": 4,
+    "byType": {
+      "GEN_ATTEMPT": 2,
+      "GEN": 1,
+      "GEN_DENY": 1
+    }
+  },
+  "completenessCheck": {
+    "status": "PASSED",
+    "attempts": 2,
+    "outcomes": 2,
+    "formula": "count(GEN_ATTEMPT) == count(GEN) + count(GEN_DENY) + count(GEN_WARN) + count(GEN_ESCALATE) + count(GEN_QUARANTINE)",
+    "verification": "2 == 1 + 1 + 0 + 0 + 0 ✓"
+  },
+  "chainIntegrity": {
+    "status": "VERIFIED",
+    "genesisHash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "finalHash": "sha256:c9d0e1f2a3b4c9d0e1f2a3b4c9d0e1f2a3b4c9d0e1f2a3b4c9d0e1f2a3b4c9d0",
+    "brokenLinks": []
+  },
+  "signatures": {
+    "packSignature": "ed25519:MEYCIQDaB1C2D3E4F5G6H7I8J9K0L1M2N3O4P5Q6R7S8T9U0V1W2X3Y==",
+    "signerKeyId": "cap-evidence-signer-001"
+  },
+  "externalAnchors": [
+    {
+      "type": "ETHEREUM",
+      "merkleRoot": "sha256:abc123def456abc123def456abc123def456abc123def456abc123def456abc1",
+      "transactionId": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+      "blockNumber": 19876543,
+      "timestamp": "2026-01-10T23:59:30.000Z"
+    }
+  ],
+  "metadata": {
+    "generator": "CAP Evidence Pack Generator v0.2.0",
+    "organization": "Example AI Platform",
+    "contact": "compliance@example.com"
+  }
+}

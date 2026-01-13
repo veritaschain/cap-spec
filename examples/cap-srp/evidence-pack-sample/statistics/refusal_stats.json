@@ -1,0 +1,77 @@
+{
+  "reportPeriod": {
+    "start": "2026-01-10T00:00:00.000Z",
+    "end": "2026-01-10T23:59:59.999Z"
+  },
+  "summary": {
+    "totalAttempts": 2,
+    "totalGenerated": 1,
+    "totalRefusals": 1,
+    "totalWarnings": 0,
+    "totalEscalations": 0,
+    "totalQuarantined": 0,
+    "refusalRate": 0.5,
+    "allowRate": 0.5
+  },
+  "byCategory": {
+    "CSAM_RISK": {
+      "attempts": 0,
+      "refusals": 0,
+      "refusalRate": 0.0
+    },
+    "NCII_RISK": {
+      "attempts": 1,
+      "refusals": 1,
+      "refusalRate": 1.0
+    },
+    "MINOR_SEXUALIZATION": {
+      "attempts": 0,
+      "refusals": 0,
+      "refusalRate": 0.0
+    },
+    "REAL_PERSON_DEEPFAKE": {
+      "attempts": 0,
+      "refusals": 0,
+      "refusalRate": 0.0
+    },
+    "VIOLENCE_EXTREME": {
+      "attempts": 0,
+      "refusals": 0,
+      "refusalRate": 0.0
+    },
+    "HATE_CONTENT": {
+      "attempts": 0,
+      "refusals": 0,
+      "refusalRate": 0.0
+    },
+    "TERRORIST_CONTENT": {
+      "attempts": 0,
+      "refusals": 0,
+      "refusalRate": 0.0
+    },
+    "SELF_HARM_PROMOTION": {
+      "attempts": 0,
+      "refusals": 0,
+      "refusalRate": 0.0
+    },
+    "OTHER": {
+      "attempts": 0,
+      "refusals": 0,
+      "refusalRate": 0.0
+    }
+  },
+  "performance": {
+    "averageDecisionTimeMs": 50,
+    "p50DecisionTimeMs": 48,
+    "p95DecisionTimeMs": 65,
+    "p99DecisionTimeMs": 85
+  },
+  "completenessVerification": {
+    "status": "PASSED",
+    "formula": "attempts == generated + refusals + warnings + escalations + quarantined",
+    "calculation": "2 == 1 + 1 + 0 + 0 + 0",
+    "result": true
+  },
+  "generatedBy": "CAP Statistics Generator v0.2.0",
+  "generatedAt": "2026-01-10T23:59:59.999Z"
+}

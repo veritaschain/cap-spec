@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veritaschain.org/schemas/cap/srp/v0.2/gen-quarantine.json",
+  "title": "CAP-SRP GEN_QUARANTINE Event",
+  "description": "Records that content was generated but quarantined for review",
+  "type": "object",
+  "allOf": [
+    { "$ref": "../core-event.json" }
+  ],
+  "required": [
+    "EventType",
+    "EventID",
+    "Timestamp",
+    "AttemptID",
+    "RiskCategory",
+    "RiskScore",
+    "ModelDecision",
+    "PrevHash",
+    "QuarantineReason",
+    "OutputAssetID"
+  ],
+  "properties": {
+    "EventType": {
+      "const": "GEN_QUARANTINE"
+    },
+    "AttemptID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Reference to the corresponding GEN_ATTEMPT event"
+    },
+    "RiskCategory": {
+      "type": "string",
+      "enum": [
+        "CSAM_RISK",
+        "NCII_RISK",
+        "MINOR_SEXUALIZATION",
+        "REAL_PERSON_DEEPFAKE",
+        "VIOLENCE_EXTREME",
+        "HATE_CONTENT",
+        "TERRORIST_CONTENT",
+        "SELF_HARM_PROMOTION",
+        "OTHER"
+      ],
+      "description": "Primary risk category detected"
+    },
+    "RiskSubCategories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Additional risk classifications"
+    },
+    "RiskScore": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Confidence score for risk detection (0.0-1.0)"
+    },
+    "QuarantineReason": {
+      "type": "string",
+      "description": "Reason for quarantining generated content"
+    },
+    "ModelDecision": {
+      "type": "string",
+      "const": "QUARANTINE",
+      "description": "Model's decision"
+    },
+    "HumanOverride": {
+      "type": "boolean",
+      "description": "Whether a human overrode the model's decision"
+    },
+    "OutputAssetID": {
+      "type": "string",
+      "pattern": "^urn:cap:asset:[a-zA-Z0-9_-]+:[a-zA-Z0-9_-]+$",
+      "description": "Generated asset identifier (in quarantine)"
+    },
+    "OutputAssetHash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "Hash of quarantined content"
+    },
+    "QuarantineDetails": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "description": "Quarantine storage location"
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When quarantine expires"
+        },
+        "accessLevel": {
+          "type": "string",
+          "enum": ["NONE", "REVIEWER_ONLY", "ADMIN_ONLY"],
+          "description": "Who can access quarantined content"
+        },
+        "autoDeleteOnExpiry": {
+          "type": "boolean",
+          "description": "Whether to delete after expiry"
+        }
+      }
+    },
+    "ReviewStatus": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["PENDING", "IN_REVIEW", "RELEASED", "DELETED"],
+          "description": "Current review status"
+        },
+        "reviewer": {
+          "type": "string",
+          "description": "Assigned reviewer"
+        },
+        "reviewedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When review was completed"
+        },
+        "finalDecision": {
+          "type": "string",
+          "enum": ["RELEASE", "DELETE"],
+          "description": "Final decision on quarantined content"
+        }
+      }
+    }
+  }
+}

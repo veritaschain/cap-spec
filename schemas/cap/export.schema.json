@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veritaschain.org/schemas/cap/v0.2/export.json",
+  "title": "CAP EXPORT Event",
+  "description": "Records asset delivery or publication",
+  "type": "object",
+  "allOf": [
+    { "$ref": "core-event.json" }
+  ],
+  "required": [
+    "EventType",
+    "AssetID",
+    "Destination",
+    "DestinationType"
+  ],
+  "properties": {
+    "EventType": {
+      "const": "EXPORT"
+    },
+    "AssetID": {
+      "type": "string",
+      "pattern": "^urn:cap:asset:[a-zA-Z0-9_-]+:[a-zA-Z0-9_-]+$",
+      "description": "Exported asset identifier"
+    },
+    "AssetHash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "Hash of exported content"
+    },
+    "Destination": {
+      "type": "string",
+      "description": "Recipient identifier or destination"
+    },
+    "DestinationType": {
+      "type": "string",
+      "enum": ["DELIVERY", "PUBLICATION", "ARCHIVE", "OTHER"],
+      "description": "Type of export destination"
+    },
+    "DestinationDetails": {
+      "type": "object",
+      "properties": {
+        "platform": {
+          "type": "string",
+          "description": "Platform or service name"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Publication URL"
+        },
+        "recipientType": {
+          "type": "string",
+          "enum": ["INTERNAL", "PARTNER", "PUBLIC", "REGULATOR"],
+          "description": "Type of recipient"
+        }
+      }
+    },
+    "PermittedUse": {
+      "type": "object",
+      "properties": {
+        "Training": { "type": "boolean", "default": false },
+        "Generation": { "type": "boolean", "default": false },
+        "Distribution": { "type": "boolean", "default": false },
+        "Commercial": { "type": "boolean", "default": false },
+        "Derivative": { "type": "boolean", "default": false },
+        "Attribution": { "type": "boolean", "default": true },
+        "Restrictions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "description": "Usage restrictions applied to export"
+    },
+    "Provenance": {
+      "type": "object",
+      "properties": {
+        "sourceEventIDs": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "Event IDs in the provenance chain"
+        },
+        "includeProvenance": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether provenance data is included with export"
+        }
+      }
+    },
+    "Context": {
+      "type": "object",
+      "properties": {
+        "UserID": { "type": "string" },
+        "Role": {
+          "type": "string",
+          "enum": ["CREATOR", "ENGINEER", "REVIEWER", "MANAGER", "SYSTEM"]
+        },
+        "Department": { "type": "string" },
+        "SessionID": { "type": "string", "format": "uuid" }
+      }
+    }
+  }
+}

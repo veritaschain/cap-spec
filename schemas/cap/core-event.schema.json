@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veritaschain.org/schemas/cap/v0.2/core-event.json",
+  "title": "CAP Core Event",
+  "description": "Base schema for all CAP events. All event types extend this schema.",
+  "type": "object",
+  "required": [
+    "EventID",
+    "ChainID",
+    "Timestamp",
+    "EventType",
+    "HashAlgo"
+  ],
+  "properties": {
+    "EventID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID v7 unique event identifier (time-ordered)"
+    },
+    "ChainID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID identifying the evidence chain"
+    },
+    "PrevHash": {
+      "type": ["string", "null"],
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA-256 hash of previous event in chain (null for genesis event)"
+    },
+    "Timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp with millisecond precision in UTC"
+    },
+    "EventType": {
+      "type": "string",
+      "enum": [
+        "INGEST",
+        "TRAIN",
+        "GEN",
+        "GEN_ATTEMPT",
+        "GEN_DENY",
+        "GEN_WARN",
+        "GEN_ESCALATE",
+        "GEN_QUARANTINE",
+        "EXPORT",
+        "AUDIT_ANCHOR"
+      ],
+      "description": "Type of CAP event"
+    },
+    "HashAlgo": {
+      "type": "string",
+      "default": "SHA256",
+      "description": "Hash algorithm used for EventHash and chain linking"
+    },
+    "SignAlgo": {
+      "type": "string",
+      "default": "ED25519",
+      "description": "Digital signature algorithm"
+    },
+    "EventHash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA-256 hash of canonicalized event (computed after all other fields set)"
+    },
+    "Signature": {
+      "type": "string",
+      "pattern": "^ed25519:[a-zA-Z0-9+/=]+$",
+      "description": "Ed25519 signature over EventHash (optional but recommended)"
+    }
+  },
+  "additionalProperties": true
+}

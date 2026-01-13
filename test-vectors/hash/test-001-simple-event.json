@@ -1,0 +1,16 @@
+{
+  "description": "Simple event hash computation",
+  "input": {
+    "EventID": "01945f2a-0001-7000-0000-000000000001",
+    "ChainID": "01945e3a-0000-7000-0000-000000000000",
+    "PrevHash": null,
+    "Timestamp": "2026-01-10T00:00:00.000Z",
+    "EventType": "GEN_ATTEMPT",
+    "HashAlgo": "SHA256",
+    "PromptHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "PolicyID": "test-policy-v1",
+    "ModelVersion": "test-model-v1"
+  },
+  "canonicalJson": "{\"ChainID\":\"01945e3a-0000-7000-0000-000000000000\",\"EventID\":\"01945f2a-0001-7000-0000-000000000001\",\"EventType\":\"GEN_ATTEMPT\",\"HashAlgo\":\"SHA256\",\"ModelVersion\":\"test-model-v1\",\"PolicyID\":\"test-policy-v1\",\"PrevHash\":null,\"PromptHash\":\"sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"Timestamp\":\"2026-01-10T00:00:00.000Z\"}",
+  "expectedHash": "sha256:c812881a67931e610353583e77387d585b2f84d43c84fc8251d76564d9ccd33b"
+}

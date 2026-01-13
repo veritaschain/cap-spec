@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veritaschain.org/schemas/cap/v0.2/train.json",
+  "title": "CAP TRAIN Event",
+  "description": "Records model training or fine-tuning activities",
+  "type": "object",
+  "allOf": [
+    { "$ref": "core-event.json" }
+  ],
+  "required": [
+    "EventType",
+    "TrainingType",
+    "InputAssetIDs",
+    "OutputModelID"
+  ],
+  "properties": {
+    "EventType": {
+      "const": "TRAIN"
+    },
+    "TrainingType": {
+      "type": "string",
+      "enum": ["PRETRAIN", "FINETUNE", "LORA", "RLHF", "OTHER"],
+      "description": "Type of training activity"
+    },
+    "InputAssetIDs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^urn:cap:asset:[a-zA-Z0-9_-]+:[a-zA-Z0-9_-]+$"
+      },
+      "minItems": 1,
+      "description": "Assets used for training"
+    },
+    "OutputModelID": {
+      "type": "string",
+      "pattern": "^urn:cap:model:[a-zA-Z0-9_-]+:[a-zA-Z0-9_-]+$",
+      "description": "Resulting model identifier"
+    },
+    "BaseModelID": {
+      "type": "string",
+      "pattern": "^urn:cap:model:[a-zA-Z0-9_-]+:[a-zA-Z0-9_-]+$",
+      "description": "Base model identifier (for fine-tuning)"
+    },
+    "TrainingConfig": {
+      "type": "object",
+      "properties": {
+        "epochs": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of training epochs"
+        },
+        "batchSize": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Training batch size"
+        },
+        "learningRate": {
+          "type": "number",
+          "description": "Learning rate"
+        },
+        "parameters": {
+          "type": "object",
+          "description": "Additional training parameters"
+        }
+      }
+    },
+    "TrainingContext": {
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "type": "string",
+          "description": "Training purpose documentation"
+        },
+        "article30_4_compliance": {
+          "type": "object",
+          "properties": {
+            "non_enjoyment_purpose": { "type": "boolean" },
+            "information_analysis": { "type": "boolean" },
+            "necessary_extent": { "type": "string" },
+            "no_undue_prejudice": { "type": "string" }
+          },
+          "description": "Japan Copyright Act Art. 30-4 compliance documentation"
+        }
+      }
+    },
+    "Context": {
+      "type": "object",
+      "properties": {
+        "UserID": { "type": "string" },
+        "Role": {
+          "type": "string",
+          "enum": ["CREATOR", "ENGINEER", "REVIEWER", "MANAGER", "SYSTEM"]
+        },
+        "Department": { "type": "string" },
+        "SessionID": { "type": "string", "format": "uuid" }
+      }
+    }
+  }
+}

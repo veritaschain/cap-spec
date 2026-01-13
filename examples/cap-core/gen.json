@@ -1,0 +1,34 @@
+{
+  "EventID": "01945f4c-ad5e-9f15-bf5c-3456789012cd",
+  "ChainID": "01945e3a-6a1b-7c82-9d1b-0987654321dc",
+  "PrevHash": "sha256:b8ffc7f9cf2fe87762d25867b172e773f691ff5ef54c5afb93e91b5c91f9545b",
+  "Timestamp": "2026-01-10T12:00:00.000Z",
+  "EventType": "GEN",
+  "HashAlgo": "SHA256",
+  "SignAlgo": "ED25519",
+  "AttemptID": "01945f4c-ad5e-9f15-bf5c-3456789012cc",
+  "Generation": {
+    "PromptHash": "sha256:d0ffe9fbef4ffa9984f47a89d394f995fb13ff7f65d6fa8b45f3892ce78a1234",
+    "OutputAssetID": "urn:cap:asset:studio-a:gen-char-001",
+    "OutputAssetHash": "sha256:e1fff0fcff5ffba095f58b9ae4a5fa06fc24ff8f76e7fb9c56e4893df89b2345",
+    "OutputType": "IMAGE",
+    "ReferenceAssetIDs": [
+      "urn:cap:asset:studio-a:char-design-001"
+    ]
+  },
+  "ModelContext": {
+    "ModelID": "urn:cap:model:studio-a:char-lora-v1",
+    "ModelVersion": "1.0.0",
+    "ModelType": "IMAGE_GEN",
+    "ModelProvider": "Internal",
+    "Environment": "LOCAL"
+  },
+  "Context": {
+    "UserID": "user-12345",
+    "Role": "CREATOR",
+    "Department": "Character Design",
+    "SessionID": "01945f2a-0001-7000-0000-000000000001"
+  },
+  "EventHash": "sha256:f2fff1fdff6ffcb1a6f69c0bf5b6fb17fd35ff9f87f8fc0d67f5904ea90c3456",
+  "Signature": "ed25519:MEQCIEDgH1I2J3K4L5M6N7O8P9Q0R1S2T3U4V5W6X7Y8Z9A0B1C2D3E=="
+}

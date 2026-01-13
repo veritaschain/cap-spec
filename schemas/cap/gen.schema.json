@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veritaschain.org/schemas/cap/v0.2/gen.json",
+  "title": "CAP GEN Event",
+  "description": "Records content generation activities (when allowed)",
+  "type": "object",
+  "allOf": [
+    { "$ref": "core-event.json" }
+  ],
+  "required": [
+    "EventType",
+    "Generation",
+    "ModelContext"
+  ],
+  "properties": {
+    "EventType": {
+      "const": "GEN"
+    },
+    "AttemptID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Reference to GEN_ATTEMPT event (required when SRP enabled)"
+    },
+    "Generation": {
+      "type": "object",
+      "required": ["PromptHash", "OutputAssetID", "OutputAssetHash"],
+      "properties": {
+        "PromptHash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$",
+          "description": "SHA-256 hash of prompt (privacy-preserving)"
+        },
+        "OutputAssetID": {
+          "type": "string",
+          "pattern": "^urn:cap:asset:[a-zA-Z0-9_-]+:[a-zA-Z0-9_-]+$",
+          "description": "Generated asset identifier"
+        },
+        "OutputAssetHash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$",
+          "description": "SHA-256 hash of generated content"
+        },
+        "OutputType": {
+          "type": "string",
+          "enum": ["IMAGE", "VIDEO", "AUDIO", "TEXT", "CODE", "OTHER"],
+          "description": "Type of generated content"
+        },
+        "ReferenceAssetIDs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Input assets referenced during generation"
+        }
+      }
+    },
+    "ModelContext": {
+      "type": "object",
+      "required": ["ModelID", "ModelVersion", "ModelType"],
+      "properties": {
+        "ModelID": {
+          "type": "string",
+          "description": "Model identifier"
+        },
+        "ModelVersion": {
+          "type": "string",
+          "description": "Model version"
+        },
+        "ModelType": {
+          "type": "string",
+          "enum": ["LLM", "IMAGE_GEN", "AUDIO_GEN", "VIDEO_GEN", "OTHER"],
+          "description": "Type of AI model"
+        },
+        "ModelProvider": {
+          "type": "string",
+          "description": "Model provider"
+        },
+        "Environment": {
+          "type": "string",
+          "enum": ["LOCAL", "CLOUD", "HYBRID", "API"],
+          "description": "Execution environment"
+        }
+      }
+    },
+    "Context": {
+      "type": "object",
+      "properties": {
+        "UserID": { "type": "string" },
+        "Role": {
+          "type": "string",
+          "enum": ["CREATOR", "ENGINEER", "REVIEWER", "MANAGER", "SYSTEM"]
+        },
+        "Department": { "type": "string" },
+        "SessionID": { "type": "string", "format": "uuid" }
+      }
+    }
+  }
+}

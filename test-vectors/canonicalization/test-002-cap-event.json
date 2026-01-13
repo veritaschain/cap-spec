@@ -1,0 +1,18 @@
+{
+  "description": "CAP event canonicalization (EventHash computation)",
+  "input": {
+    "EventID": "01945f2a-8b3c-7f93-9f3a-1234567890ab",
+    "ChainID": "01945e3a-6a1b-7c82-9d1b-0987654321dc",
+    "PrevHash": null,
+    "Timestamp": "2026-01-10T10:00:00.000Z",
+    "EventType": "INGEST",
+    "HashAlgo": "SHA256",
+    "Asset": {
+      "AssetID": "urn:cap:asset:test:001",
+      "AssetType": "IMAGE",
+      "AssetHash": "sha256:a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"
+    }
+  },
+  "note": "EventHash and Signature fields are excluded from hash computation",
+  "expectedCanonical": "{\"Asset\":{\"AssetHash\":\"sha256:a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a\",\"AssetID\":\"urn:cap:asset:test:001\",\"AssetType\":\"IMAGE\"},\"ChainID\":\"01945e3a-6a1b-7c82-9d1b-0987654321dc\",\"EventID\":\"01945f2a-8b3c-7f93-9f3a-1234567890ab\",\"EventType\":\"INGEST\",\"HashAlgo\":\"SHA256\",\"PrevHash\":null,\"Timestamp\":\"2026-01-10T10:00:00.000Z\"}"
+}

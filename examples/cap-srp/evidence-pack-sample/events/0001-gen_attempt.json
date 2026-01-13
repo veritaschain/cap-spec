@@ -1,0 +1,18 @@
+{
+  "EventID": "019467a1-0001-7000-0000-000000000001",
+  "ChainID": "019467a0-0000-7000-0000-000000000000",
+  "PrevHash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "Timestamp": "2026-01-10T14:23:45.100Z",
+  "EventType": "GEN_ATTEMPT",
+  "HashAlgo": "SHA256",
+  "SignAlgo": "ED25519",
+  "PromptHash": "sha256:7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069",
+  "ReferenceImageHash": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "InputType": "text+image",
+  "PolicyID": "cap.example.safe-refusal.v1",
+  "ModelVersion": "img-gen-v4.2.1",
+  "SessionID": "019467a1-0001-7000-0000-000000000000",
+  "ActorHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "EventHash": "sha256:a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+  "Signature": "ed25519:MEUCIQDhE3H4L9VDpX8mFvM7Y2q3R6z8T1a2B3c4D5e6F7g8H9IKL0=="
+}

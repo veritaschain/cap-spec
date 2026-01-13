@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veritaschain.org/schemas/cap/srp/v0.2/gen-attempt.json",
+  "title": "CAP-SRP GEN_ATTEMPT Event",
+  "description": "Records that a generation request was received (before risk assessment)",
+  "type": "object",
+  "allOf": [
+    { "$ref": "../core-event.json" }
+  ],
+  "required": [
+    "EventType",
+    "EventID",
+    "Timestamp",
+    "PromptHash",
+    "PolicyID",
+    "ModelVersion",
+    "PrevHash"
+  ],
+  "properties": {
+    "EventType": {
+      "const": "GEN_ATTEMPT"
+    },
+    "PromptHash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA-256 hash of the generation prompt (privacy-preserving)"
+    },
+    "ReferenceImageHash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA-256 hash of reference image if provided"
+    },
+    "InputType": {
+      "type": "string",
+      "enum": ["text", "image", "text+image", "video", "audio"],
+      "description": "Type of input provided"
+    },
+    "PolicyID": {
+      "type": "string",
+      "description": "Content moderation policy identifier"
+    },
+    "ModelVersion": {
+      "type": "string",
+      "description": "AI model version identifier"
+    },
+    "SessionID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Session identifier for request correlation"
+    },
+    "ActorHash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA-256 hash of actor identifier (anonymized)"
+    },
+    "RequestMetadata": {
+      "type": "object",
+      "properties": {
+        "clientType": {
+          "type": "string",
+          "enum": ["WEB", "API", "MOBILE", "SDK", "OTHER"],
+          "description": "Type of client making the request"
+        },
+        "apiVersion": {
+          "type": "string",
+          "description": "API version used"
+        }
+      }
+    }
+  }
+}

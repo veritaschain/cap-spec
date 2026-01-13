@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veritaschain.org/schemas/cap/srp/v0.2/gen-escalate.json",
+  "title": "CAP-SRP GEN_ESCALATE Event",
+  "description": "Records that a request was escalated to human review",
+  "type": "object",
+  "allOf": [
+    { "$ref": "../core-event.json" }
+  ],
+  "required": [
+    "EventType",
+    "EventID",
+    "Timestamp",
+    "AttemptID",
+    "RiskCategory",
+    "RiskScore",
+    "ModelDecision",
+    "PrevHash",
+    "EscalationReason"
+  ],
+  "properties": {
+    "EventType": {
+      "const": "GEN_ESCALATE"
+    },
+    "AttemptID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Reference to the corresponding GEN_ATTEMPT event"
+    },
+    "RiskCategory": {
+      "type": "string",
+      "enum": [
+        "CSAM_RISK",
+        "NCII_RISK",
+        "MINOR_SEXUALIZATION",
+        "REAL_PERSON_DEEPFAKE",
+        "VIOLENCE_EXTREME",
+        "HATE_CONTENT",
+        "TERRORIST_CONTENT",
+        "SELF_HARM_PROMOTION",
+        "OTHER"
+      ],
+      "description": "Primary risk category detected"
+    },
+    "RiskSubCategories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Additional risk classifications"
+    },
+    "RiskScore": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Confidence score for risk detection (0.0-1.0)"
+    },
+    "EscalationReason": {
+      "type": "string",
+      "description": "Reason for escalating to human review"
+    },
+    "ModelDecision": {
+      "type": "string",
+      "const": "ESCALATE",
+      "description": "Model's decision"
+    },
+    "EscalationDetails": {
+      "type": "object",
+      "properties": {
+        "assignedTo": {
+          "type": "string",
+          "description": "Human reviewer or queue assigned"
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"],
+          "description": "Escalation priority"
+        },
+        "deadline": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Review deadline"
+        },
+        "queuePosition": {
+          "type": "integer",
+          "description": "Position in review queue"
+        }
+      }
+    },
+    "FinalDecision": {
+      "type": "object",
+      "properties": {
+        "outcome": {
+          "type": "string",
+          "enum": ["ALLOW", "DENY", "PENDING"],
+          "description": "Final decision after human review"
+        },
+        "reviewer": {
+          "type": "string",
+          "description": "Reviewer identifier"
+        },
+        "reviewedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When review was completed"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Reviewer notes"
+        }
+      }
+    }
+  }
+}

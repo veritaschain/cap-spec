@@ -1,0 +1,12 @@
+{
+  "description": "Ed25519 signature verification test",
+  "testKeyPair": {
+    "description": "RFC 8032 Test Vector 1 - FOR TESTING ONLY",
+    "privateKeyHex": "9d61b19deffd5a60ba844af492ec2cc44449c5697b326919703bac031cae7f60",
+    "publicKeyHex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a"
+  },
+  "message": "sha256:5a8c7d9e1f2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d",
+  "signatureHex": "e5564300c360ac729086e2cc806e828a84877f1eb8e5d974d873e065224901555fb8821590a33bacc61e39701cf9b46bd25bf5f0595bbe24655141438e7a100b",
+  "signatureFormatted": "ed25519:5VZDAMNgrHKQhuLMgG6CioSHfx646V2XTYc+BlIkkRVV+4ghWQozusxh45cBz5tGvSW/XwWVu+JGVRQUOOehAAs=",
+  "expectedResult": true
+}

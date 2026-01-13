@@ -1,0 +1,30 @@
+{
+  "EventID": "019467a2-0001-7000-0000-000000000004",
+  "ChainID": "019467a0-0000-7000-0000-000000000000",
+  "PrevHash": "sha256:a7b8c9d0e1f2a7b8c9d0e1f2a7b8c9d0e1f2a7b8c9d0e1f2a7b8c9d0e1f2a7b8",
+  "Timestamp": "2026-01-10T15:30:02.500Z",
+  "EventType": "GEN",
+  "HashAlgo": "SHA256",
+  "SignAlgo": "ED25519",
+  "AttemptID": "019467a2-0001-7000-0000-000000000003",
+  "Generation": {
+    "PromptHash": "sha256:8a94c7d2ef1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9070",
+    "OutputAssetID": "urn:cap:asset:example-platform:gen-output-001",
+    "OutputAssetHash": "sha256:b5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+    "OutputType": "IMAGE"
+  },
+  "ModelContext": {
+    "ModelID": "urn:cap:model:example-platform:img-gen-v4",
+    "ModelVersion": "4.2.1",
+    "ModelType": "IMAGE_GEN",
+    "ModelProvider": "Example AI Platform",
+    "Environment": "CLOUD"
+  },
+  "Context": {
+    "UserID": "user-anonymized-002",
+    "Role": "CREATOR",
+    "SessionID": "019467a2-0001-7000-0000-000000000000"
+  },
+  "EventHash": "sha256:c9d0e1f2a3b4c9d0e1f2a3b4c9d0e1f2a3b4c9d0e1f2a3b4c9d0e1f2a3b4c9d0",
+  "Signature": "ed25519:MEYCIQFjG5H6I7J8K9L0M1N2O3P4Q5R6S7T8U9V0W1X2Y3Z4A5B6C7D=="
+}

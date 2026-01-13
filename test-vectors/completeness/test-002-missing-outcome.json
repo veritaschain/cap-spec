@@ -1,0 +1,45 @@
+{
+  "description": "Invalid chain - GEN_ATTEMPT without corresponding outcome (hidden generation attack)",
+  "expectedResult": {
+    "valid": false,
+    "error": "Missing outcomes for attempts",
+    "missingOutcomes": ["01945f00-0001-7000-0000-000000000003"]
+  },
+  "attackScenario": "Attacker generated harmful content and deleted the GEN event to hide it",
+  "events": [
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000001",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": null,
+      "Timestamp": "2026-01-10T10:00:00.000Z",
+      "EventType": "GEN_ATTEMPT",
+      "PromptHash": "sha256:aaaa0000000000000000000000000000000000000000000000000000000000aa",
+      "PolicyID": "test-policy-v1",
+      "ModelVersion": "test-model-v1"
+    },
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000002",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "Timestamp": "2026-01-10T10:00:00.050Z",
+      "EventType": "GEN",
+      "AttemptID": "01945f00-0001-7000-0000-000000000001",
+      "Generation": {
+        "PromptHash": "sha256:aaaa0000000000000000000000000000000000000000000000000000000000aa",
+        "OutputAssetID": "urn:cap:asset:test:out-001",
+        "OutputAssetHash": "sha256:bbbb0000000000000000000000000000000000000000000000000000000000bb"
+      }
+    },
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000003",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "Timestamp": "2026-01-10T10:01:00.000Z",
+      "EventType": "GEN_ATTEMPT",
+      "PromptHash": "sha256:cccc0000000000000000000000000000000000000000000000000000000000cc",
+      "PolicyID": "test-policy-v1",
+      "ModelVersion": "test-model-v1",
+      "_comment": "This attempt has NO corresponding outcome - harmful content was generated and hidden"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "description": "Valid chain with matching attempts and outcomes",
+  "expectedResult": {
+    "valid": true,
+    "attemptCount": 3,
+    "outcomeBreakdown": {
+      "GEN": 2,
+      "GEN_DENY": 1,
+      "GEN_WARN": 0,
+      "GEN_ESCALATE": 0,
+      "GEN_QUARANTINE": 0
+    }
+  },
+  "events": [
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000001",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": null,
+      "Timestamp": "2026-01-10T10:00:00.000Z",
+      "EventType": "GEN_ATTEMPT",
+      "PromptHash": "sha256:aaaa0000000000000000000000000000000000000000000000000000000000aa",
+      "PolicyID": "test-policy-v1",
+      "ModelVersion": "test-model-v1"
+    },
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000002",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "Timestamp": "2026-01-10T10:00:00.050Z",
+      "EventType": "GEN",
+      "AttemptID": "01945f00-0001-7000-0000-000000000001",
+      "Generation": {
+        "PromptHash": "sha256:aaaa0000000000000000000000000000000000000000000000000000000000aa",
+        "OutputAssetID": "urn:cap:asset:test:out-001",
+        "OutputAssetHash": "sha256:bbbb0000000000000000000000000000000000000000000000000000000000bb"
+      }
+    },
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000003",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "Timestamp": "2026-01-10T10:01:00.000Z",
+      "EventType": "GEN_ATTEMPT",
+      "PromptHash": "sha256:cccc0000000000000000000000000000000000000000000000000000000000cc",
+      "PolicyID": "test-policy-v1",
+      "ModelVersion": "test-model-v1"
+    },
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000004",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "Timestamp": "2026-01-10T10:01:00.050Z",
+      "EventType": "GEN_DENY",
+      "AttemptID": "01945f00-0001-7000-0000-000000000003",
+      "RiskCategory": "NCII_RISK",
+      "RiskScore": 0.95,
+      "ModelDecision": "DENY",
+      "HumanOverride": false
+    },
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000005",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "Timestamp": "2026-01-10T10:02:00.000Z",
+      "EventType": "GEN_ATTEMPT",
+      "PromptHash": "sha256:dddd0000000000000000000000000000000000000000000000000000000000dd",
+      "PolicyID": "test-policy-v1",
+      "ModelVersion": "test-model-v1"
+    },
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000006",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+      "Timestamp": "2026-01-10T10:02:00.050Z",
+      "EventType": "GEN",
+      "AttemptID": "01945f00-0001-7000-0000-000000000005",
+      "Generation": {
+        "PromptHash": "sha256:dddd0000000000000000000000000000000000000000000000000000000000dd",
+        "OutputAssetID": "urn:cap:asset:test:out-002",
+        "OutputAssetHash": "sha256:eeee0000000000000000000000000000000000000000000000000000000000ee"
+      }
+    }
+  ]
+}

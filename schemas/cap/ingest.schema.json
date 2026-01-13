@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veritaschain.org/schemas/cap/v0.2/ingest.json",
+  "title": "CAP INGEST Event",
+  "description": "Records asset ingestion into an AI workflow",
+  "type": "object",
+  "allOf": [
+    { "$ref": "core-event.json" }
+  ],
+  "required": [
+    "EventType",
+    "Asset",
+    "Rights"
+  ],
+  "properties": {
+    "EventType": {
+      "const": "INGEST"
+    },
+    "Asset": {
+      "type": "object",
+      "required": ["AssetID", "AssetType", "AssetHash"],
+      "properties": {
+        "AssetID": {
+          "type": "string",
+          "pattern": "^urn:cap:asset:[a-zA-Z0-9_-]+:[a-zA-Z0-9_-]+$",
+          "description": "Unique asset identifier in URN format"
+        },
+        "AssetType": {
+          "type": "string",
+          "enum": ["IMAGE", "VIDEO", "AUDIO", "TEXT", "CODE", "OTHER"],
+          "description": "Type of asset"
+        },
+        "AssetHash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$",
+          "description": "SHA-256 hash of asset content"
+        },
+        "AssetName": {
+          "type": "string",
+          "description": "Human-readable asset name"
+        },
+        "AssetSize": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Asset size in bytes"
+        },
+        "MimeType": {
+          "type": "string",
+          "description": "MIME type of asset"
+        }
+      }
+    },
+    "Rights": {
+      "type": "object",
+      "required": ["RightsBasis"],
+      "properties": {
+        "RightsBasis": {
+          "type": "string",
+          "enum": ["OWNED", "LICENSED", "PUBLIC_DOMAIN", "FAIR_USE", "STATUTORY_EXCEPTION", "UNKNOWN"],
+          "description": "Legal basis for using the asset"
+        },
+        "RightsHolder": {
+          "type": "string",
+          "description": "Rights holder identifier"
+        },
+        "ConsentBasis": {
+          "type": "string",
+          "enum": ["EXPLICIT_WRITTEN", "EXPLICIT_VERBAL", "IMPLIED", "NOT_REQUIRED", "OPTED_OUT", "UNKNOWN"],
+          "description": "Consent state for asset usage"
+        },
+        "ConsentReference": {
+          "type": "string",
+          "description": "Reference to consent documentation"
+        },
+        "StatutoryBasis": {
+          "type": "object",
+          "properties": {
+            "jurisdiction": { "type": "string" },
+            "article": { "type": "string" },
+            "clause": { "type": "string" },
+            "justification": { "type": "string" }
+          },
+          "description": "Details when RightsBasis is STATUTORY_EXCEPTION"
+        },
+        "PermittedUse": {
+          "type": "object",
+          "properties": {
+            "Training": { "type": "boolean", "default": false },
+            "Generation": { "type": "boolean", "default": false },
+            "Distribution": { "type": "boolean", "default": false },
+            "Commercial": { "type": "boolean", "default": false },
+            "Derivative": { "type": "boolean", "default": false },
+            "Attribution": { "type": "boolean", "default": true },
+            "Restrictions": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          },
+          "description": "Allowed usage permissions"
+        }
+      }
+    },
+    "Confidentiality": {
+      "type": "object",
+      "properties": {
+        "ConfidentialityLevel": {
+          "type": "string",
+          "enum": ["PUBLIC", "INTERNAL", "CONFIDENTIAL", "SECRET", "PRE_RELEASE"],
+          "description": "Classification level"
+        },
+        "ClassificationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the asset was classified"
+        },
+        "Classifier": {
+          "type": "string",
+          "description": "Who classified the asset"
+        },
+        "ReleaseDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Planned release date (for PRE_RELEASE)"
+        }
+      }
+    },
+    "Context": {
+      "type": "object",
+      "properties": {
+        "UserID": {
+          "type": "string",
+          "description": "User identifier (may be hashed)"
+        },
+        "Role": {
+          "type": "string",
+          "enum": ["CREATOR", "ENGINEER", "REVIEWER", "MANAGER", "SYSTEM"],
+          "description": "Role of the actor"
+        },
+        "Department": {
+          "type": "string",
+          "description": "Organizational unit"
+        },
+        "SessionID": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Session identifier for correlation"
+        }
+      }
+    }
+  }
+}

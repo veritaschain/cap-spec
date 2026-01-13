@@ -1,0 +1,45 @@
+{
+  "EventID": "01945f2a-8b3c-7f93-9f3a-1234567890ab",
+  "ChainID": "01945e3a-6a1b-7c82-9d1b-0987654321dc",
+  "PrevHash": null,
+  "Timestamp": "2026-01-10T10:00:00.000Z",
+  "EventType": "INGEST",
+  "HashAlgo": "SHA256",
+  "SignAlgo": "ED25519",
+  "Asset": {
+    "AssetID": "urn:cap:asset:studio-a:char-design-001",
+    "AssetType": "IMAGE",
+    "AssetHash": "sha256:a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a",
+    "AssetName": "Main Character Design Draft A",
+    "AssetSize": 2457600,
+    "MimeType": "image/png"
+  },
+  "Rights": {
+    "RightsBasis": "OWNED",
+    "RightsHolder": "studio-a",
+    "ConsentBasis": "NOT_REQUIRED",
+    "PermittedUse": {
+      "Training": true,
+      "Generation": true,
+      "Distribution": false,
+      "Commercial": true,
+      "Derivative": true,
+      "Attribution": false,
+      "Restrictions": []
+    }
+  },
+  "Confidentiality": {
+    "ConfidentialityLevel": "PRE_RELEASE",
+    "ClassificationDate": "2026-01-10T09:00:00.000Z",
+    "Classifier": "art-director-001",
+    "ReleaseDate": "2026-04-01T00:00:00.000Z"
+  },
+  "Context": {
+    "UserID": "user-12345",
+    "Role": "CREATOR",
+    "Department": "Character Design",
+    "SessionID": "01945f2a-0001-7000-0000-000000000001"
+  },
+  "EventHash": "sha256:b8ffc7f9cf2fe87762d25867b172e773f691ff5ef54c5afb93e91b5c91f9545b",
+  "Signature": "ed25519:MEUCIQDhE3H4L9VDpX8mFvM7Y2q3R6z8T1a2B3c4D5e6F7g8H9IKL0=="
+}

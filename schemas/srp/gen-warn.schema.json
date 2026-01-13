@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veritaschain.org/schemas/cap/srp/v0.2/gen-warn.json",
+  "title": "CAP-SRP GEN_WARN Event",
+  "description": "Records that generation was allowed with a warning",
+  "type": "object",
+  "allOf": [
+    { "$ref": "../core-event.json" }
+  ],
+  "required": [
+    "EventType",
+    "EventID",
+    "Timestamp",
+    "AttemptID",
+    "RiskCategory",
+    "RiskScore",
+    "ModelDecision",
+    "HumanOverride",
+    "PrevHash",
+    "WarningMessage"
+  ],
+  "properties": {
+    "EventType": {
+      "const": "GEN_WARN"
+    },
+    "AttemptID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Reference to the corresponding GEN_ATTEMPT event"
+    },
+    "RiskCategory": {
+      "type": "string",
+      "enum": [
+        "CSAM_RISK",
+        "NCII_RISK",
+        "MINOR_SEXUALIZATION",
+        "REAL_PERSON_DEEPFAKE",
+        "VIOLENCE_EXTREME",
+        "HATE_CONTENT",
+        "TERRORIST_CONTENT",
+        "SELF_HARM_PROMOTION",
+        "OTHER"
+      ],
+      "description": "Primary risk category detected"
+    },
+    "RiskSubCategories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Additional risk classifications"
+    },
+    "RiskScore": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Confidence score for risk detection (0.0-1.0)"
+    },
+    "WarningMessage": {
+      "type": "string",
+      "description": "Warning message shown to user"
+    },
+    "ModelDecision": {
+      "type": "string",
+      "const": "WARN",
+      "description": "Model's decision"
+    },
+    "HumanOverride": {
+      "type": "boolean",
+      "description": "Whether a human overrode the model's decision"
+    },
+    "UserAcknowledged": {
+      "type": "boolean",
+      "description": "Whether user acknowledged the warning"
+    },
+    "OutputAssetID": {
+      "type": "string",
+      "pattern": "^urn:cap:asset:[a-zA-Z0-9_-]+:[a-zA-Z0-9_-]+$",
+      "description": "Generated asset identifier (generation allowed)"
+    }
+  }
+}

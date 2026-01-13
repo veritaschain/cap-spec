@@ -1,0 +1,44 @@
+{
+  "EventID": "01945f6e-cf80-af37-df7e-5678901234ef",
+  "ChainID": "01945e3a-6a1b-7c82-9d1b-0987654321dc",
+  "PrevHash": "sha256:f2fff1fdff6ffcb1a6f69c0bf5b6fb17fd35ff9f87f8fc0d67f5904ea90c3456",
+  "Timestamp": "2026-01-10T15:00:00.000Z",
+  "EventType": "EXPORT",
+  "HashAlgo": "SHA256",
+  "SignAlgo": "ED25519",
+  "AssetID": "urn:cap:asset:studio-a:gen-char-001",
+  "AssetHash": "sha256:e1fff0fcff5ffba095f58b9ae4a5fa06fc24ff8f76e7fb9c56e4893df89b2345",
+  "Destination": "partner-studio-b",
+  "DestinationType": "DELIVERY",
+  "DestinationDetails": {
+    "platform": "SecureShare",
+    "recipientType": "PARTNER"
+  },
+  "PermittedUse": {
+    "Training": false,
+    "Generation": false,
+    "Distribution": true,
+    "Commercial": true,
+    "Derivative": false,
+    "Attribution": true,
+    "Restrictions": [
+      "NO_AI_TRAINING",
+      "WATERMARK_REQUIRED"
+    ]
+  },
+  "Provenance": {
+    "sourceEventIDs": [
+      "01945f2a-8b3c-7f93-9f3a-1234567890ab",
+      "01945f4c-ad5e-9f15-bf5c-3456789012cd"
+    ],
+    "includeProvenance": true
+  },
+  "Context": {
+    "UserID": "user-12345",
+    "Role": "MANAGER",
+    "Department": "Character Design",
+    "SessionID": "01945f2a-0001-7000-0000-000000000001"
+  },
+  "EventHash": "sha256:a3aaa2aeaa7aadc2b7a70d1ca6c7ac28ae46aa0a98a9ad1e78a6015fb01d4567",
+  "Signature": "ed25519:MEYCIQCfG2H3I4J5K6L7M8N9O0P1Q2R3S4T5U6V7W8X9Y0Z1A2B3C4D=="
+}

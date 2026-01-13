@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veritaschain.org/schemas/cap/srp/v0.2/gen-deny.json",
+  "title": "CAP-SRP GEN_DENY Event",
+  "description": "Records that a generation request was refused",
+  "type": "object",
+  "allOf": [
+    { "$ref": "../core-event.json" }
+  ],
+  "required": [
+    "EventType",
+    "EventID",
+    "Timestamp",
+    "AttemptID",
+    "RiskCategory",
+    "RiskScore",
+    "ModelDecision",
+    "HumanOverride",
+    "PrevHash"
+  ],
+  "properties": {
+    "EventType": {
+      "const": "GEN_DENY"
+    },
+    "AttemptID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Reference to the corresponding GEN_ATTEMPT event"
+    },
+    "RiskCategory": {
+      "type": "string",
+      "enum": [
+        "CSAM_RISK",
+        "NCII_RISK",
+        "MINOR_SEXUALIZATION",
+        "REAL_PERSON_DEEPFAKE",
+        "VIOLENCE_EXTREME",
+        "HATE_CONTENT",
+        "TERRORIST_CONTENT",
+        "SELF_HARM_PROMOTION",
+        "OTHER"
+      ],
+      "description": "Primary risk category detected"
+    },
+    "RiskSubCategories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Additional risk classifications"
+    },
+    "RiskScore": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Confidence score for risk detection (0.0-1.0)"
+    },
+    "RefusalReason": {
+      "type": "string",
+      "description": "Human-readable explanation of refusal"
+    },
+    "ModelDecision": {
+      "type": "string",
+      "enum": ["DENY", "WARN", "ESCALATE", "QUARANTINE"],
+      "const": "DENY",
+      "description": "Model's decision (DENY for this event type)"
+    },
+    "HumanOverride": {
+      "type": "boolean",
+      "description": "Whether a human overrode the model's decision"
+    },
+    "DecisionMetadata": {
+      "type": "object",
+      "properties": {
+        "processingTime": {
+          "type": "integer",
+          "description": "Time to make decision in milliseconds"
+        },
+        "classifierVersion": {
+          "type": "string",
+          "description": "Version of risk classifier used"
+        },
+        "confidenceThreshold": {
+          "type": "number",
+          "description": "Threshold used for decision"
+        }
+      }
+    }
+  }
+}
