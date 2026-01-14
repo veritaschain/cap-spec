@@ -4,7 +4,7 @@
 
 **Document ID:** VSO-CAP-SPEC-001  
 **Status:** Official Release  
-**Version:** 1.0.0  
+**Version:** 1.0  
 **Date:** 2026-01-13  
 **Maintainer:** VeritasChain Standards Organization (VSO)  
 **License:** CC BY 4.0 International  
@@ -1554,7 +1554,7 @@ All Silver requirements, plus:
 - **[C2PA]** Coalition for Content Provenance and Authenticity, Technical Specification v2.0
 - **[SCITT]** IETF SCITT Working Group, draft-ietf-scitt-architecture
 - **[Colorado AI Act]** Colorado SB24-205, Concerning Consumer Protections for Artificial Intelligence
-- **[VAP]** VSO-VAP-SPEC-001, Verifiable AI Provenance Framework Specification v1.1
+- **[VAP]** VSO-VAP-SPEC-001, Verifiable AI Provenance Framework Specification v1.2
 - **[VCP]** VSO-VCP-SPEC-001, VeritasChain Protocol Specification v1.1
 
 ### Academic References
@@ -1569,7 +1569,7 @@ All Silver requirements, plus:
 |---------|------|--------|---------|
 | 0.1.0 | 2025-12-27 | VSO | Initial draft (Japanese) |
 | 0.2.0 | 2026-01-10 | VSO | English version, SRP extension |
-| 1.0.0 | 2026-01-13 | VSO | **Official Release**: Conformance levels, regulatory mapping, external anchoring requirements, SCITT/C2PA integration, Evidence Pack specification |
+| 1.0 | 2026-01-13 | VSO | **Official Release**: Conformance levels, regulatory mapping, external anchoring requirements, SCITT/C2PA integration, Evidence Pack specification |
 
 ---
 

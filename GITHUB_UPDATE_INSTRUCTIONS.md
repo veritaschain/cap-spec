@@ -1,8 +1,8 @@
-# CAP v1.0.0 GitHub Update Instructions
+# CAP v1.0 GitHub Update Instructions
 
 ## Overview
 
-This document provides step-by-step instructions for updating the `veritaschain/cap-spec` repository from v0.2.0 to v1.0.0.
+This document provides step-by-step instructions for updating the `veritaschain/cap-spec` repository from v0.2.0 to v1.0.
 
 ---
 
@@ -11,8 +11,8 @@ This document provides step-by-step instructions for updating the `veritaschain/
 ### 1. UPDATE: `README.md` (root)
 
 Replace the existing README.md with the new version that includes:
-- v1.0.0 release announcement banner
-- Updated spec badge (v0.2.0 → v1.0.0)
+- v1.0 release announcement banner
+- Updated spec badge (v0.2.0 → v1.0)
 - VAP v1.2 badge
 - Conformance Levels section (Bronze/Silver/Gold)
 - Updated Completeness Invariant formula
@@ -22,13 +22,13 @@ Replace the existing README.md with the new version that includes:
 ### 2. UPDATE: `docs/CHANGELOG.md`
 
 Replace with new version containing:
-- v1.0.0 release notes
-- Migration guide from v0.2.0 → v1.0.0
+- v1.0 release notes
+- Migration guide from v0.2.0 → v1.0
 - Updated version links
 
 ### 3. ADD: `docs/CAP-Specification-v1.0.md`
 
-New file - the complete CAP v1.0.0 specification (~1,600 lines).
+New file - the complete CAP v1.0 specification (~1,600 lines).
 
 **Do NOT delete** `docs/CAP-Specification-v0.2.md` - keep for historical reference.
 
@@ -50,7 +50,7 @@ git clone https://github.com/veritaschain/cap-spec.git
 cd cap-spec
 
 # 2. Create release branch (optional)
-git checkout -b release/v1.0.0
+git checkout -b release/v1.0
 
 # 3. Copy updated files
 # (Copy files from this package)
@@ -62,9 +62,9 @@ git add docs/CAP-Specification-v1.0.md
 git add docs/Regulatory-Mapping/US-AI-Laws.md
 
 # 5. Commit
-git commit -m "Release CAP v1.0.0 - Official Release
+git commit -m "Release CAP v1.0 - Official Release
 
-## What's New in v1.0.0
+## What's New in v1.0
 
 ### Added
 - Conformance Levels (Bronze/Silver/Gold) aligned with VAP v1.2
@@ -85,11 +85,11 @@ git commit -m "Release CAP v1.0.0 - Official Release
 
 # 6. Push to main
 git checkout main
-git merge release/v1.0.0
+git merge release/v1.0
 git push origin main
 
 # 7. Create tag
-git tag -a v1.0.0 -m "CAP v1.0.0 - Official Release
+git tag -a v1.0 -m "CAP v1.0 - Official Release
 
 The first official release of Content / Creative AI Profile (CAP).
 
@@ -107,7 +107,7 @@ Documentation:
 
 License: CC BY 4.0 International"
 
-git push origin v1.0.0
+git push origin v1.0
 ```
 
 ---
@@ -118,12 +118,12 @@ When creating the GitHub Release, use the following content:
 
 ### Title
 ```
-CAP v1.0.0 — Official Release
+CAP v1.0 — Official Release
 ```
 
 ### Body
 ```markdown
-# CAP v1.0.0 - Official Release
+# CAP v1.0 - Official Release
 
 The first official release of **Content / Creative AI Profile (CAP)**, the world's first open specification for cryptographic AI content refusal logging.
 
@@ -181,10 +181,10 @@ CC BY 4.0 International
 - [ ] CHANGELOG.md updated
 - [ ] CAP-Specification-v1.0.md added
 - [ ] US-AI-Laws.md added
-- [ ] Tag v1.0.0 created
+- [ ] Tag v1.0 created
 - [ ] GitHub Release published
 - [ ] Repository "About" description updated (if needed)
-- [ ] Spec badge shows v1.0.0
+- [ ] Spec badge shows v1.0
 
 ---
 
@@ -210,4 +210,4 @@ regtech, content-ai, audit-trails, algorithmic-accountability, ai-governance, eu
 ---
 
 **Document Created:** 2026-01-13  
-**For:** veritaschain/cap-spec v1.0.0 Release
+**For:** veritaschain/cap-spec v1.0 Release

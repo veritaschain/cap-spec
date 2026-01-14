@@ -7,11 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.0.0] - 2026-01-13
+## [1.0] - 2026-01-13
 
 ### 🎉 Official Release
 
-CAP v1.0.0 is the first official release of the Content / Creative AI Profile specification.
+CAP v1.0 is the first official release of the Content / Creative AI Profile specification.
 
 ### Added
 
@@ -114,7 +114,7 @@ CAP v1.0.0 is the first official release of the Content / Creative AI Profile sp
 | Version | Meaning |
 |---------|---------|
 | 0.x.x | Pre-release, expect breaking changes |
-| **1.0.0** | **First stable release** |
+| **1.0** | **First stable release** |
 | 1.x.x | Backward-compatible additions |
 | 2.0.0 | Breaking changes (if any) |
 
@@ -122,7 +122,7 @@ CAP v1.0.0 is the first official release of the Content / Creative AI Profile sp
 
 ## Migration Guides
 
-### 0.2.0 → 1.0.0
+### 0.2.0 → 1.0
 
 **Breaking Changes:**
 - None (additive changes only)
@@ -151,7 +151,7 @@ CAP v1.0.0 is the first official release of the Content / Creative AI Profile sp
 
 ---
 
-[Unreleased]: https://github.com/veritaschain/cap-spec/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/veritaschain/cap-spec/compare/v0.2.0...v1.0.0
+[Unreleased]: https://github.com/veritaschain/cap-spec/compare/v1.0...HEAD
+[1.0]: https://github.com/veritaschain/cap-spec/compare/v0.2.0...v1.0
 [0.2.0]: https://github.com/veritaschain/cap-spec/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/veritaschain/cap-spec/releases/tag/v0.1.0

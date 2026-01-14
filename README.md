@@ -3,15 +3,15 @@
 > **Cryptographic Audit Trails for AI Content Systems**
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Specification](https://img.shields.io/badge/spec-v1.0.0-blue.svg)](docs/CAP-Specification-v1.0.md)
+[![Specification](https://img.shields.io/badge/spec-v1.0-blue.svg)](docs/CAP-Specification-v1.0.md)
 [![VAP](https://img.shields.io/badge/VAP-v1.2-orange.svg)](https://github.com/veritaschain/vap-framework)
 [![GitHub](https://img.shields.io/badge/GitHub-veritaschain-181717.svg?logo=github)](https://github.com/veritaschain)
 
 ---
 
-## 🎉 CAP v1.0.0 Official Release
+## 🎉 CAP v1.0 Official Release
 
-**January 13, 2026** — CAP v1.0.0 is now officially released, featuring:
+**January 13, 2026** — CAP v1.0 is now officially released, featuring:
 
 - **Unified Conformance Levels** (Bronze/Silver/Gold) aligned with VAP v1.2
 - **External Anchoring Specification** for independent timestamp verification
