@@ -3,14 +3,30 @@
 > **Cryptographic Audit Trails for AI Content Systems**
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Specification](https://img.shields.io/badge/spec-v0.2.0-blue.svg)](docs/CAP-Specification-v0.2.md)
+[![Specification](https://img.shields.io/badge/spec-v1.0.0-blue.svg)](docs/CAP-Specification-v1.0.md)
+[![VAP](https://img.shields.io/badge/VAP-v1.2-orange.svg)](https://github.com/veritaschain/vap-framework)
 [![GitHub](https://img.shields.io/badge/GitHub-veritaschain-181717.svg?logo=github)](https://github.com/veritaschain)
+
+---
+
+## 🎉 CAP v1.0.0 Official Release
+
+**January 13, 2026** — CAP v1.0.0 is now officially released, featuring:
+
+- **Unified Conformance Levels** (Bronze/Silver/Gold) aligned with VAP v1.2
+- **External Anchoring Specification** for independent timestamp verification
+- **C2PA/SCITT Integration** for ecosystem interoperability
+- **Comprehensive Regulatory Mapping** (EU AI Act, DSA, Colorado AI Act, TAKE IT DOWN Act)
+
+📄 [Full Specification](docs/CAP-Specification-v1.0.md) | 📋 [Changelog](docs/CHANGELOG.md) | 📚 [Academic Paper](https://doi.org/10.5281/zenodo.18213616)
 
 ---
 
 ## World-First Verification Report
 
-- **CAP World-First Claims – Final Consolidated Research Report**
+CAP-SRP represents the **world's first** open specification for cryptographic AI content refusal logging:
+
+- **CAP World-First Claims – Final Consolidated Research Report**  
   https://github.com/veritaschain/cap-spec/blob/main/docs/CAP_WorldFirst_Final_Consolidated_Report.md
 
 ---
@@ -25,50 +41,45 @@
 
 ## What is CAP?
 
-**CAP (Content / Creative AI Profile)** is a domain-specific profile within the [VAP (Verifiable AI Provenance Framework)](https://github.com/veritaschain/vap-framework), establishing cryptographically verifiable audit trails for AI workflows in content and creative industries.
+**CAP (Content / Creative AI Profile)** is a domain-specific profile within the [VAP (Verifiable AI Provenance Framework)](https://github.com/veritaschain/vap-framework) v1.2, establishing cryptographically verifiable audit trails for AI workflows in content and creative industries.
 
 CAP is **NOT** a regulation that prohibits or censors AI usage.  
 CAP **IS** a framework for preserving verifiable evidence that third parties can audit when disputes arise.
 
-> *"Leave Evidence, Not Barriers"*
+> *"Verify, Don't Trust"*
 
 ---
 
 ## The Problem: AI's Accountability Vacuum
 
-In December 2025, the Grok image generation incident exposed a critical gap in AI content moderation:
+In January 2026, the Grok incident exposed a critical gap in AI content moderation:
 
 | What Happened | The Problem |
 |---------------|-------------|
-| 6,700+ harmful images generated per hour | Systems lacked provable refusal mechanisms |
-| 6 regulatory jurisdictions launched investigations | No cryptographic proof of safeguard effectiveness |
-| xAI claimed "we have filters" | Could not prove which requests were actually refused |
+| NCII generation capability discovered | Systems lacked provable refusal mechanisms |
+| 8+ regulatory jurisdictions launched investigations | No cryptographic proof of safeguard effectiveness |
+| xAI claimed "our safeguards work" | Could not prove which requests were actually refused |
+| UK IWF found AI-generated CSAM | No verifiable evidence of prevention measures |
 
 **Current AI systems can prove what they generated. They cannot prove what they refused to generate.**
 
-This asymmetry creates:
-- **Regulatory liability**: No evidence that safety measures actually worked
-- **Litigation exposure**: No proof of specific refusal decisions
-- **Trust deficit**: "Trust us" is no longer acceptable
-
 ---
 
-## What CAP Provides
+## Conformance Levels
 
-CAP provides **evidentiary infrastructure**, not content judgment:
+CAP v1.0 defines three conformance levels aligned with VAP v1.2:
 
-| CAP Does | CAP Does NOT |
-|----------|--------------|
-| ✓ Record AI workflow events | ✗ Prohibit or censor AI |
-| ✓ Create tamper-evident audit trails | ✗ Determine copyright infringement |
-| ✓ Enable third-party verification | ✗ Evaluate content quality |
-| ✓ Prove what was (and wasn't) generated | ✗ Make real-time intervention decisions |
+| Level | Target | Key Requirements | Regulatory Alignment |
+|-------|--------|------------------|---------------------|
+| **Bronze** | SMEs, Early Adopters | Hash chain, basic logging, 6-month retention | Voluntary transparency |
+| **Silver** | Enterprise, VLOPs | + SRP, external anchoring (daily), 2-year retention | EU AI Act Article 12 |
+| **Gold** | Regulated Industries | + Real-time verification, HSM, SCITT, 5-year retention | DSA Article 37 audits |
 
 ---
 
 ## CAP Event Model
 
-CAP defines four core events covering the AI content lifecycle:
+CAP defines core events covering the AI content lifecycle:
 
 ```
 ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐
@@ -100,18 +111,18 @@ Request Received
          ▼
    Risk Assessment
          │
-    ┌────┴────┐
-    │         │
-    ▼         ▼
-┌───────┐ ┌─────────┐
-│  GEN  │ │GEN_DENY │
-│(allow)│ │(refuse) │
-└───────┘ └─────────┘
+    ┌────┴────┬───────────┐
+    │         │           │
+    ▼         ▼           ▼
+┌───────┐ ┌─────────┐ ┌─────────┐
+│  GEN  │ │GEN_DENY │ │GEN_ERROR│
+│(allow)│ │(refuse) │ │(failure)│
+└───────┘ └─────────┘ └─────────┘
 ```
 
 ### The Completeness Invariant
 
-> **Every `GEN_ATTEMPT` MUST have exactly one corresponding `GEN` or `GEN_DENY` event.**
+> **∑ GEN_ATTEMPT = ∑ GEN + ∑ GEN_DENY + ∑ GEN_ERROR**
 
 This mathematical constraint prevents:
 - Hiding successful generations of harmful content
@@ -124,7 +135,8 @@ This mathematical constraint prevents:
 
 | Document | Description | Status |
 |----------|-------------|--------|
-| [CAP-Specification-v0.2](docs/CAP-Specification-v0.2.md) | Normative specification | Current |
+| [CAP-Specification-v1.0](docs/CAP-Specification-v1.0.md) | Normative specification | **Official Release** |
+| [CAP-Specification-v0.2](docs/CAP-Specification-v0.2.md) | Previous version | Superseded |
 | [Threat Model](docs/Threat-Model.md) | Security threat analysis | Current |
 | [CAP vs VCP](docs/CAP-vs-VCP.md) | Relationship to VCP | Current |
 | [Glossary](docs/CAP-Glossary.md) | Terminology reference | Current |
@@ -172,18 +184,22 @@ CAP provides technical capabilities aligned with regulatory requirements:
 | Regulation | Jurisdiction | CAP Alignment |
 |------------|--------------|---------------|
 | [EU AI Act](docs/Regulatory-Mapping/EU-AI-Act.md) | EU | Article 12 logging, Article 53 transparency |
-| [Digital Services Act](docs/Regulatory-Mapping/DSA.md) | EU | Article 35 systemic risk mitigation |
-| [GDPR](docs/Regulatory-Mapping/GDPR.md) | EU | Processing records, consent management |
-| [Copyright Act Art. 30-4](docs/Regulatory-Mapping/JP-Copyright-30-4.md) | Japan | AI training exception documentation |
+| [Digital Services Act](docs/Regulatory-Mapping/DSA.md) | EU | Article 35 systemic risk mitigation, Article 37 audits |
+| [GDPR](docs/Regulatory-Mapping/GDPR.md) | EU | Processing records, consent management, crypto-shredding |
+| [Colorado AI Act](docs/Regulatory-Mapping/US-NCII.md) | USA | Impact assessments, 3-year retention |
 | [TAKE IT DOWN Act](docs/Regulatory-Mapping/US-NCII.md) | USA | NCII evidence requirements |
+| [Copyright Act Art. 30-4](docs/Regulatory-Mapping/JP-Copyright-30-4.md) | Japan | AI training exception documentation |
+| South Korea AI Framework Act | Korea | High-impact AI logging (effective Jan 2026) |
 
 ---
 
-## Reference Implementation
+## Academic Foundation
 
-For working implementations and PoC tools, see:
+The theoretical foundations of CAP-SRP are detailed in our peer-reviewed preprint:
 
-- **[cap-safe-refusal-provenance](https://github.com/veritaschain/cap-safe-refusal-provenance)** — SRP proof-of-concept with verification tools, Evidence Pack generator, and demonstration scenarios
+- **Title**: "Proving Non-Generation: Cryptographic Completeness Guarantees for AI Content Moderation Logs"
+- **DOI**: [10.5281/zenodo.18213616](https://doi.org/10.5281/zenodo.18213616)
+- **Published**: January 11, 2026
 
 ---
 
@@ -192,7 +208,7 @@ For working implementations and PoC tools, see:
 | Project | Description |
 |---------|-------------|
 | [VCP Specification](https://github.com/veritaschain/vcp-spec) | VeritasChain Protocol for financial/trading systems |
-| [VAP Framework](https://veritaschain.org) | Parent framework for domain-specific profiles |
+| [VAP Framework](https://github.com/veritaschain/vap-framework) | Parent framework (v1.2) for domain-specific profiles |
 | [VCP Explorer](https://github.com/veritaschain/vcp-explorer) | Visualization and verification tools |
 
 ---
@@ -207,10 +223,12 @@ cap-spec/
 ├── GOVERNANCE.md                # VSO governance
 ├── VERSIONING.md                # Semantic versioning policy
 ├── docs/
-│   ├── CAP-Specification-v0.2.md    # Normative specification
+│   ├── CAP-Specification-v1.0.md    # Normative specification (v1.0)
+│   ├── CAP-Specification-v0.2.md    # Previous version (superseded)
 │   ├── CHANGELOG.md                  # Version history
 │   ├── CAP-vs-VCP.md                 # Relationship to VCP
 │   ├── CAP-Glossary.md               # Terminology
+│   ├── CAP_WorldFirst_Final_Consolidated_Report.md  # World-first verification
 │   ├── Threat-Model.md               # Security analysis
 │   └── Regulatory-Mapping/           # Compliance guides
 │       ├── EU-AI-Act.md
@@ -257,6 +275,7 @@ This specification is published under [CC BY 4.0 International License](LICENSE)
 - **Website:** https://veritaschain.org
 - **Email:** standards@veritaschain.org
 - **GitHub:** https://github.com/veritaschain
+- **Media:** media@veritaschain.org
 
 ---
 

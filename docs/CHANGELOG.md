@@ -7,13 +7,64 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [Unreleased]
+## [1.0.0] - 2026-01-13
 
-### Planned
-- CAP v0.3.0 alignment with VCP v1.1
-- Enhanced external anchoring tiers (L1/L2/L3)
-- Crypto agility improvements
-- Policy identification extensions
+### 🎉 Official Release
+
+CAP v1.0.0 is the first official release of the Content / Creative AI Profile specification.
+
+### Added
+
+- **Conformance Levels** (Bronze/Silver/Gold)
+  - Bronze: Basic hash chain, signatures, 6-month retention
+  - Silver: + SRP required, external anchoring (daily), 2-year retention
+  - Gold: + Real-time verification, HSM, SCITT integration, 5-year retention
+
+- **External Anchoring Specification** (Section 9)
+  - RFC 3161 TSA integration
+  - SCITT Transparency Services
+  - Blockchain anchoring (optional)
+  - Merkle tree construction for batch anchoring
+
+- **Retention Framework** (Section 10)
+  - Level-based retention requirements
+  - Crypto-shredding support for GDPR compliance
+  - Retention extension triggers
+
+- **C2PA Integration** (Section 22)
+  - Complementary positioning (CAP = system accountability, C2PA = content provenance)
+  - Cross-reference format specification
+
+- **SCITT Integration** (Section 23)
+  - CAP as SCITT domain profile
+  - Receipt format specification
+
+- **Enterprise Platform Integration** (Section 24)
+  - Azure OpenAI Service patterns
+  - AWS Bedrock integration
+  - Google Cloud Vertex AI integration
+
+- **Implementation Checklist** (Appendix D)
+  - Bronze/Silver/Gold checklists
+
+- **Regulatory Mapping Tables** (Appendix C)
+  - EU AI Act Article 12 detailed mapping
+  - DSA compliance mapping
+  - Colorado AI Act alignment
+  - TAKE IT DOWN Act alignment
+
+### Changed
+
+- **Status**: Draft → **Official Release**
+- **VAP Reference**: v1.1 → v1.2
+- **SRP**: Now REQUIRED for Silver/Gold conformance
+- **Evidence Pack**: Standardized per VAP v1.2 format
+- **Completeness Invariant**: Now includes GEN_ERROR in formula
+
+### Fixed
+
+- JSON Schema corrections for GEN_DENY event
+- Clarified RiskCategory enumeration values
 
 ---
 
@@ -63,11 +114,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | Version | Meaning |
 |---------|---------|
 | 0.x.x | Pre-release, expect breaking changes |
-| 1.0.0 | First stable release (planned) |
+| **1.0.0** | **First stable release** |
+| 1.x.x | Backward-compatible additions |
+| 2.0.0 | Breaking changes (if any) |
 
 ---
 
 ## Migration Guides
+
+### 0.2.0 → 1.0.0
+
+**Breaking Changes:**
+- None (additive changes only)
+
+**Required Updates for Silver/Gold Conformance:**
+1. Implement SRP events (GEN_ATTEMPT, GEN_DENY) - now REQUIRED
+2. Implement external anchoring (daily minimum for Silver)
+3. Update Evidence Pack format to VAP v1.2 specification
+4. Implement Completeness Invariant verification
+
+**Recommended Updates:**
+1. Update VAP reference from v1.1 to v1.2
+2. Review new conformance level requirements
+3. Implement C2PA cross-reference if applicable
+4. Review updated regulatory mapping documentation
 
 ### 0.1.0 → 0.2.0
 
@@ -81,6 +151,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-[Unreleased]: https://github.com/veritaschain/cap-spec/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/veritaschain/cap-spec/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/veritaschain/cap-spec/compare/v0.2.0...v1.0.0
 [0.2.0]: https://github.com/veritaschain/cap-spec/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/veritaschain/cap-spec/releases/tag/v0.1.0
