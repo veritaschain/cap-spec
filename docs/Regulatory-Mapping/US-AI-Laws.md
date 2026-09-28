@@ -160,7 +160,7 @@ Manage 1.1 (Risk priorities)   → PolicyID, GEN_DENY logging
 - [TAKE IT DOWN Act](https://www.congress.gov/bill/118th-congress/senate-bill/4569)
 - [Colorado SB24-205](https://leg.colorado.gov/bills/sb24-205)
 - [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework)
-- [OMB M-25-21](https://www.whitehouse.gov/omb/information-regulatory-affairs/)
+- [OMB M-25-21](https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf)
 
 ---
 

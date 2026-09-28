@@ -135,8 +135,8 @@ VSO operates under a royalty-free (RF) patent policy:
 ## Related Documents
 
 - [VSO About](https://veritaschain.org/about) — Organization overview
-- [VSO Non-Endorsement Policy](https://veritaschain.org/governance/non-endorsement) — Detailed policy
-- [VCP Governance](https://github.com/veritaschain/vcp-spec/blob/main/GOVERNANCE.md) — VCP-specific governance
+- [VSO Policies, including Non-Endorsement](https://veritaschain.org/vso/policies/) — Detailed policy
+- [VCP Specification](https://github.com/veritaschain/vcp-spec) — VCP certification governance is described in VCP v1.2 §9.2
 
 ---
 
