@@ -3,8 +3,8 @@
 > **Cryptographic Audit Trails for AI Content Systems**
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Specification](https://img.shields.io/badge/spec-v1.0-blue.svg)](docs/CAP-Specification-v1.0.md)
-[![VAP](https://img.shields.io/badge/VAP-v1.2-orange.svg)](https://github.com/veritaschain/vap-framework)
+[![Specification](https://img.shields.io/badge/spec-v1.0%20Released-blue.svg)](docs/CAP-Specification-v1.0.md)
+[![VAP](https://img.shields.io/badge/VAP-profile-orange.svg)](https://github.com/veritaschain/vap-spec)
 [![GitHub](https://img.shields.io/badge/GitHub-veritaschain-181717.svg?logo=github)](https://github.com/veritaschain)
 
 ---
@@ -13,7 +13,7 @@
 
 **January 13, 2026** — CAP v1.0 is now officially released, featuring:
 
-- **Unified Conformance Levels** (Bronze/Silver/Gold) aligned with VAP v1.2
+- **Unified Conformance Levels** (Bronze/Silver/Gold)
 - **External Anchoring Specification** for independent timestamp verification
 - **C2PA/SCITT Integration** for ecosystem interoperability
 - **Comprehensive Regulatory Mapping** (EU AI Act, DSA, Colorado AI Act, TAKE IT DOWN Act)
@@ -22,11 +22,17 @@
 
 ---
 
-## World-First Verification Report
+## Implementation Status (mandatory disclosure)
 
-CAP-SRP represents the **world's first** open specification for cryptographic AI content refusal logging:
+As of September 2026: **zero external implementations** of CAP or any other VAP profile, and **zero Evidence Packs accepted in any proceeding**. VeritasChain Co., Ltd., which provides the operating base of VSO, holds ten paid service contracts with European organizations in regulatory technology, financial trading, and audit and assurance (client names withheld pending individual consent); those contracts are not external implementations and are not independent validation of CAP. The reference implementation below is first-party: VSO and VeritasChain Co., Ltd. share a founder.
 
-- **CAP World-First Claims – Final Consolidated Research Report**  
+**VAP v1.2 status.** CAP v1.0 predates VAP v1.2. Its VAP v1.2 conformance mapping is due and not yet published, so CAP may not yet be described as VAP v1.2 conformant (VAP v1.2 §10.4). Known divergence: VAP v1.2 requires external anchoring at every conformance level (INT-006, §8.1), while CAP v1.0 makes it OPTIONAL at Bronze.
+
+---
+
+## Prior-Art Research Report
+
+- **CAP-SRP prior-art review – Final Consolidated Research Report**  
   https://github.com/veritaschain/cap-spec/blob/main/docs/CAP_WorldFirst_Final_Consolidated_Report.md
 
 ---
@@ -41,7 +47,7 @@ CAP-SRP represents the **world's first** open specification for cryptographic AI
 
 ## What is CAP?
 
-**CAP (Content / Creative AI Profile)** is a domain-specific profile within the [VAP (Verifiable AI Provenance Framework)](https://github.com/veritaschain/vap-framework) v1.2, establishing cryptographically verifiable audit trails for AI workflows in content and creative industries.
+**CAP (Content / Creative AI Profile)** is a domain-specific profile of the [VAP (Verifiable AI Provenance Framework)](https://github.com/veritaschain/vap-spec) metaframework, establishing cryptographically verifiable audit trails for AI workflows in content and creative industries.
 
 CAP is **NOT** a regulation that prohibits or censors AI usage.  
 CAP **IS** a framework for preserving verifiable evidence that third parties can audit when disputes arise.
@@ -67,7 +73,7 @@ In January 2026, the Grok incident exposed a critical gap in AI content moderati
 
 ## Conformance Levels
 
-CAP v1.0 defines three conformance levels aligned with VAP v1.2:
+CAP v1.0 defines three conformance levels (see the VAP v1.2 divergence note above regarding Bronze):
 
 | Level | Target | Key Requirements | Regulatory Alignment |
 |-------|--------|------------------|---------------------|
@@ -96,7 +102,7 @@ CAP defines core events covering the AI content lifecycle:
 
 ## SRP Extension: Safe Refusal Provenance
 
-**SRP (Safe Refusal Provenance)** extends CAP to provide cryptographic proof that harmful content was **received, evaluated, and refused**.
+**SRP (Safe Refusal Provenance)** extends CAP so that the recorded handling of a request — **received, evaluated, and refused** — is tamper-evident and verifiable by a third party.
 
 ### The Core Innovation
 
@@ -124,10 +130,12 @@ Request Received
 
 > **∑ GEN_ATTEMPT = ∑ GEN + ∑ GEN_DENY + ∑ GEN_ERROR**
 
-This mathematical constraint prevents:
-- Hiding successful generations of harmful content
+Checked against anchored records, this invariant makes the following detectable:
+- Hiding successful generations of recorded requests
 - Selectively logging only favorable outcomes
 - Claiming refusals without corresponding attempts
+
+**Scope.** The invariant covers requests that were recorded as GEN_ATTEMPT and anchored. A request that was never recorded leaves nothing to detect (pre-measurement drop). SRP makes refusal records auditable after the fact; it does not itself block or filter any generation.
 
 ---
 
@@ -135,7 +143,7 @@ This mathematical constraint prevents:
 
 | Document | Description | Status |
 |----------|-------------|--------|
-| [CAP-Specification-v1.0](docs/CAP-Specification-v1.0.md) | Normative specification | **Official Release** |
+| [CAP-Specification-v1.0](docs/CAP-Specification-v1.0.md) | Normative specification | **Released** (tag `v1.0`) |
 | [CAP-Specification-v0.2](docs/CAP-Specification-v0.2.md) | Previous version | Superseded |
 | [Threat Model](docs/Threat-Model.md) | Security threat analysis | Current |
 | [CAP vs VCP](docs/CAP-vs-VCP.md) | Relationship to VCP | Current |
@@ -179,14 +187,14 @@ Schemas for machine validation:
 
 ## Regulatory Alignment
 
-CAP provides technical capabilities aligned with regulatory requirements:
+CAP produces evidence relevant to the provisions below. This is not a compliance mapping: conformance to CAP or any VAP profile does not constitute compliance with any law or regulation (VAP v1.2 §1.6), and each regime applies only within its own jurisdiction.
 
 | Regulation | Jurisdiction | CAP Alignment |
 |------------|--------------|---------------|
 | [EU AI Act](docs/Regulatory-Mapping/EU-AI-Act.md) | EU | Article 12 logging, Article 53 transparency |
 | [Digital Services Act](docs/Regulatory-Mapping/DSA.md) | EU | Article 35 systemic risk mitigation, Article 37 audits |
 | [GDPR](docs/Regulatory-Mapping/GDPR.md) | EU | Processing records, consent management, crypto-shredding |
-| [Colorado AI Act](docs/Regulatory-Mapping/US-NCII.md) | USA | Impact assessments, 3-year retention |
+| [Colorado AI Act](docs/Regulatory-Mapping/US-AI-Laws.md) | USA | Impact assessments, 3-year retention |
 | [TAKE IT DOWN Act](docs/Regulatory-Mapping/US-NCII.md) | USA | NCII evidence requirements |
 | [Copyright Act Art. 30-4](docs/Regulatory-Mapping/JP-Copyright-30-4.md) | Japan | AI training exception documentation |
 | South Korea AI Framework Act | Korea | High-impact AI logging (effective Jan 2026) |
@@ -195,7 +203,7 @@ CAP provides technical capabilities aligned with regulatory requirements:
 
 ## Academic Foundation
 
-The theoretical foundations of CAP-SRP are detailed in our peer-reviewed preprint:
+The theoretical foundations of CAP-SRP are detailed in a preprint (not peer-reviewed):
 
 - **Title**: "Proving Non-Generation: Cryptographic Completeness Guarantees for AI Content Moderation Logs"
 - **DOI**: [10.5281/zenodo.18213616](https://doi.org/10.5281/zenodo.18213616)
@@ -208,8 +216,9 @@ The theoretical foundations of CAP-SRP are detailed in our peer-reviewed preprin
 | Project | Description |
 |---------|-------------|
 | [VCP Specification](https://github.com/veritaschain/vcp-spec) | VeritasChain Protocol for financial/trading systems |
-| [VAP Framework](https://github.com/veritaschain/vap-framework) | Parent framework (v1.2) for domain-specific profiles |
-| [VCP Explorer](https://github.com/veritaschain/vcp-explorer) | Visualization and verification tools |
+| [VAP Framework](https://github.com/veritaschain/vap-spec) | Parent metaframework (v1.2) for domain-specific profiles |
+| [CPP Specification](https://github.com/veritaschain/cpp-spec) | Capture Provenance Profile |
+| [VCP Explorer](https://github.com/veritaschain/vcp-explorer-gui) | Visualization and verification tools |
 
 ---
 
@@ -228,13 +237,14 @@ cap-spec/
 │   ├── CHANGELOG.md                  # Version history
 │   ├── CAP-vs-VCP.md                 # Relationship to VCP
 │   ├── CAP-Glossary.md               # Terminology
-│   ├── CAP_WorldFirst_Final_Consolidated_Report.md  # World-first verification
+│   ├── CAP_WorldFirst_Final_Consolidated_Report.md  # Prior-art research report
 │   ├── Threat-Model.md               # Security analysis
-│   └── Regulatory-Mapping/           # Compliance guides
+│   └── Regulatory-Mapping/           # Regulatory relevance mappings (not compliance determinations)
 │       ├── EU-AI-Act.md
 │       ├── DSA.md
 │       ├── GDPR.md
 │       ├── JP-Copyright-30-4.md
+│       ├── US-AI-Laws.md
 │       └── US-NCII.md
 ├── schemas/
 │   ├── cap/                     # Core event schemas
