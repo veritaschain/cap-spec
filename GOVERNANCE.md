@@ -2,7 +2,7 @@
 
 ## VeritasChain Standards Organization (VSO)
 
-The **VeritasChain Standards Organization (VSO)** is a vendor-neutral standards organization responsible for developing and maintaining the VeritasChain Protocol (VCP), Content/Creative AI Profile (CAP), and the broader Verifiable AI Provenance (VAP) Framework. Its operating base is provided by VeritasChain Co., Ltd., a Japanese kabushiki kaisha. VSO's neutrality rests on published mechanisms — specifications under CC BY 4.0, conformity assessment by independent Conformity Assessment Bodies, and a published non-endorsement policy — not on legal form.
+The **VeritasChain Standards Organization (VSO)** is a vendor-neutral standards organization responsible for developing and maintaining the VeritasChain Protocol (VCP), Content/Creative AI Profile (CAP), and the broader Verifiable AI Provenance (VAP) Framework. Its operating base is provided by VeritasChain Co., Ltd., a Japanese kabushiki kaisha. VSO's neutrality rests on published mechanisms — specifications under CC BY 4.0, conformity assessment by accredited Conformity Assessment Bodies, and a published non-endorsement policy — not on legal form.
 
 ### Mission
 
