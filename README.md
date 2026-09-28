@@ -9,14 +9,14 @@
 
 ---
 
-## 🎉 CAP v1.0 Official Release
+## CAP v1.0 Release
 
-**January 13, 2026** — CAP v1.0 is now officially released, featuring:
+**January 13, 2026** — CAP v1.0 was released (tag `v1.0`), featuring:
 
-- **Unified Conformance Levels** (Bronze/Silver/Gold)
+- **Conformance Levels** (Bronze/Silver/Gold)
 - **External Anchoring Specification** for independent timestamp verification
 - **C2PA/SCITT Integration** for ecosystem interoperability
-- **Comprehensive Regulatory Mapping** (EU AI Act, DSA, Colorado AI Act, TAKE IT DOWN Act)
+- **Regulatory relevance mapping** (EU AI Act, DSA, Colorado AI Act, TAKE IT DOWN Act) — not compliance determinations
 
 📄 [Full Specification](docs/CAP-Specification-v1.0.md) | 📋 [Changelog](docs/CHANGELOG.md) | 📚 [Academic Paper](https://doi.org/10.5281/zenodo.18213616)
 
@@ -30,17 +30,18 @@ As of September 2026: **zero external implementations** of CAP or any other VAP 
 
 ---
 
-## Prior-Art Research Report
+## Research Records
 
-- **CAP-SRP prior-art review – Final Consolidated Research Report**  
-  https://github.com/veritaschain/cap-spec/blob/main/docs/CAP_WorldFirst_Final_Consolidated_Report.md
+- **World-First Claims Verification: Final Consolidated Research Report** (historical research record)  
+  https://github.com/veritaschain/cap-spec/blob/main/docs/CAP_WorldFirst_Final_Consolidated_Report.md  
+  This report predates VSO's naming rule reserving the "world's first" designation for VCP. Its conclusion is retained as a research record and is not a current VSO claim about CAP.
 
 ---
 
 ## Reference Implementations
 
 - **CAP Safe Refusal Provenance (SRP) – Reference Implementation**  
-  A reference implementation and evidence repository demonstrating Safe Refusal Provenance (SRP), including non-generation proofs and cryptographic audit artifacts based on this specification.  
+  A proof-of-concept reference implementation and evidence repository demonstrating Safe Refusal Provenance (SRP), including non-generation evidence records and cryptographic audit artifacts based on this specification.  
   👉 https://github.com/veritaschain/cap-safe-refusal-provenance
 
 ---
@@ -50,24 +51,17 @@ As of September 2026: **zero external implementations** of CAP or any other VAP 
 **CAP (Content / Creative AI Profile)** is a domain-specific profile of the [VAP (Verifiable AI Provenance Framework)](https://github.com/veritaschain/vap-spec) metaframework, establishing cryptographically verifiable audit trails for AI workflows in content and creative industries.
 
 CAP is **NOT** a regulation that prohibits or censors AI usage.  
-CAP **IS** a framework for preserving verifiable evidence that third parties can audit when disputes arise.
+CAP **IS** a profile for preserving verifiable evidence that third parties can audit when disputes arise.
 
 > *"Verify, Don't Trust"*
 
 ---
 
-## The Problem: AI's Accountability Vacuum
+## The Problem: Refusals Leave No Verifiable Record
 
-In January 2026, the Grok incident exposed a critical gap in AI content moderation:
+Content-generation systems commonly keep records of what they generated. Requests they received and refused typically leave no record that a third party can check. When a provider states that its safeguards worked, an auditor, regulator, or court has no independent way to test that statement against a complete, tamper-evident record of what was requested and how each request was handled.
 
-| What Happened | The Problem |
-|---------------|-------------|
-| NCII generation capability discovered | Systems lacked provable refusal mechanisms |
-| 8+ regulatory jurisdictions launched investigations | No cryptographic proof of safeguard effectiveness |
-| xAI claimed "our safeguards work" | Could not prove which requests were actually refused |
-| UK IWF found AI-generated CSAM | No verifiable evidence of prevention measures |
-
-**Current AI systems can prove what they generated. They cannot prove what they refused to generate.**
+CAP-SRP addresses the record-keeping side of that gap: it makes refusal decisions auditable and attributable after the fact. It does not evaluate whether a safeguard was adequate, and it does not itself block any generation.
 
 ---
 
@@ -75,7 +69,7 @@ In January 2026, the Grok incident exposed a critical gap in AI content moderati
 
 CAP v1.0 defines three conformance levels (see the VAP v1.2 divergence note above regarding Bronze):
 
-| Level | Target | Key Requirements | Regulatory Alignment |
+| Level | Target | Key Requirements | Regulatory Relevance |
 |-------|--------|------------------|---------------------|
 | **Bronze** | SMEs, Early Adopters | Hash chain, basic logging, 6-month retention | Voluntary transparency |
 | **Silver** | Enterprise, VLOPs | + SRP, external anchoring (daily), 2-year retention | EU AI Act Article 12 |
@@ -111,7 +105,7 @@ Request Received
       │
       ▼
 ┌─────────────────┐
-│  GEN_ATTEMPT    │ ← MUST be recorded for every request
+│  GEN_ATTEMPT    │ ← recorded for every request (MUST at Silver/Gold; SHOULD at Bronze)
 └────────┬────────┘
          │
          ▼
@@ -199,13 +193,15 @@ CAP produces evidence relevant to the provisions below. This is not a compliance
 | [Copyright Act Art. 30-4](docs/Regulatory-Mapping/JP-Copyright-30-4.md) | Japan | AI training exception documentation |
 | South Korea AI Framework Act | Korea | High-impact AI logging (effective Jan 2026) |
 
+> **Legal scope (VAP v1.2 §1.6, adopted verbatim).** VAP and its domain profiles define mechanisms for producing **cryptographically verifiable evidence** of AI system decisions. Conformance to VAP or any profile: (a) does **not** constitute compliance with the EU AI Act, GDPR, MiFID II/III, CAT Rule 613, NIS2, FDA SaMD guidance, or any other law or regulation; (b) does **not** constitute a legal determination that any technical mechanism (including crypto-shredding) satisfies a specific legal obligation; (c) does **not** warrant the correctness, fairness, or safety of the underlying AI decisions — only the integrity, completeness (at anchor granularity), and attributability of their records. VAP generates evidence; competent authorities and courts evaluate it.
+
 ---
 
 ## Academic Foundation
 
-The theoretical foundations of CAP-SRP are detailed in a preprint (not peer-reviewed):
+The theoretical foundations of CAP-SRP are detailed in a preprint (not peer-reviewed; first-party — the author is the VSO founder):
 
-- **Title**: "Proving Non-Generation: Cryptographic Completeness Guarantees for AI Content Moderation Logs"
+- **Title**: "Proving Non-Generation: Cryptographic Completeness Guarantees for AI Content Moderation Logs — A Case Study and Protocol Design Inspired by the Grok Incident"
 - **DOI**: [10.5281/zenodo.18213616](https://doi.org/10.5281/zenodo.18213616)
 - **Published**: January 11, 2026
 
@@ -237,7 +233,7 @@ cap-spec/
 │   ├── CHANGELOG.md                  # Version history
 │   ├── CAP-vs-VCP.md                 # Relationship to VCP
 │   ├── CAP-Glossary.md               # Terminology
-│   ├── CAP_WorldFirst_Final_Consolidated_Report.md  # Prior-art research report
+│   ├── CAP_WorldFirst_Final_Consolidated_Report.md  # World-first claims verification (historical research record)
 │   ├── Threat-Model.md               # Security analysis
 │   └── Regulatory-Mapping/           # Regulatory relevance mappings (not compliance determinations)
 │       ├── EU-AI-Act.md

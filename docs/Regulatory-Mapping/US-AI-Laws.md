@@ -48,7 +48,7 @@ NCII Request Detected
 
 ## 2. Colorado AI Act (SB24-205)
 
-**Status:** Enacted, Effective February 1, 2026  
+**Status:** Enacted 2024. Effective date extended to June 30, 2026 by SB25B-004 (signed 2025-08-28). SB26-189 (introduced 2026-05-01) would repeal and replace it with an automated-decision-making framework; secondary sources report it was signed on 2026-05-14 with effect from 2027-01-01, but this is not confirmed against the General Assembly record. Verify current status before relying on this section.  
 **Scope:** High-risk AI systems with consequential decisions
 
 ### Requirements and CAP Mapping
@@ -101,7 +101,7 @@ CAP-VCP integration enables:
 
 | State | Law | Status | CAP Relevance |
 |-------|-----|--------|---------------|
-| **Colorado** | SB24-205 | Effective Feb 2026 | High (impact assessments) |
+| **Colorado** | SB24-205 (see §2 — status under review) | Delayed to 2026-06-30; possible replacement by SB26-189 | High (impact assessments) |
 | **California** | Various pending | Legislative | Medium |
 | **Illinois** | BIPA extensions | Enacted | Medium (biometric) |
 | **Texas** | HB 2060 | Under review | Low |
