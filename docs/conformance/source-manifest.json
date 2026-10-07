@@ -1,0 +1,22 @@
+{
+  "assessment_date": "2026-10-07",
+  "assessment_timezone": "Asia/Tokyo",
+  "prepared_date": "2026-10-08",
+  "status": "REVIEW_DRAFT_NOT_A_CONFORMANCE_DECLARATION",
+  "sources": [
+    {
+      "repo": "cap-spec",
+      "commit": "d1ffc493c5389189bcea2ed45e645682c9517708",
+      "path": "docs/CAP-Specification-v1.0.md",
+      "sha256": "6510ef93b9a00e400964da8235b1790d2fb16f8a45ae5c254edfb84e581c18f4",
+      "url": "https://raw.githubusercontent.com/veritaschain/cap-spec/d1ffc493c5389189bcea2ed45e645682c9517708/docs/CAP-Specification-v1.0.md"
+    },
+    {
+      "repo": "vap-spec",
+      "commit": "1771fdb2fc6dbd0ae92718e4fc44acc73dc395b3",
+      "path": "spec/v1.2/VAP_Framework_Specification.md",
+      "sha256": "67e9b2c20f7adecf00ef6df8f2f245673cd66bb91455eb8336142f1f8f9c7e0d",
+      "url": "https://raw.githubusercontent.com/veritaschain/vap-spec/1771fdb2fc6dbd0ae92718e4fc44acc73dc395b3/spec/v1.2/VAP_Framework_Specification.md"
+    }
+  ]
+}
