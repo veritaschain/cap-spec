@@ -26,7 +26,7 @@
 
 As of September 2026: **zero external implementations** of CAP or any other VAP profile, and **zero Evidence Packs accepted in any proceeding**. VeritasChain Co., Ltd., which provides the operating base of VSO, holds ten paid service contracts with European organizations in regulatory technology, financial trading, and audit and assurance (client names withheld pending individual consent); those contracts are not external implementations and are not independent validation of CAP. The reference implementation below is first-party: VSO and VeritasChain Co., Ltd. share a founder.
 
-**VAP v1.2 status.** CAP v1.0 predates VAP v1.2. Its VAP v1.2 conformance mapping is due and not yet published, so CAP may not yet be described as VAP v1.2 conformant (VAP v1.2 §10.4). Known divergence: VAP v1.2 requires external anchoring at every conformance level (INT-006, §8.1), while CAP v1.0 makes it OPTIONAL at Bronze.
+**VAP v1.2 status.** CAP v1.0 predates VAP v1.2. A [draft conformance mapping against VAP v1.2 Draft 3](docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) and an [unadopted change proposal](docs/conformance/CAP-VAP-v1.2-Minimal-Change-Proposal.md) are available for review. The mapping identifies unresolved normative divergences, including Bronze external anchoring and shared batch-verification, continuity, policy and data-model requirements. **CAP v1.0 conformance to VAP v1.2 has not been established.** Publication of these review documents is not a conformance declaration or certification. The released CAP v1.0 specification remains unchanged.
 
 ---
 
