@@ -2,7 +2,15 @@
 
 ## VeritasChain Standards Organization (VSO)
 
-The **VeritasChain Standards Organization (VSO)** is a vendor-neutral standards organization responsible for developing and maintaining the VeritasChain Protocol (VCP), Content/Creative AI Profile (CAP), and the broader Verifiable AI Provenance (VAP) Framework. Its operating base is provided by VeritasChain Co., Ltd., a Japanese kabushiki kaisha. VSO's neutrality rests on published mechanisms — specifications under CC BY 4.0, conformity assessment by accredited Conformity Assessment Bodies, and a published non-endorsement policy — not on legal form.
+**VeritasChain Standards Organization (VSO), operated by VeritasChain Co., Ltd.**, develops and maintains the VeritasChain Protocol (VCP), Content/Creative AI Profile (CAP), and the broader Verifiable AI Provenance (VAP) Framework.
+
+VSO's neutrality is explained through public procedures, conflict-of-interest management, and the non-endorsement policy:
+
+- **Public procedures.** Normative documents, proposed changes, and decisions are public. Normative changes remain open for review for at least 14 days, and breaking changes for at least 30 days. Each accepted decision records its rationale.
+- **Conflict-of-interest management.** A participant in a decision discloses employment, paid work, or any other interest that bears on that decision, including an interest of the operator. A participant with a material interest in the outcome does not decide that matter. The disclosure and the recusal are recorded with the decision. The operator's commercial work does not set normative requirements.
+- **Non-endorsement policy.** VSO does not endorse specific implementations, vendors, products, or compliance claims by third parties. Use of a VSO specification does not imply VSO endorsement.
+
+A conformity decision presented as independent assessment requires a Conformity Assessment Body that is independent of the operator and of the implementation under assessment. Independence is a requirement of that role. This document designates no independent Conformity Assessment Body.
 
 ### Mission
 
@@ -33,6 +41,8 @@ Use of VSO specifications does not imply VSO endorsement.
 
 ### 3. Open Process
 
+The rules in this section are the public procedures that carry VSO's neutrality.
+
 Specification development follows an open process:
 - All normative documents are publicly available
 - Proposed changes are discussed openly
@@ -46,6 +56,10 @@ Changes to CAP specifications require:
 - Review period for stakeholder input
 - Documented consensus or voting record
 - Clear versioning and changelog
+
+### 5. Conflict-of-Interest Management
+
+Anyone participating in a specification or governance decision discloses interests that bear on that decision. Disclosure includes employment, paid work, and a material financial stake, including an interest of VeritasChain Co., Ltd. as operator. A participant with a material interest in the outcome does not decide that matter. The disclosure and the recusal are recorded with the decision. Commercial activity of the operator does not determine normative requirements.
 
 ---
 
@@ -62,7 +76,7 @@ Changes to CAP specifications require:
 
 ### Current Maintainer
 
-**VeritasChain Standards Organization (VSO)**  
+**VeritasChain Standards Organization (VSO), operated by VeritasChain Co., Ltd.**  
 Website: https://veritaschain.org  
 Email: standards@veritaschain.org
 
@@ -158,4 +172,4 @@ This governance document may be amended by:
 
 ---
 
-*Last updated: 2026-01-13*
+*Last updated: 2026-10-21*
