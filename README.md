@@ -39,6 +39,7 @@ The reference implementation below is first-party: VSO and VeritasChain Co., Ltd
 - **World-First Claims Verification: Final Consolidated Research Report** (historical research record)  
   https://github.com/veritaschain/cap-spec/blob/main/docs/CAP_WorldFirst_Final_Consolidated_Report.md  
   This report predates VSO's naming rule reserving the "world's first" designation for VCP. Its conclusion is retained as a research record and is not a current VSO claim about CAP.
+  The released CAP v1.0 specification also describes Safe Refusal Provenance as "the world's first standardized mechanism" for proving refusals. That wording predates the same rule and is not a current VSO claim; the released text is unchanged.
 
 ---
 
@@ -192,7 +193,7 @@ CAP produces evidence relevant to the provisions below. This is not a compliance
 | [EU AI Act](docs/Regulatory-Mapping/EU-AI-Act.md) | EU | Article 12 logging, Article 53 transparency |
 | [Digital Services Act](docs/Regulatory-Mapping/DSA.md) | EU | Article 35 systemic risk mitigation, Article 37 audits |
 | [GDPR](docs/Regulatory-Mapping/GDPR.md) | EU | Processing records, consent management, crypto-shredding |
-| [Colorado AI Act](docs/Regulatory-Mapping/US-AI-Laws.md) | USA | SB24-205 impact assessments and 3-year retention — status under review (SB26-189; see the mapping) |
+| [Colorado AI Act](docs/Regulatory-Mapping/US-AI-Laws.md) | USA | SB24-205 was repealed and replaced by SB26-189 (signed 2026-05-14, applies from 2027-01-01): impact assessments dropped, 3-year record retention kept; the mapping has not been redone for SB26-189 |
 | [TAKE IT DOWN Act](docs/Regulatory-Mapping/US-NCII.md) | USA | NCII evidence requirements |
 | [Copyright Act Art. 30-4](docs/Regulatory-Mapping/JP-Copyright-30-4.md) | Japan | AI training exception documentation |
 | South Korea AI Framework Act | Korea | High-impact AI logging (effective Jan 2026) |

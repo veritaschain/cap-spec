@@ -48,7 +48,8 @@ NCII Request Detected
 
 ## 2. Colorado AI Act (SB24-205)
 
-**Status:** Enacted 2024. Effective date extended to June 30, 2026 by SB25B-004 (signed 2025-08-28). SB26-189 (introduced 2026-05-01) would repeal and replace it with an automated-decision-making framework; secondary sources report it was signed on 2026-05-14 with effect from 2027-01-01, but this is not confirmed against the General Assembly record. Verify current status before relying on this section.  
+**Status:** Enacted 2024; effective date extended to June 30, 2026 by SB25B-004 (signed 2025-08-28). **Repealed and replaced by SB26-189**, signed on 2026-05-14, which regulates automated decision-making technology that materially influences consequential decisions, applies to decisions made on or after 2027-01-01, drops SB24-205's risk-management and impact-assessment requirements, keeps a three-year record-retention duty for developers and deployers, and gives the Attorney General exclusive enforcement (no private right of action). Source: Davis Wright Tremaine analysis (May 2026); the enacted text was not retrieved for this update. The effective date may be affected by pending litigation.  
+**This section's mapping below refers to SB24-205 as enacted and is kept for reference. It has not been redone for SB26-189; the impact-assessment rows no longer correspond to a requirement.**  
 **Scope:** High-risk AI systems with consequential decisions
 
 ### Requirements and CAP Mapping
@@ -101,7 +102,7 @@ CAP-VCP integration enables:
 
 | State | Law | Status | CAP Relevance |
 |-------|-----|--------|---------------|
-| **Colorado** | SB24-205 (see §2 — status under review) | Delayed to 2026-06-30; possible replacement by SB26-189 | High (impact assessments) |
+| **Colorado** | SB26-189 (replaces SB24-205; see §2) | Signed 2026-05-14; applies from 2027-01-01 | Medium (3-year record retention; impact assessments dropped) |
 | **California** | Various pending | Legislative | Medium |
 | **Illinois** | BIPA extensions | Enacted | Medium (biometric) |
 | **Texas** | HB 2060 | Under review | Low |
@@ -159,6 +160,7 @@ Manage 1.1 (Risk priorities)   → PolicyID, GEN_DENY logging
 
 - [TAKE IT DOWN Act](https://www.congress.gov/bill/118th-congress/senate-bill/4569)
 - [Colorado SB24-205](https://leg.colorado.gov/bills/sb24-205)
+- [Davis Wright Tremaine, "Colorado AI Act repeal and new transparency law" (May 2026)](https://www.dwt.com/blogs/privacy--security-law-blog/2026/05/colorado-ai-act-repeal-new-transparency-law) — summary of SB26-189
 - [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework)
 - [OMB M-25-21](https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf)
 
