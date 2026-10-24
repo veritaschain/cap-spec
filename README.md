@@ -192,7 +192,7 @@ CAP produces evidence relevant to the provisions below. This is not a compliance
 | [EU AI Act](docs/Regulatory-Mapping/EU-AI-Act.md) | EU | Article 12 logging, Article 53 transparency |
 | [Digital Services Act](docs/Regulatory-Mapping/DSA.md) | EU | Article 35 systemic risk mitigation, Article 37 audits |
 | [GDPR](docs/Regulatory-Mapping/GDPR.md) | EU | Processing records, consent management, crypto-shredding |
-| [Colorado AI Act](docs/Regulatory-Mapping/US-AI-Laws.md) | USA | Impact assessments, 3-year retention |
+| [Colorado AI Act](docs/Regulatory-Mapping/US-AI-Laws.md) | USA | SB24-205 impact assessments and 3-year retention — status under review (SB26-189; see the mapping) |
 | [TAKE IT DOWN Act](docs/Regulatory-Mapping/US-NCII.md) | USA | NCII evidence requirements |
 | [Copyright Act Art. 30-4](docs/Regulatory-Mapping/JP-Copyright-30-4.md) | Japan | AI training exception documentation |
 | South Korea AI Framework Act | Korea | High-impact AI logging (effective Jan 2026) |
