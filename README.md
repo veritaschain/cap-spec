@@ -24,7 +24,9 @@
 
 ## Implementation Status (mandatory disclosure)
 
-As of September 2026: **zero external implementations** of CAP or any other VAP profile, and **zero Evidence Packs accepted in any proceeding**. VeritasChain Co., Ltd., which provides the operating base of VSO, holds ten paid service contracts with European organizations in regulatory technology, financial trading, and audit and assurance (client names withheld pending individual consent); those contracts are not external implementations and are not independent validation of CAP. The reference implementation below is first-party: VSO and VeritasChain Co., Ltd. share a founder.
+As of September 2026: **zero external implementations** of CAP or any other VAP profile, and **zero Evidence Packs accepted in any proceeding**. The reference implementation below is first-party: VSO and VeritasChain Co., Ltd. share a founder.
+
+**Commercial disclosure correction — 24 October 2026:** the previously published paid-service contract figure has not been substantiated through reconciliation with primary records. It is withdrawn from current public claims pending that review; this does **not** establish a count of zero. No verified contract count, customer count or revenue figure is asserted here. Commercial service activity must be distinguished from external implementations, independent validation and accepted Evidence Packs. See the [dated correction and counting criteria](https://github.com/veritaschain/vap-spec/blob/main/disclosures/2026-10-24-commercial-contracts.md).
 
 **VAP v1.2 status.** CAP v1.0 predates VAP v1.2. A [draft conformance mapping against VAP v1.2 Draft 3](docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) and an [unadopted change proposal](docs/conformance/CAP-VAP-v1.2-Minimal-Change-Proposal.md) are available for review. The mapping identifies unresolved normative divergences, including Bronze external anchoring and shared batch-verification, continuity, policy and data-model requirements. **CAP v1.0 conformance to VAP v1.2 has not been established.** Publication of these review documents is not a conformance declaration or certification. The released CAP v1.0 specification remains unchanged.
 
@@ -188,7 +190,7 @@ CAP produces evidence relevant to the provisions below. This is not a compliance
 | [EU AI Act](docs/Regulatory-Mapping/EU-AI-Act.md) | EU | Article 12 logging, Article 53 transparency |
 | [Digital Services Act](docs/Regulatory-Mapping/DSA.md) | EU | Article 35 systemic risk mitigation, Article 37 audits |
 | [GDPR](docs/Regulatory-Mapping/GDPR.md) | EU | Processing records, consent management, crypto-shredding |
-| [Colorado AI Act](docs/Regulatory-Mapping/US-AI-Laws.md) | USA | Impact assessments, 3-year retention |
+| [Colorado AI Act](docs/Regulatory-Mapping/US-AI-Laws.md) | USA | SB24-205 impact assessments and 3-year retention — status under review (SB26-189; see the mapping) |
 | [TAKE IT DOWN Act](docs/Regulatory-Mapping/US-NCII.md) | USA | NCII evidence requirements |
 | [Copyright Act Art. 30-4](docs/Regulatory-Mapping/JP-Copyright-30-4.md) | Japan | AI training exception documentation |
 | South Korea AI Framework Act | Korea | High-impact AI logging (effective Jan 2026) |
