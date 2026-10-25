@@ -12,7 +12,7 @@ These vectors follow the corrected exclusion rule proposed in the [draft conform
 
 1. Remove `EventHash` and `Signature` fields from event
 2. Canonicalize using RFC 8785 (JCS)
-3. Encode as UTF-8 bytes
+3. Use the resulting UTF-8 bytes
 4. Compute SHA-256 hash
 5. Format as `sha256:{hex}` (lowercase)
 
@@ -20,39 +20,43 @@ These vectors follow the corrected exclusion rule proposed in the [draft conform
 
 ### test-001-simple-event.json
 
-Minimal event hash computation.
+Minimal event hash computation. The existing vector is unchanged.
+
+### test-002-jcs-regressions.json
+
+Three serializer regressions: integral floats (`1.0` becomes `1`), positive and negative floating-point zero (both become `0`), and property ordering by UTF-16 code units (U+10000 precedes U+E000). These minimal objects test canonicalization and hashing; they are not complete CAP events and do not establish CAP conformance.
 
 Planned cases with no vector file yet: a complete INGEST event and an SRP GEN_DENY event.
 
 ## Verification Script
 
+Install `rfc8785` and run all four cases from the repository root:
+
+```sh
+python -m pip install rfc8785
+python test-vectors/hash/verify_hash_vectors.py
+```
+
+The [runner](verify_hash_vectors.py) checks both the exact canonical UTF-8 bytes and the expected SHA-256 digest. Its hash function uses:
+
 ```python
-import json
 import hashlib
+import rfc8785
+
 
 def compute_event_hash(event: dict) -> str:
-    """Compute EventHash for a CAP event."""
-    # Remove fields that are not included in hash
-    event_copy = {k: v for k, v in event.items() 
-                  if k not in ['EventHash', 'Signature']}
-    
-    # Canonicalize (RFC 8785)
-    canonical = json.dumps(event_copy, sort_keys=True, 
-                          separators=(',', ':'), ensure_ascii=False)
-    
-    # Hash
-    hash_bytes = hashlib.sha256(canonical.encode('utf-8')).digest()
-    
-    return f"sha256:{hash_bytes.hex()}"
-
-# Verify test vector
-with open('test-001-simple-event.json') as f:
-    test = json.load(f)
-
-computed = compute_event_hash(test['input'])
-assert computed == test['expectedHash'], f"Mismatch: {computed}"
-print("✓ Test passed")
+    """Compute the illustrative CAP hash using the draft exclusion rule."""
+    event_copy = {key: value for key, value in event.items()
+                  if key not in ("EventHash", "Signature")}
+    canonical = rfc8785.dumps(event_copy)  # RFC 8785 UTF-8 bytes
+    return "sha256:" + hashlib.sha256(canonical).hexdigest()
 ```
+
+`json.dumps(..., sort_keys=True, separators=(',', ':'), ensure_ascii=False)` is not a replacement for RFC 8785. It retains representations such as `1.0` and `0.0` and sorts keys by Unicode code point rather than UTF-16 code unit. The three new regressions distinguish that old example from JCS.
+
+Canonicalization errors must propagate. Do not silently round integers, convert numbers to strings, or fall back to `json.dumps`. The Python `rfc8785` implementation rejects integers outside its safe-integer domain; that library constraint is not a newly adopted CAP numeric-encoding rule.
+
+This change corrects an illustrative test helper. It does not amend the released CAP v1.0 specification, adopt the draft exclusion rule, rewrite historical signed data, or establish independent third-party reproduction.
 
 ## References
 
