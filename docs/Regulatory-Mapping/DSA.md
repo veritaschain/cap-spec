@@ -38,9 +38,9 @@ VLOPs must implement reasonable mitigation measures.
 
 | Requirement | SRP Capability |
 |-------------|----------------|
-| Prove mitigation exists | GEN_DENY events |
-| Prove mitigation applied | GEN_ATTEMPT → GEN_DENY linking |
-| Prove effectiveness | Completeness Invariant |
+| Record that a refusal policy exists | GEN_DENY events with `PolicyID` |
+| Record that it was applied to recorded requests | GEN_ATTEMPT → GEN_DENY linking |
+| Show every recorded attempt has a recorded outcome | SRP attempt–outcome invariant (CAP v1.0 §13). This does not measure effectiveness, and a request never recorded leaves nothing to detect |
 | Provide audit evidence | Evidence Pack |
 
 ### Article 37: Independent Audits
@@ -52,7 +52,7 @@ VLOPs must undergo independent audits.
 | Access to logs | Evidence Pack export |
 | Verification capability | Third-party verification guide |
 | Statistical analysis | refusal_stats.json |
-| Completeness check | Completeness Invariant |
+| Outcome check over recorded attempts | SRP attempt–outcome invariant (§13) |
 
 ### Article 40: Data Access for Research
 
@@ -67,19 +67,19 @@ Vetted researchers may access platform data.
 
 ---
 
-## SRP for DSA Compliance
+## SRP Evidence Relevant to the DSA
 
-The SRP extension provides critical DSA compliance capabilities:
+The SRP extension produces records that may be relevant to DSA risk-mitigation and audit work. It does not itself determine compliance (VAP v1.2 §1.6), and it does not block content; blocking is performed by the platform.
 
-### Proof of Moderation ("Negative Proof")
+### Records of Moderation Decisions
 
-The Grok incident demonstrated the challenge: platforms claim moderation but cannot prove it.
+Platforms commonly state that moderation took place without a record a third party can check. SRP records refusal decisions so that such statements can be checked against recorded events.
 
 | DSA Question | SRP Answer |
 |--------------|------------|
-| "Did you block harmful content?" | GEN_DENY events with risk categories |
-| "How many requests were blocked?" | refusal_stats.json totals |
-| "Can you prove completeness?" | Completeness Invariant verification |
+| "Which recorded requests were refused?" | GEN_DENY events with risk categories |
+| "How many recorded requests were refused?" | refusal_stats.json totals |
+| "Does every recorded attempt have a recorded outcome?" | SRP attempt–outcome invariant check (recorded attempts only) |
 | "Are these records authentic?" | Hash chain + signatures |
 
 ### Evidence Pack for DSA Auditors
@@ -125,7 +125,7 @@ evidence-pack-dsa/
     "OTHER": 45
   },
   "averageDecisionTime": "50ms",
-  "completenessVerification": "PASSED"
+  "attemptOutcomeInvariant": "VALID (recorded attempts only)"
 }
 ```
 
@@ -151,9 +151,9 @@ DSA applies to AI-generated content distributed via platforms:
 
 | Concern | CAP/SRP Capability |
 |---------|-------------------|
-| AI-generated illegal content | GEN_DENY for blocked generations |
+| AI-generated illegal content | GEN_DENY records for refused generations |
 | Deepfakes | REAL_PERSON_DEEPFAKE category |
-| CSAM generation | CSAM_RISK blocking evidence |
+| CSAM generation | CSAM_RISK refusal records |
 | Disinformation | Event chain provenance |
 
 ---
@@ -168,7 +168,7 @@ DSA applies to AI-generated content distributed via platforms:
 
 ### Recommended for VLOPs
 
-- L3 implementation with external anchoring
+- Silver or Gold conformance level (external anchoring daily or hourly)
 - Real-time statistics aggregation
 - Automated Article 15 report generation
 - Researcher-accessible anonymized exports
@@ -184,9 +184,9 @@ This document provides technical capability mapping only. It does not constitute
 ## References
 
 - [Digital Services Act Full Text](https://eur-lex.europa.eu/eli/reg/2022/2065)
-- [CAP Specification](../CAP-Specification-v0.2.md)
-- [SRP Extension](../CAP-Specification-v0.2.md#12-srp-introduction)
+- [CAP Specification v1.0](../CAP-Specification-v1.0.md)
+- [SRP Introduction (§11)](../CAP-Specification-v1.0.md#11-srp-introduction)
 
 ---
 
-*Last updated: 2026-01-13*
+*Last updated: 2026-10-25 (framing and level corrections; earlier text in Git history)*

@@ -1,0 +1,91 @@
+{
+  "description": "Invalid chain - two outcomes (GEN_DENY and GEN) recorded for the same attempt",
+  "expectedResult": {
+    "valid": false,
+    "error": "Multiple outcomes for: 01945f00-0001-7000-0000-000000000003"
+  },
+  "attackScenario": "A refusal is recorded for an attempt and a generation for the same attempt is recorded later",
+  "events": [
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000001",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": null,
+      "Timestamp": "2026-01-10T10:00:00.000Z",
+      "EventType": "GEN_ATTEMPT",
+      "PromptHash": "sha256:aaaa0000000000000000000000000000000000000000000000000000000000aa",
+      "PolicyID": "test-policy-v1",
+      "ModelVersion": "test-model-v1"
+    },
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000002",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "Timestamp": "2026-01-10T10:00:00.050Z",
+      "EventType": "GEN",
+      "AttemptID": "01945f00-0001-7000-0000-000000000001",
+      "Generation": {
+        "PromptHash": "sha256:aaaa0000000000000000000000000000000000000000000000000000000000aa",
+        "OutputAssetID": "urn:cap:asset:test:out-001",
+        "OutputAssetHash": "sha256:bbbb0000000000000000000000000000000000000000000000000000000000bb"
+      }
+    },
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000003",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "Timestamp": "2026-01-10T10:01:00.000Z",
+      "EventType": "GEN_ATTEMPT",
+      "PromptHash": "sha256:cccc0000000000000000000000000000000000000000000000000000000000cc",
+      "PolicyID": "test-policy-v1",
+      "ModelVersion": "test-model-v1"
+    },
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000004",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "Timestamp": "2026-01-10T10:01:00.050Z",
+      "EventType": "GEN_DENY",
+      "AttemptID": "01945f00-0001-7000-0000-000000000003",
+      "RiskCategory": "NCII_RISK",
+      "RiskScore": 0.95,
+      "ModelDecision": "DENY",
+      "HumanOverride": false
+    },
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000005",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "Timestamp": "2026-01-10T10:02:00.000Z",
+      "EventType": "GEN_ATTEMPT",
+      "PromptHash": "sha256:dddd0000000000000000000000000000000000000000000000000000000000dd",
+      "PolicyID": "test-policy-v1",
+      "ModelVersion": "test-model-v1"
+    },
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000006",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+      "Timestamp": "2026-01-10T10:02:00.050Z",
+      "EventType": "GEN",
+      "AttemptID": "01945f00-0001-7000-0000-000000000005",
+      "Generation": {
+        "PromptHash": "sha256:dddd0000000000000000000000000000000000000000000000000000000000dd",
+        "OutputAssetID": "urn:cap:asset:test:out-002",
+        "OutputAssetHash": "sha256:eeee0000000000000000000000000000000000000000000000000000000000ee"
+      }
+    },
+    {
+      "EventID": "01945f00-0001-7000-0000-000000000007",
+      "ChainID": "01945f00-0000-7000-0000-000000000000",
+      "PrevHash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+      "Timestamp": "2026-01-10T10:02:30.000Z",
+      "EventType": "GEN",
+      "AttemptID": "01945f00-0001-7000-0000-000000000003",
+      "Generation": {
+        "PromptHash": "sha256:cccc0000000000000000000000000000000000000000000000000000000000cc",
+        "OutputAssetID": "urn:cap:asset:test:out-003",
+        "OutputAssetHash": "sha256:ffff0000000000000000000000000000000000000000000000000000000000ff"
+      }
+    }
+  ]
+}

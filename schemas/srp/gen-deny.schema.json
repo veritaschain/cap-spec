@@ -5,7 +5,7 @@
   "description": "Records that a generation request was refused",
   "type": "object",
   "allOf": [
-    { "$ref": "../core-event.json" }
+    { "$ref": "https://veritaschain.org/schemas/cap/v0.2/core-event.json" }
   ],
   "required": [
     "EventType",

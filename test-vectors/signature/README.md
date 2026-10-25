@@ -9,9 +9,11 @@ CAP uses Ed25519 (RFC 8032) for digital signatures. The signature is computed ov
 ## Signature Process
 
 1. Compute EventHash (see hash test vectors)
-2. Encode EventHash as UTF-8 bytes
+2. Take the raw 32-byte digest (the hex after `sha256:`, decoded), as in CAP v1.0 §8.3
 3. Sign with Ed25519 private key
 4. Format as `ed25519:{base64}` (standard Base64)
+
+The vector was regenerated on 2026-10-25. The earlier version said to sign the UTF-8 text of the EventHash, which conflicts with §8.3, and its signature did not verify over the stated message.
 
 ## Test Cases
 
@@ -25,9 +27,7 @@ Private Key (hex): 9d61b19deffd5a60ba844af492ec2cc44449c5697b326919703bac031cae7
 Public Key (hex): d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a
 ```
 
-### test-002-invalid-signature.json
-
-Detection of invalid/tampered signatures.
+Planned case with no vector file yet: detection of an invalid or tampered signature.
 
 ## Verification Script
 
@@ -50,7 +50,7 @@ def verify_signature(event_hash: str, signature: str, public_key_hex: str) -> bo
     
     # Verify
     try:
-        verify_key.verify(event_hash.encode('utf-8'), sig_bytes)
+        verify_key.verify(bytes.fromhex(event_hash.split(':', 1)[1]), sig_bytes)
         return True
     except Exception:
         return False
@@ -58,7 +58,7 @@ def verify_signature(event_hash: str, signature: str, public_key_hex: str) -> bo
 # Example usage
 public_key = "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a"
 event_hash = "sha256:5a8c7d9e1f2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d"
-signature = "ed25519:MEUCIQDhE3H4..."
+signature = "ed25519:..."  # see test-001-signature-verify.json
 
 result = verify_signature(event_hash, signature, public_key)
 print(f"Signature valid: {result}")

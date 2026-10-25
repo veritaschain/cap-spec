@@ -36,6 +36,23 @@ The reference implementation below is first-party: VSO and VeritasChain Co., Ltd
 
 ---
 
+## Known issues in the released CAP v1.0 text (informative)
+
+The released text ([`docs/CAP-Specification-v1.0.md`](docs/CAP-Specification-v1.0.md), tag `v1.0`) is not edited in place. The following passages are not current; they are errata candidates for the next revision. Recorded on 25 October 2026 unless stated otherwise.
+
+| Location | Issue |
+|----------|-------|
+| §3.1 diagram | Describes VSO as an "Independent standards body". VSO is operated by VeritasChain Co., Ltd.; its neutrality rests on published mechanisms, not on legal form ([GOVERNANCE.md](GOVERNANCE.md)). The diagram's statuses date from January 2026 (VCP "v1.1", DVP "draft"); current statuses are in the VAP v1.2 registry (§4.5.2): VCP v1.2 Released, DVP Planned |
+| Abstract, §1.3, §13.1, Part III, §18.2, §20 | "Completeness Invariant ensuring all attempts have recorded outcomes", "the foundational guarantee of SRP", "it enables compliance with regulations", "Regulatory Compliance", "CAP Compliance Mapping", "Prevention documentation". The invariant is checked over recorded events and cannot show that an unrecorded request took place; CAP records decisions and prevents nothing; conformance is not compliance (VAP v1.2 §1.6, §4.1.7, Appendix A "Pre-measurement drop"). The "mathematical guarantee" wording is noted above |
+| §10.2, §18.3, Appendix C.1 | Attribute a six-month retention period to "Article 12(4)" and list Article 12 items as 12(2)(a)–(d). Article 12 of Regulation (EU) 2024/1689 has three paragraphs; the items on period of use, reference database, matched input data and verifying persons are Article 12(3) and apply only to remote biometric identification systems (Annex III point 1(a)); minimum log retention is set by Article 19(1) (providers) and Article 26(6) (deployers) |
+| §18.4, §21.1 | Application dates predate Regulation (EU) 2026/1744. High-risk obligations apply from 2 December 2027 (Article 6(2), Annex III) and 2 August 2028 (Article 6(1), Annex I); Article 50 transparency applies from 2 August 2026 (Article 50(2) from 2 December 2026 for systems already on the market); prohibited practices applied from 2 February 2025. See [EU-AI-Act.md](docs/Regulatory-Mapping/EU-AI-Act.md). The Colorado and TAKE IT DOWN rows are superseded by the notes in the regulatory table below |
+| §23.3 | "draft-kamimura-scitt-cap (planned)" was not submitted. The related individual Internet-Draft is [`draft-kamimura-scitt-refusal-events`](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events/) (revision -04, 2026-10-24), not adopted by any IETF Working Group |
+| Informative References | "[SCITT] draft-ietf-scitt-architecture" is now RFC 9943 (June 2026). "[VAP] … v1.1" and "[VCP] … v1.1": current versions are VAP v1.2 (Draft 3) and VCP v1.2 (Released) |
+| §8.2, §8.3 | §8.2 excludes only `Signature` from the hashed form; the test vectors exclude `EventHash` and `Signature` (draft mapping I04). §8.3 signs the raw 32-byte digest; the [signature test vector](test-vectors/signature/) follows §8.3 |
+| §6 event model vs VAP v1.2 §4.3.4 | VAP lists "Transformation" in the CAP causal chain; CAP v1.0 defines no transformation event. To be resolved in the conformance mapping |
+
+---
+
 ## Research Records
 
 - **World-First Claims Verification: Final Consolidated Research Report** (historical research record)  
@@ -47,9 +64,10 @@ The reference implementation below is first-party: VSO and VeritasChain Co., Ltd
 
 ## Reference Implementations
 
-- **CAP Safe Refusal Provenance (SRP) – Reference Implementation**  
-  A proof-of-concept reference implementation and evidence repository demonstrating Safe Refusal Provenance (SRP), including non-generation evidence records and cryptographic audit artifacts based on this specification.  
-  👉 https://github.com/veritaschain/cap-safe-refusal-provenance
+First-party proof-of-concept code (not certified; not a conformance claim):
+
+- **[cap-srp](https://github.com/veritaschain/cap-srp)** — PoC library and dashboard using the CAP v1.0 SRP event set (GEN_ATTEMPT, GEN, GEN_DENY, GEN_ERROR) in a local format.
+- **[cap-safe-refusal-provenance](https://github.com/veritaschain/cap-safe-refusal-provenance)** — legacy PoC of the v0.2 SRP extension (WARN / ESCALATE / QUARANTINE as outcome events; no GEN_ERROR). It records refusal decisions; it does not show that content was never generated.
 
 ---
 
@@ -127,9 +145,11 @@ Request Received
 └───────┘ └─────────┘ └─────────┘
 ```
 
-### The Completeness Invariant
+### The Completeness Invariant (SRP attempt–outcome invariant)
 
 > **∑ GEN_ATTEMPT = ∑ GEN + ∑ GEN_DENY + ∑ GEN_ERROR**
+
+This is a CAP profile-level invariant (CAP v1.0 §13). It is distinct from the VAP v1.2 Completeness Invariant (INT-008), which binds the event count, first and last event identifiers and policy identifier in each AnchorRecord.
 
 Checked against anchored records, this invariant makes the following detectable:
 - Hiding successful generations of recorded requests
@@ -154,7 +174,9 @@ Checked against anchored records, this invariant makes the following detectable:
 
 ## JSON Schema
 
-Schemas for machine validation:
+<a id="schemas"></a>**Status of these files.** The schemas below carry the CAP **v0.2** event model and `$id`s (`…/schemas/cap/v0.2/…`). They are not the normative CAP v1.0 schemas, which are given in CAP v1.0 Appendix A (`…/schemas/cap/v1.0/…`). In particular, CAP v1.0 defines GEN_ERROR (no schema file here yet) and treats WARN, ESCALATE and QUARANTINE as `ModelDecision` values on GEN_DENY rather than as event types; the v0.2 schemas also differ from Appendix A in several enums and required fields. Use them for v0.2-format data only.
+
+Schemas (v0.2):
 
 ### CAP Core Events
 - [`core-event.schema.json`](schemas/cap/core-event.schema.json) — Common event fields
@@ -166,13 +188,15 @@ Schemas for machine validation:
 ### SRP Extension
 - [`gen-attempt.schema.json`](schemas/srp/gen-attempt.schema.json) — Request received
 - [`gen-deny.schema.json`](schemas/srp/gen-deny.schema.json) — Request refused
-- [`gen-warn.schema.json`](schemas/srp/gen-warn.schema.json) — Allowed with warning
-- [`gen-escalate.schema.json`](schemas/srp/gen-escalate.schema.json) — Escalated to human
-- [`gen-quarantine.schema.json`](schemas/srp/gen-quarantine.schema.json) — Generated but quarantined
+- [`gen-warn.schema.json`](schemas/srp/gen-warn.schema.json) — Allowed with warning (v0.2 event type)
+- [`gen-escalate.schema.json`](schemas/srp/gen-escalate.schema.json) — Escalated to human (v0.2 event type)
+- [`gen-quarantine.schema.json`](schemas/srp/gen-quarantine.schema.json) — Generated but quarantined (v0.2 event type)
 
 ---
 
 ## Examples
+
+The examples are illustrative. Their `EventHash` and `Signature` values are placeholders and do not verify, several identifiers are not valid UUIDv7, and some numeric values are not string-encoded as VAP v1.2 §7.2 requires. The Evidence Pack sample uses the v0.2 manifest format (`capVersion`). Use the [test vectors](test-vectors/) for hash and signature checks.
 
 ### CAP Core
 - [INGEST event](examples/cap-core/ingest.json) — Recording asset intake
@@ -192,11 +216,11 @@ CAP produces evidence relevant to the provisions below. This is not a compliance
 
 | Regulation | Jurisdiction | CAP Alignment |
 |------------|--------------|---------------|
-| [EU AI Act](docs/Regulatory-Mapping/EU-AI-Act.md) | EU | Article 12 logging, Article 53 transparency |
+| [EU AI Act](docs/Regulatory-Mapping/EU-AI-Act.md) | EU | Article 50 transparency for generated content; Article 12 logging where a system is high-risk |
 | [Digital Services Act](docs/Regulatory-Mapping/DSA.md) | EU | Article 35 systemic risk mitigation, Article 37 audits |
 | [GDPR](docs/Regulatory-Mapping/GDPR.md) | EU | Processing records, consent management, crypto-shredding |
 | [Colorado AI Act](docs/Regulatory-Mapping/US-AI-Laws.md) | USA | SB24-205 was repealed and replaced by SB26-189 (signed 2026-05-14, applies from 2027-01-01): impact assessments dropped, 3-year record retention kept; the mapping has not been redone for SB26-189 |
-| [TAKE IT DOWN Act](docs/Regulatory-Mapping/US-NCII.md) | USA | NCII evidence requirements |
+| [TAKE IT DOWN Act](docs/Regulatory-Mapping/US-NCII.md) | USA | Records of NCII-related generation refusals (the Act's 48-hour removal duty for platforms is not covered by CAP v1.0) |
 | [Copyright Act Art. 30-4](docs/Regulatory-Mapping/JP-Copyright-30-4.md) | Japan | AI training exception documentation |
 | South Korea AI Framework Act | Korea | High-impact AI logging (effective Jan 2026) |
 
@@ -219,7 +243,7 @@ The theoretical foundations of CAP-SRP are detailed in a preprint (not peer-revi
 | Project | Description |
 |---------|-------------|
 | [VCP Specification](https://github.com/veritaschain/vcp-spec) | VeritasChain Protocol for financial/trading systems |
-| [VAP Framework](https://github.com/veritaschain/vap-spec) | Parent metaframework (v1.2) for domain-specific profiles |
+| [VAP Framework](https://github.com/veritaschain/vap-spec) | Parent metaframework (v1.2, Draft 3) for domain-specific profiles |
 | [CPP Specification](https://github.com/veritaschain/cpp-spec) | Capture Provenance Profile |
 | [VCP Explorer](https://github.com/veritaschain/vcp-explorer-gui) | Visualization and verification tools |
 
@@ -292,6 +316,6 @@ This specification is published under [CC BY 4.0 International License](LICENSE)
 
 ---
 
-**© 2025-2026 VeritasChain Standards Organization (VSO). All rights reserved.**
+**© 2025-2026 VeritasChain Standards Organization (VSO).** Licensed under [CC BY 4.0](LICENSE).
 
 *VSO is a vendor-neutral standards body. References to specific products or organizations are for interoperability documentation purposes only and do not constitute endorsement.*

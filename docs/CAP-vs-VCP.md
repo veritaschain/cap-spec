@@ -2,7 +2,20 @@
 
 ## Overview
 
-**CAP (Content/Creative AI Profile)** and **VCP (VeritasChain Protocol)** are both domain-specific profiles within the **VAP (Verifiable AI Provenance Framework)**. This document clarifies their relationship, shared infrastructure, and domain-specific differences.
+**CAP (Content / Creative AI Profile)** and **VCP (VeritasChain Protocol)** are both
+domain profiles of the **VAP (Verifiable AI Provenance Framework)** metaframework. Within
+the VAP family the designation "Protocol" is reserved for VCP, which defines a wire
+protocol; CAP is a profile. This document describes their relationship, shared
+mechanisms and differences.
+
+> **Revision — 25 October 2026.** This page previously gave CAP's status as v0.2
+> and VCP's as v1.1, expanded VCP-RTA as "Real-Time Attestation", listed VCP fields and
+> events that VCP does not define, and described a planned "CAP v0.3". It has been
+> corrected; see the [Git history](https://github.com/veritaschain/cap-spec/commits/main/docs/CAP-vs-VCP.md) for the earlier text.
+
+Current statuses follow the VAP v1.2 profile registry (§4.5.2), which prevails over this
+page. Neither CAP v1.0 nor VCP v1.2 has established conformance to VAP v1.2 (VAP v1.2
+§10.4).
 
 ---
 
@@ -13,17 +26,17 @@
 │                                                                 │
 │     VAP (Verifiable AI Provenance Framework)                    │
 │     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━                    │
-│     Conceptual framework for AI decision audit trails           │
-│     Defines cross-domain minimum requirements                   │
+│     Cross-domain metaframework: common minimum requirements     │
+│     (v1.2, Draft 3)                                             │
 │                                                                 │
 │                          │                                      │
 │                          ▼                                      │
 │                                                                 │
-│     ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐           │
-│     │   VCP   │ │   CAP   │ │   DVP   │ │   MAP   │  ...      │
-│     │Finance  │ │Content/ │ │Automotive│ │Medical │           │
-│     │Profile  │ │Creative │ │ Profile │ │Profile │           │
-│     └─────────┘ └─────────┘ └─────────┘ └─────────┘           │
+│     ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐            │
+│     │   VCP   │ │   CAP   │ │   CPP   │ │   OAP   │  ...       │
+│     │ Finance │ │Content /│ │ Capture │ │Observed │            │
+│     │Protocol │ │Creative │ │ Profile │ │Artifact │            │
+│     └─────────┘ └─────────┘ └─────────┘ └─────────┘            │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -34,21 +47,20 @@
 
 | Aspect | VCP (Finance) | CAP (Content) |
 |--------|---------------|---------------|
-| **Full Name** | VeritasChain Protocol | Content/Creative AI Profile |
-| **Domain** | Algorithmic trading, financial services | Content creation, creative industries |
-| **Subject** | Transactions, orders, executions | Content assets, AI-generated media |
-| **Target Users** | Prop firms, brokers, exchanges | Game studios, film production, publishers |
-| **Core Events** | SIG, ORD, EXE, CXL, POS | INGEST, TRAIN, GEN, EXPORT |
-| **Key Extension** | RTA (Real-Time Attestation) | SRP (Safe Refusal Provenance) |
-| **Regulatory Focus** | MiFID II, SEC Rule 17a-4, EU AI Act | EU AI Act, DSA, Copyright Law |
-| **Time Precision** | Nanosecond–Millisecond | Second–Minute |
-| **Specification Status** | v1.1 (stable) | v0.2 (pre-release) |
+| **Full Name** | VeritasChain Protocol | Content / Creative AI Profile |
+| **Domain** | Algorithmic and AI-driven trading | Content creation, creative industries |
+| **Subject** | Signals, orders, executions, risk controls | Content assets, AI-generated media |
+| **Core Events** | SIG, ORD, ACK, EXE, CLS (also PRT, CXL, REJ, MOD) | INGEST, TRAIN, GEN, EXPORT |
+| **Refusal records** | — | SRP: GEN_ATTEMPT, GEN_DENY, GEN_ERROR |
+| **Conformance levels** | Silver / Gold / Platinum (anchoring every 24 h / 1 h / 10 min) | Bronze / Silver / Gold (anchoring optional / daily / hourly) |
+| **Regulatory relevance** | MiFID II (Art. 17, RTS 25), EU AI Act Art. 12, CAT | EU AI Act Art. 50, DSA, copyright |
+| **Specification Status** | v1.2 Released (tag `v1.2.0`) | v1.0 Released (tag `v1.0`) |
+
+Regulatory relevance is not compliance (VAP v1.2 §1.6).
 
 ---
 
-## Shared Infrastructure (VAP Common Layer)
-
-Both CAP and VCP inherit the following from VAP:
+## Shared Mechanisms (VAP Common Layer)
 
 ### Cryptographic Primitives
 
@@ -61,28 +73,18 @@ Both CAP and VCP inherit the following from VAP:
 
 ### Integrity Mechanisms
 
-| Mechanism | Purpose |
-|-----------|---------|
-| Hash Chain | Event linking and tamper detection |
-| Merkle Tree | Efficient bulk verification |
-| External Anchoring | Independent timestamp proof |
-| Crypto Agility | Algorithm migration support |
+| Mechanism | VCP v1.2 | CAP v1.0 |
+|-----------|----------|----------|
+| PrevHash chain | OPTIONAL (tier-dependent) | Required |
+| Merkle tree | Required | Required at Silver and Gold |
+| External anchoring | Required at every tier | Optional at Bronze; required at Silver and Gold |
+| Crypto agility (`HashAlgo`, `SignAlgo`) | Yes | Yes |
 
-### Common Event Fields
-
-Both profiles include these core fields:
-
-| Field | Description |
-|-------|-------------|
-| `EventID` | UUID v7 unique identifier |
-| `ChainID` | Evidence chain identifier |
-| `PrevHash` | Link to previous event |
-| `Timestamp` | ISO 8601 with precision |
-| `EventType` | Domain-specific event code |
-| `HashAlgo` | Hash algorithm identifier |
-| `SignAlgo` | Signature algorithm identifier |
-| `EventHash` | Computed hash |
-| `Signature` | Digital signature |
+VAP v1.2 requires external anchoring at every conformance level (INT-006), so CAP Bronze
+without anchoring does not meet the VAP v1.2 requirement set. Both profiles have
+known divergences from VAP v1.2 in their Merkle and AnchorRecord details; see the
+[CAP draft mapping](conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) and the
+[VCP known issues](https://github.com/veritaschain/vcp-spec#-known-issues-in-v12-informative).
 
 ---
 
@@ -91,17 +93,14 @@ Both profiles include these core fields:
 ### VCP: Trading Focus
 
 ```
-Signal → Order → Execution → Cancellation
-  │        │         │            │
-  ▼        ▼         ▼            ▼
- SIG      ORD       EXE          CXL
+Signal → Order → Acknowledged → Executed → Position Closed
+  │        │          │             │             │
+  ▼        ▼          ▼             ▼             ▼
+ SIG      ORD        ACK           EXE           CLS
 ```
 
-**Key Concepts:**
-- `StrategyID`: Links events to trading algorithm
-- `SymbolChain`: Integrity per trading symbol
-- `MarketContext`: Market conditions at event time
-- Nanosecond precision for HFT compliance
+Key modules: VCP-CORE, VCP-TRADE, VCP-GOV (`AlgoID`, decision factors), VCP-RISK,
+VCP-PRIVACY, VCP-RECOVERY, VCP-XREF.
 
 ### CAP: Content Focus
 
@@ -112,110 +111,50 @@ Input → Training → Generation → Export
 INGEST   TRAIN       GEN      EXPORT
 ```
 
-**Key Concepts:**
-- `AssetID`: Content asset identifier
-- `RightsBasis`: Copyright justification
-- `ConsentBasis`: Consent state tracking
-- `ConfidentialityLevel`: Pre-release protection
-
----
-
-## SRP vs RTA: Key Extensions
-
-### VCP-RTA (Real-Time Attestation)
-
-Purpose: Prove algorithmic trading integrity in real-time
-
-| Feature | Description |
-|---------|-------------|
-| External Anchoring | Merkle roots to public timestamping |
-| Hardware Timestamping | PTP-synchronized precision |
-| Regulatory Alignment | MiFID II RTS 25, SEC 17a-4 |
+Key concepts: `AssetID`, `RightsBasis`, `ConsentBasis`, `ConfidentialityLevel`.
 
 ### CAP-SRP (Safe Refusal Provenance)
 
-Purpose: Prove content moderation decisions
+Purpose: make refusal decisions auditable and attributable after the fact. SRP records
+decisions; it does not block generation.
 
 | Feature | Description |
 |---------|-------------|
-| GEN_ATTEMPT | Record all generation requests |
-| GEN_DENY | Record all refusals |
-| Completeness Invariant | Attempts = Outcomes |
+| GEN_ATTEMPT | Records each request before evaluation |
+| GEN_DENY | Records each refusal |
+| SRP attempt–outcome invariant | Each recorded attempt has exactly one recorded outcome (GEN, GEN_DENY or GEN_ERROR); requests never recorded leave nothing to detect. Distinct from VAP INT-008 |
 | Evidence Pack | Shareable audit package |
+
+### VCP-RTA
+
+"VCP-RTA" names the reference trading-agent repositories
+([vcp-rta-reference](https://github.com/veritaschain/vcp-rta-reference) and related);
+it is not a protocol extension. Those repositories are first-party reference code.
 
 ---
 
-## Cross-Profile Interoperability
-
-### When to Use Both
-
-Some organizations may need both profiles:
+## Using Both Profiles
 
 | Scenario | VCP | CAP |
 |----------|-----|-----|
 | AI-generated trading reports | ✓ Trading | ✓ Content |
 | Automated market commentary | ✓ Signal data | ✓ Text generation |
-| Algorithmic social media trading | ✓ Execution | ✓ Content moderation |
 
-### Event Chain Linking
+Events from different profiles can be related through cross-references in context fields
+or, where both parties log corresponding events, through VAP XREF (TRC-005). Neither
+profile defines a cross-profile chain format.
 
-Events from different profiles can be linked via:
-- Shared `ChainID` for related workflows
-- Cross-references in `Context` fields
-- Merkle tree aggregation at VAP level
-
----
-
-## Specification Alignment
-
-### VCP v1.1 → CAP v0.3 (Planned)
-
-CAP v0.3 will align with VCP v1.1:
-
-| Feature | VCP v1.1 | CAP v0.3 |
-|---------|----------|----------|
-| Three-layer architecture | ✓ Implemented | ✓ Planned |
-| External Anchor tiering | L1/L2/L3 | L1/L2/L3 |
-| Crypto Agility | Enhanced | Enhanced |
-| Policy Identification | PolicyID field | PolicyID field |
-
-### Implementation Reuse
-
-Organizations implementing both can share:
-- Cryptographic libraries
-- Event serialization code
-- Verification tools
-- Anchoring infrastructure
-
----
-
-## Choosing the Right Profile
-
-### Use VCP When:
-- Subject is financial transactions
-- Regulatory requirements include MiFID II, SEC rules
-- Nanosecond timing precision needed
-- Focus is algorithmic trading integrity
-
-### Use CAP When:
-- Subject is content/media assets
-- Regulatory requirements include EU AI Act Art. 12, DSA
-- Focus is AI content moderation evidence
-- Need to prove refusal decisions
-
-### Use Both When:
-- AI generates both trading decisions and content
-- Organization spans financial and media sectors
-- Cross-domain audit trail needed
+Organizations implementing both can share cryptographic libraries, serialization code,
+verification tools and anchoring infrastructure.
 
 ---
 
 ## References
 
-- [VCP Specification v1.1](https://github.com/veritaschain/vcp-spec)
-- [CAP Specification v0.2](CAP-Specification-v0.2.md)
-- [VAP Framework](https://veritaschain.org)
+- [VCP Specification v1.2](https://github.com/veritaschain/vcp-spec/tree/v1.2.0/spec/v1.2)
+- [CAP Specification v1.0](CAP-Specification-v1.0.md)
+- [VAP Framework Specification v1.2 (Draft 3)](https://github.com/veritaschain/vap-spec/blob/main/spec/v1.2/VAP_Framework_Specification.md)
 
 ---
 
-*Last updated: 2026-01-13*
+*Last updated: 2026-10-25*

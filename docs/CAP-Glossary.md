@@ -41,7 +41,7 @@ See [Hash Chain](#hash-chain).
 UUID identifying an evidence chain. All events in a chain share the same ChainID.
 
 ### Completeness Invariant
-The mathematical requirement that every `GEN_ATTEMPT` must have exactly one corresponding outcome event (`GEN`, `GEN_DENY`, etc.).
+In CAP v1.0 (§13), the SRP attempt–outcome invariant: every recorded `GEN_ATTEMPT` must have exactly one corresponding outcome event (`GEN`, `GEN_DENY` or `GEN_ERROR`). It is checked over recorded events; a request that was never recorded leaves nothing to detect. It is a profile-level invariant and is distinct from the VAP v1.2 Completeness Invariant (INT-008), which binds event count, first and last event identifiers and policy identifier in each AnchorRecord.
 
 ### Confidentiality Level
 Classification of asset sensitivity: PUBLIC, INTERNAL, CONFIDENTIAL, SECRET, or PRE_RELEASE.
@@ -141,7 +141,7 @@ RFC 8785 standard for deterministic JSON serialization. Required for consistent 
 ## L
 
 ### L1/L2/L3
-Implementation levels for CAP:
+Implementation levels of CAP v0.2, superseded in CAP v1.0 by Bronze / Silver / Gold (CAP v1.0 §2):
 - **L1 (Basic)**: INGEST/GEN events only
 - **L2 (Standard)**: All events + hash chain
 - **L3 (Enterprise)**: L2 + Merkle anchoring + external verification
@@ -257,7 +257,7 @@ Vendor-neutral standards body maintaining VAP, VCP, and CAP specifications.
 
 ## Related Documents
 
-- [CAP Specification](CAP-Specification-v0.2.md)
+- [CAP Specification v1.0](CAP-Specification-v1.0.md)
 - [Threat Model](Threat-Model.md)
 - [CAP vs VCP](CAP-vs-VCP.md)
 

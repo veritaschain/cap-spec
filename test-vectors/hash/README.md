@@ -6,6 +6,8 @@ Test vectors for SHA-256 EventHash computation.
 
 CAP uses SHA-256 for computing EventHash values. The hash is computed over the canonical JSON representation of the event, excluding the `EventHash` and `Signature` fields.
 
+These vectors follow the corrected exclusion rule proposed in the [draft conformance mapping](../../docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) (I04). The released CAP v1.0 text (§8.2) excludes only `Signature`; see the README known issues.
+
 ## Hash Computation Process
 
 1. Remove `EventHash` and `Signature` fields from event
@@ -20,13 +22,7 @@ CAP uses SHA-256 for computing EventHash values. The hash is computed over the c
 
 Minimal event hash computation.
 
-### test-002-full-ingest.json
-
-Complete INGEST event hash verification.
-
-### test-003-srp-event.json
-
-SRP GEN_DENY event hash verification.
+Planned cases with no vector file yet: a complete INGEST event and an SRP GEN_DENY event.
 
 ## Verification Script
 

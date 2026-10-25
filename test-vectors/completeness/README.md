@@ -4,11 +4,13 @@ Test vectors for verifying the SRP Completeness Invariant.
 
 ## Overview
 
-The SRP (Safe Refusal Provenance) Completeness Invariant ensures:
+The SRP (Safe Refusal Provenance) attempt–outcome invariant of CAP v1.0 (§13) requires:
 
-> **count(GEN_ATTEMPT) == count(GEN) + count(GEN_DENY) + count(GEN_WARN) + count(GEN_ESCALATE) + count(GEN_QUARANTINE)**
+> **count(GEN_ATTEMPT) == count(GEN) + count(GEN_DENY) + count(GEN_ERROR)**
 
-Every generation attempt MUST have exactly one corresponding outcome.
+Every recorded generation attempt MUST have exactly one corresponding outcome. The check covers recorded events only: a request that was never recorded as GEN_ATTEMPT leaves nothing to detect. This profile-level invariant is distinct from the VAP v1.2 Completeness Invariant (INT-008).
+
+In CAP v0.2, WARN, ESCALATE and QUARANTINE were separate outcome event types; in CAP v1.0 they are `ModelDecision` values on GEN_DENY. These vectors were updated on 2026-10-25 to the v1.0 outcome set. They are invariant-only fixtures: their hashes and some fields (for example `HashAlgo`) are placeholders or omitted.
 
 ## Verification Logic
 
@@ -19,7 +21,7 @@ def verify_completeness(events: list[dict]) -> dict:
     attempts = {}  # AttemptID -> GEN_ATTEMPT event
     outcomes = {}  # AttemptID -> outcome event
     
-    outcome_types = {'GEN', 'GEN_DENY', 'GEN_WARN', 'GEN_ESCALATE', 'GEN_QUARANTINE'}
+    outcome_types = {'GEN', 'GEN_DENY', 'GEN_ERROR'}
     
     for event in events:
         event_type = event['EventType']
@@ -65,9 +67,7 @@ def verify_completeness(events: list[dict]) -> dict:
         'outcomeBreakdown': {
             'GEN': sum(1 for e in outcomes.values() if e['EventType'] == 'GEN'),
             'GEN_DENY': sum(1 for e in outcomes.values() if e['EventType'] == 'GEN_DENY'),
-            'GEN_WARN': sum(1 for e in outcomes.values() if e['EventType'] == 'GEN_WARN'),
-            'GEN_ESCALATE': sum(1 for e in outcomes.values() if e['EventType'] == 'GEN_ESCALATE'),
-            'GEN_QUARANTINE': sum(1 for e in outcomes.values() if e['EventType'] == 'GEN_QUARANTINE')
+            'GEN_ERROR': sum(1 for e in outcomes.values() if e['EventType'] == 'GEN_ERROR')
         }
     }
 ```
@@ -90,16 +90,20 @@ Invalid chain - GEN_DENY without corresponding GEN_ATTEMPT.
 
 Invalid chain - Multiple outcomes for same AttemptID.
 
+### test-005-gen-error-outcome.json
+
+Valid chain - one attempt ends in GEN_ERROR, which counts as an outcome.
+
 ## Detection Scenarios
 
 | Scenario | Detection | Error |
 |----------|-----------|-------|
 | Normal operation | ✓ Valid | None |
-| Hidden generation | Missing outcome | Attempt has no outcome |
+| Omitted outcome of a recorded attempt | Missing outcome | Attempt has no outcome |
 | Fabricated refusal | Orphan outcome | Outcome has no attempt |
 | Double-logging | Duplicate outcome | Multiple outcomes per attempt |
 | Log tampering | Chain break | Hash verification fails |
 
 ## References
 
-- [CAP Specification §12.3](../../docs/CAP-Specification-v0.2.md#12-srp-completeness-invariant) - Completeness Invariant
+- [CAP Specification v1.0 §13](../../docs/CAP-Specification-v1.0.md#13-completeness-invariant) - Completeness Invariant
