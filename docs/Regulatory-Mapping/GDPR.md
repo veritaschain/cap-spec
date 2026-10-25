@@ -26,8 +26,8 @@ CAP implements privacy-by-design through systematic use of hashing and anonymiza
 
 | Field | Contains Personal Data? | Protection Method |
 |-------|------------------------|-------------------|
-| PromptHash | No (hash only) | SHA-256 irreversible |
-| ActorHash | No (hash only) | SHA-256 irreversible |
+| PromptHash | Possibly (pseudonymous) | SHA-256; common or short inputs can be guessed by hashing candidates (see [SECURITY.md](../../SECURITY.md)) |
+| ActorHash | Yes, where it can be linked to a person (pseudonymous data) | SHA-256; salting or keyed hashing recommended |
 | UserID | Potentially | Pseudonymization recommended |
 | AssetHash | No (content hash) | SHA-256 irreversible |
 | Timestamp | No | N/A |
@@ -52,7 +52,7 @@ CAP implements privacy-by-design through systematic use of hashing and anonymiza
 | Lawfulness, fairness, transparency | Audit trails for accountability |
 | Purpose limitation | Evidence for disputes only |
 | Data minimization | Hashes instead of raw data |
-| Accuracy | Immutable records |
+| Accuracy | Tamper-evident, append-only records |
 | Storage limitation | Configurable retention |
 | Integrity and confidentiality | Cryptographic integrity |
 | Accountability | Third-party verifiable |
@@ -71,9 +71,9 @@ photo of [person]"                        (hash only)
 |------------------|--------------|
 | User requests deletion | Original prompt already not stored |
 | Court order | Hash cannot reveal original content |
-| Data breach | Hash exposure does not expose personal data |
+| Data breach | Hash exposure can still expose personal data where inputs are guessable |
 
-**Important**: The relationship between a hash and its input is computationally infeasible to reverse for sufficiently complex inputs.
+**Important**: A hash cannot be inverted directly, but a short or predictable input can be recovered by hashing candidate inputs. Hashes of personal data are pseudonymous data, which remains personal data under the GDPR.
 
 ### Article 25: Data Protection by Design
 
@@ -103,7 +103,7 @@ CAP audit trails support Article 30 obligations:
 
 | Security Measure | CAP Implementation |
 |------------------|-------------------|
-| Encryption | Ed25519 signatures |
+| Authenticity | Ed25519 signatures (signatures are not encryption) |
 | Integrity | SHA-256 hash chain |
 | Availability | Evidence Pack backups |
 | Resilience | External anchoring |
@@ -123,7 +123,7 @@ CAP evidence supports Data Protection Impact Assessments:
 
 ## Crypto-Shredding Support
 
-CAP supports GDPR-compliant crypto-shredding:
+CAP supports crypto-shredding. Crypto-shredding may support erasure obligations under Article 17 but does not itself determine legal compliance (VAP v1.2 §6.3.4):
 
 ### How It Works
 
@@ -132,6 +132,7 @@ CAP supports GDPR-compliant crypto-shredding:
 2. Encrypted data stored (or hash of encrypted data)
 3. Key deletion = effective data deletion
 4. Hash chain integrity preserved
+5. An erasure record is appended (see below)
 ```
 
 ### Implementation Pattern
@@ -150,8 +151,9 @@ CAP supports GDPR-compliant crypto-shredding:
 When deletion required:
 1. Delete key from key vault
 2. Encrypted ActorID becomes unrecoverable
-3. ActorHash remains but cannot be linked
+3. ActorHash remains; whether it can still be linked to the person depends on how it was derived
 4. Chain integrity maintained
+5. Record the erasure as a new, append-only event. VAP v1.2 §6.3.3 requires an ERASURE event (`erasure_target_event_ids`, `erasure_reason`, `key_destruction_proof`, optional `retention_exemption`, `operator_id`) whenever crypto-shredding is performed. CAP v1.0 does not define that event; this gap is recorded in the [draft conformance mapping](../conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) (D09–D10).
 
 ---
 
@@ -187,13 +189,13 @@ CAP events may involve cross-border data flows:
 | Evidence Pack sharing | Transfer mechanism |
 | Cloud storage | Data residency |
 
-**Recommendation**: Use EU-located anchoring services for GDPR compliance.
+**Recommendation**: Consider EU-located anchoring services where transfer rules apply. Anchors normally carry only Merkle roots, not personal data.
 
 ---
 
 ## Implementation Guidance
 
-### Minimum GDPR Compliance
+### Minimum data-protection measures
 
 1. Use PromptHash, not raw prompts
 2. Use ActorHash or pseudonymized UserID
@@ -218,9 +220,9 @@ This document provides technical capability mapping only. GDPR compliance requir
 ## References
 
 - [GDPR Full Text](https://eur-lex.europa.eu/eli/reg/2016/679)
-- [CAP Specification](../CAP-Specification-v0.2.md)
+- [CAP Specification v1.0](../CAP-Specification-v1.0.md)
 - [EDPB Guidelines on DPbD](https://edpb.europa.eu/)
 
 ---
 
-*Last updated: 2026-01-13*
+*Last updated: 2026-10-25 (hash-pseudonymity, erasure-record and framing corrections; earlier text in Git history)*

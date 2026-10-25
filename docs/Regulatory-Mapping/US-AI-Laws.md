@@ -8,20 +8,21 @@ This document maps CAP v1.0 capabilities to US federal and state AI regulatory r
 
 ## 1. TAKE IT DOWN Act (Federal)
 
-**Full Name:** Tools to Address Known Exploitation of Images Today Act  
-**Status:** Enacted, Platform compliance deadline May 2026  
+**Full Name:** Tools to Address Known Exploitation by Immobilizing Technological Deepfakes on Websites and Networks Act (S. 146, 119th Congress; Pub. L. 119-12)  
+**Status:** Signed 2025-05-19; covered platforms had until 2026-05-19 to establish the notice-and-removal process  
 **Scope:** Non-consensual intimate imagery (NCII)
 
 ### Requirements and CAP Mapping
 
-| Requirement | CAP Implementation | Conformance Level |
-|-------------|-------------------|-------------------|
-| Remove NCII within 48 hours of notice | Timestamp verification via GEN_DENY | Silver |
-| Document removal actions | GEN_DENY with NCII_RISK category | Silver |
-| Prevent re-upload | Hash-based detection logging | Silver |
-| Evidence for legal proceedings | Evidence Pack export | Silver |
+| Requirement | CAP relevance | Conformance Level |
+|-------------|---------------|-------------------|
+| Covered platforms remove NCII within 48 hours of a valid request | Not covered: CAP v1.0 defines no removal-request or removal event. GEN_DENY timestamps record generation refusals, not platform removals | — |
+| Reasonable efforts to remove known identical copies | Not covered by CAP v1.0 | — |
+| Evidence where a generation service is involved | GEN_ATTEMPT / GEN_DENY with NCII_RISK; Evidence Pack export | Silver |
 
-### CAP Event Flow for NCII Prevention
+See [US-NCII.md](US-NCII.md) for the corrected summary of the Act.
+
+### CAP Event Flow for NCII-Related Generation Requests
 
 ```
 NCII Request Detected
@@ -60,7 +61,7 @@ NCII Request Detected
 | 3-year retention of assessments | Retention Framework (Silver: 2yr, Gold: 5yr) | Gold recommended |
 | Algorithmic discrimination documentation | RiskCategory: HATE_CONTENT logging | Silver |
 | Consumer notification records | EXPORT events with notification flag | Bronze |
-| Risk management program | Completeness Invariant verification | Silver |
+| Risk management program | SRP attempt–outcome invariant check (recorded attempts only) | Silver |
 
 ### Deployer Obligations Mapping
 
@@ -80,7 +81,7 @@ Colorado AI Act provides affirmative defense for NIST AI RMF compliance. CAP sup
 |---------------------|-------------------|
 | **Govern** | GOVERNANCE.md, PolicyID tracking |
 | **Map** | Threat-Model.md, RiskCategory taxonomy |
-| **Measure** | RiskScore, Completeness Invariant |
+| **Measure** | RiskScore, SRP attempt–outcome invariant |
 | **Manage** | GEN_DENY logging, Evidence Pack |
 
 ---
@@ -94,7 +95,7 @@ For financial AI systems, see [VCP Specification](https://github.com/veritaschai
 CAP-VCP integration enables:
 - Cross-reference between content decisions and trading actions
 - Unified audit trail across domains
-- Shared VAP v1.2 infrastructure
+- Shared VAP infrastructure (CAP v1.0 and VCP v1.2 conformance to VAP v1.2 has not been established)
 
 ---
 
@@ -107,6 +108,8 @@ CAP-VCP integration enables:
 | **Illinois** | BIPA extensions | Enacted | Medium (biometric) |
 | **Texas** | HB 2060 | Under review | Low |
 
+Rows other than Colorado have not been re-verified since 2026-01-13.
+
 ---
 
 ## 5. Federal AI Initiatives
@@ -117,8 +120,8 @@ Federal AI procurement requirements (effective October 2025):
 
 | Requirement | CAP Support |
 |-------------|-------------|
-| Ongoing testing/monitoring | Completeness Invariant verification |
-| Vendor performance standards | Conformance Level certification |
+| Ongoing testing/monitoring | SRP attempt–outcome invariant check |
+| Vendor performance standards | Declared CAP conformance level (self-declared; no certification scheme exists) |
 | Risk management practices | Evidence Pack documentation |
 
 ### NIST AI RMF Integration
@@ -138,18 +141,18 @@ Manage 1.1 (Risk priorities)   → PolicyID, GEN_DENY logging
 
 ## Implementation Recommendations
 
-### For TAKE IT DOWN Act Compliance
+### Where the TAKE IT DOWN Act is relevant
 
 1. Implement Silver Level conformance minimum
-2. Enable GEN_ATTEMPT logging for all image generation requests
-3. Implement NCII_RISK detection and GEN_DENY logging
-4. Configure 48-hour evidence retrieval capability
+2. Record GEN_ATTEMPT for all image generation requests
+3. Record NCII_RISK refusal decisions as GEN_DENY
+4. Keep platform removal-request handling in separate records (not covered by CAP v1.0)
 5. Establish Evidence Pack export procedures for legal requests
 
-### For Colorado AI Act Compliance
+### Colorado (SB24-205, repealed — retained for reference; not redone for SB26-189)
 
 1. Implement Gold Level conformance recommended
-2. Enable impact assessment documentation via Evidence Pack
+2. Enable impact assessment documentation via Evidence Pack (SB26-189 drops impact assessments)
 3. Implement algorithmic discrimination logging (HATE_CONTENT)
 4. Configure 3-year retention (Gold Level provides 5 years)
 5. Document NIST AI RMF alignment for affirmative defense
@@ -158,7 +161,7 @@ Manage 1.1 (Risk priorities)   → PolicyID, GEN_DENY logging
 
 ## References
 
-- [TAKE IT DOWN Act](https://www.congress.gov/bill/118th-congress/senate-bill/4569)
+- [TAKE IT DOWN Act (S. 146, 119th Congress)](https://www.congress.gov/bill/119th-congress/senate-bill/146)
 - [Colorado SB24-205](https://leg.colorado.gov/bills/sb24-205)
 - [Davis Wright Tremaine, "Colorado AI Act repeal and new transparency law" (May 2026)](https://www.dwt.com/blogs/privacy--security-law-blog/2026/05/colorado-ai-act-repeal-new-transparency-law) — summary of SB26-189
 - [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework)
@@ -168,4 +171,4 @@ Manage 1.1 (Risk priorities)   → PolicyID, GEN_DENY logging
 
 **Document ID:** VSO-CAP-REG-US-001  
 **Version:** 1.0  
-**Last Updated:** 2026-01-13
+**Last Updated:** 2026-10-25 (TAKE IT DOWN Act, invariant and certification wording corrected; earlier text in Git history)

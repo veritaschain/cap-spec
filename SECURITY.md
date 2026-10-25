@@ -53,7 +53,7 @@ CAP relies on the following cryptographic primitives:
 
 ### Crypto Agility
 
-CAP is designed with crypto agility in mind. The `HashAlgo` and `SignAlgo` fields allow future migration to post-quantum algorithms (e.g., CRYSTALS-Dilithium) without breaking backward compatibility.
+CAP is designed with crypto agility in mind. The `HashAlgo` and `SignAlgo` fields allow future migration to post-quantum algorithms (e.g., ML-DSA, FIPS 204 — EXPERIMENTAL in VAP v1.2) without breaking backward compatibility.
 
 Implementers SHOULD:
 - Support algorithm negotiation
@@ -66,7 +66,7 @@ Implementers SHOULD:
 
 The hash chain provides tamper detection but not prevention. Implementers MUST:
 - Store events in append-only storage where possible
-- Implement external anchoring (Merkle roots) for high-assurance deployments
+- Implement external anchoring of Merkle roots (CAP v1.0 makes it optional at Bronze; VAP v1.2 INT-006 requires it at every conformance level)
 - Verify chain integrity on every access
 
 #### 2. Time Source Security

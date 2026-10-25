@@ -209,6 +209,15 @@ CAP's own version policy, not VAP's version number, controls the CAP release num
 5. Publish the updated mapping with evidence references and remaining limitations. A reviewer must separately assess implementation evidence and each requested VAP level.
 6. Update the compatibility matrix only after the recorded assessment supports the specific claim; certification additionally requires the applicable tests/audit/CAB process. This draft authorizes none of those status changes.
 
+## Addendum — 25 October 2026 (VSO)
+
+This addendum does not change the rows above or their pinned baseline.
+
+- **Current VAP text.** The current VAP v1.2 Draft 3 text is SHA-256 `24a961ddd419298d02b2cc2b8015d6e058501a2411ffa9a744a218bf110ac6bf` (vap-spec commit `b5ef931`). Between the pinned `1771fdb` and that text, the changes are in the header, the Normative Position Statement, the VCP status rows (§2.2.1, §4.5.2, §5.1, §12.3), §8.3, §10.1, §10.4, Appendices B and D, ERRATA and the Declaration. The clauses cited in the I, P and D rows (§4.1–§4.4, §6.3, §7, §9.3, §11.3) are unchanged, so those rows stand.
+- **E06.** The VAP errata of 2026-10-21 (E-2026-10-21) applies: the scheme requires CABs independent of the scheme owner, and the only registered CAB, VeritasChain Co., Ltd., operates VSO and is not independent. No CAP or VAP certificate can currently be issued by an independent CAB.
+- **E07.** VAP v1.2 §10.4 now records CAP v1.0 as "Draft mapping published; unresolved divergences; full conformance not established", citing this document at commit `beb0c44`. The finding that conformance is not established is unchanged.
+- **Out of scope here.** The repository schemas, examples and test vectors use the v0.2 event model in places; see the README ("JSON Schema", "Examples") and the test-vector READMEs. They are outside this mapping's scope, which is the released v1.0 text.
+
 ## Attribution and change notice
 
 Derived from the CAP and VAP specifications by VeritasChain Standards Organization, linked and pinned in §2, licensed CC BY 4.0 International. This mapping and its assessments are new review material, not an official VSO decision. Proposed changes are identified as such. [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

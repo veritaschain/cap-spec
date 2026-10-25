@@ -135,7 +135,7 @@ CAP fields provide evidence for investigation and deterrence:
 | Hash Chain | Evidence tampering | Detects modifications |
 | Digital Signature | Event forgery | Authenticates issuer |
 | Merkle Anchoring | Timestamp manipulation | Independent proof |
-| Completeness Invariant | Selective logging | Ensures all attempts recorded |
+| SRP attempt–outcome invariant | Selective omission of recorded outcomes | Detects recorded attempts without a recorded outcome; cannot detect attempts that were never recorded |
 
 ---
 
@@ -145,21 +145,23 @@ CAP fields provide evidence for investigation and deterrence:
 
 | Attack | Description | SRP Mitigation |
 |--------|-------------|----------------|
-| Selective logging | Only log favorable outcomes | Completeness Invariant |
+| Selective logging | Only log favorable outcomes | SRP attempt–outcome invariant (recorded attempts only; GEN_ATTEMPT must be recorded before evaluation) |
 | Backdated refusals | Claim refusal after generation | Timestamp + anchoring |
 | Log tampering | Modify refusal records | Hash chain integrity |
 | False refusals | Claim refusals that didn't happen | AttemptID linking |
 
-### The Grok Incident Pattern
+### Illustrative Gap Pattern
 
-The December 2025 Grok incident demonstrated:
+Public controversy over AI image generation in December 2025 (including Grok) illustrated a general evidentiary gap: a provider's statement that safeguards worked could not be checked by a third party. VSO has not examined any provider's internal records; the table below describes the general pattern, not the facts of any case.
 
-| Gap | Consequence | SRP Solution |
-|-----|-------------|--------------|
-| No attempt logging | Can't prove safeguards triggered | GEN_ATTEMPT required |
-| No refusal proof | Can't prove content blocked | GEN_DENY with hash chain |
-| No completeness check | Could hide allowed generations | Completeness Invariant |
-| No external anchoring | Timestamps unverifiable | Merkle root anchoring |
+| Gap | Consequence | What SRP records |
+|-----|-------------|------------------|
+| No attempt record | Safeguard activation cannot be checked | GEN_ATTEMPT, recorded before evaluation |
+| No refusal record | Refusal statements cannot be checked | GEN_DENY in the hash chain |
+| No outcome check | Omitted outcomes go unnoticed | SRP attempt–outcome invariant over recorded attempts |
+| No external anchoring | Record times depend on the producer | Merkle root anchoring |
+
+SRP records decisions; it does not block generation, and it cannot reveal requests that were never recorded.
 
 ---
 
@@ -198,7 +200,7 @@ The December 2025 Grok incident demonstrated:
 
 ### What CAP Does NOT Assume
 
-1. **Trusted operators**: CAP provides evidence regardless of operator honesty
+1. **Trusted operators**: alteration and post-anchor omission of recorded events are detectable without relying on operator honesty. An operator can still fail to record an event in the first place (see Residual Risks)
 2. **Network security**: Hash chains detect tampering regardless of transport
 3. **Single point of trust**: External anchoring provides independent verification
 
@@ -206,28 +208,30 @@ The December 2025 Grok incident demonstrated:
 
 ## Implementation Security Considerations
 
-### L1 (Basic) Risks
+CAP v1.0 defines Bronze, Silver and Gold conformance levels (§2). The L1/L2/L3 levels of CAP v0.2 are superseded.
 
-- No external anchoring → timestamps unverifiable
-- Single signature → key compromise fatal
-- Local storage → easier tampering
+### Bronze Risks
+
+- External anchoring optional in CAP v1.0 → timestamps depend on the producer. VAP v1.2 (INT-006) requires external anchoring at every level, so Bronze without anchoring does not meet the VAP v1.2 requirement set (see the [README](../README.md))
+- Software-held keys → key compromise affects all events
+- Local storage → easier tampering before detection
 
 **Recommendation**: Use for low-risk internal workflows only.
 
-### L2 (Standard) Risks
+### Silver Risks
 
-- No external anchoring → timestamps unverifiable
+- Daily anchoring → batch-level completeness only, with a gap of up to 24 hours
 - May lack redundancy
 
-**Recommendation**: Use for medium-risk production workflows.
+**Recommendation**: Use for production workflows.
 
-### L3 (Enterprise) Risks
+### Gold Risks
 
 - Anchor system availability
-- Key ceremony complexity
+- HSM and key ceremony complexity
 - Operational overhead
 
-**Recommendation**: Required for regulatory compliance and high-stakes evidence.
+**Recommendation**: Recommended for high-stakes evidence. No level constitutes regulatory compliance (VAP v1.2 §1.6).
 
 ---
 
@@ -238,6 +242,7 @@ CAP cannot mitigate:
 | Risk | Reason |
 |------|--------|
 | Pre-logging attacks | Events before CAP integration |
+| Unrecorded requests | A request never recorded as GEN_ATTEMPT leaves nothing to detect (pre-measurement drop) |
 | Side-channel attacks | Outside event model |
 | Quantum computing | Future algorithm break (crypto agility addresses) |
 | Collusion | Multiple trusted parties cooperating |
@@ -248,7 +253,7 @@ CAP cannot mitigate:
 ## Related Documents
 
 - [SECURITY.md](../SECURITY.md) — Vulnerability reporting
-- [CAP Specification](CAP-Specification-v0.2.md) — Full specification
+- [CAP Specification v1.0](CAP-Specification-v1.0.md) — Full specification
 - [CAP Glossary](CAP-Glossary.md) — Terminology
 
 ---

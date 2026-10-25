@@ -1,0 +1,36 @@
+{
+  "description": "RFC 8785 serializer regressions for the draft CAP hash example. These minimal objects are not complete CAP events.",
+  "cases": [
+    {
+      "id": "jcs-integral-float",
+      "description": "1.0 serializes as 1; excluded root fields do not enter the digest.",
+      "input": {
+        "RiskScore": 1.0,
+        "EventHash": "excluded",
+        "Signature": "excluded"
+      },
+      "canonicalJson": "{\"RiskScore\":1}",
+      "expectedHash": "sha256:95710f4fbaca965078a5361771cbea5ded250995c0be22e05e9cdc6b583ca2ac"
+    },
+    {
+      "id": "jcs-zero",
+      "description": "Positive and negative floating-point zero both serialize as 0.",
+      "input": {
+        "RiskScore": 0.0,
+        "NegativeZero": -0.0
+      },
+      "canonicalJson": "{\"NegativeZero\":0,\"RiskScore\":0}",
+      "expectedHash": "sha256:4547c44f5c9d51424060d418bae1f24d9a871c517fc0602360ab17f3ba1318a4"
+    },
+    {
+      "id": "jcs-utf16-order",
+      "description": "U+10000 sorts before U+E000 by UTF-16 code units, not Unicode code points.",
+      "input": {
+        "\ue000": "bmp",
+        "\ud800\udc00": "astral"
+      },
+      "canonicalJson": "{\"\ud800\udc00\":\"astral\",\"\ue000\":\"bmp\"}",
+      "expectedHash": "sha256:5e72745dd500f8b8d997ef851679707b89099da29d2aca4b93dfd85810ebaa20"
+    }
+  ]
+}

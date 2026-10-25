@@ -6,9 +6,7 @@
     "outcomeBreakdown": {
       "GEN": 2,
       "GEN_DENY": 1,
-      "GEN_WARN": 0,
-      "GEN_ESCALATE": 0,
-      "GEN_QUARANTINE": 0
+      "GEN_ERROR": 0
     }
   },
   "events": [

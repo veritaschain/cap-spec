@@ -101,7 +101,7 @@ Before v1.0.0, the specification is considered unstable:
 
 ### Current Status
 
-CAP is currently at **v0.2.0** (pre-release).
+CAP is at **v1.0** (Released, tag `v1.0`, 2026-01-13). v0.2.0 is superseded.
 
 ---
 
@@ -123,12 +123,12 @@ JSON schemas include version identifiers:
 
 ```json
 {
-  "$id": "https://veritaschain.org/schemas/cap/v0.2/core-event.json",
+  "$id": "https://veritaschain.org/schemas/cap/v1.0/event-common.json",
   ...
 }
 ```
 
-Schema versions align with specification versions.
+Schema versions align with specification versions. The CAP v1.0 schema identifiers are those in CAP v1.0 Appendix A. The files under [`schemas/`](schemas/) in this repository still carry the v0.2 event model and `$id`s; they are not the normative v1.0 schemas (see the [README](README.md#schemas)).
 
 ---
 
@@ -158,7 +158,8 @@ See [CHANGELOG.md](docs/CHANGELOG.md) for detailed version history.
 
 | Version | Date | Status |
 |---------|------|--------|
-| 0.2.0 | 2026-01-10 | Current |
+| 1.0 | 2026-01-13 | Current (Released, tag `v1.0`) |
+| 0.2.0 | 2026-01-10 | Superseded |
 | 0.1.0 | 2025-12-27 | Deprecated |
 
 ---
@@ -168,7 +169,7 @@ See [CHANGELOG.md](docs/CHANGELOG.md) for detailed version history.
 ### Version Detection
 
 Implementations SHOULD:
-- Check `capVersion` in Evidence Pack manifests
+- Check `PackVersion` in Evidence Pack manifests (CAP v1.0 §15.3; the v0.2 sample manifest uses `capVersion`)
 - Support graceful handling of unknown versions
 - Log warnings for version mismatches
 

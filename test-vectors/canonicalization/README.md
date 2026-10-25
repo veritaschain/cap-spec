@@ -27,7 +27,15 @@ Basic object canonicalization with sorted keys.
 {"apple":2,"mango":3,"zebra":1}
 ```
 
-### test-002-unicode.json
+### test-002-cap-event.json
+
+Canonicalization of a CAP event.
+
+## Further cases (no vector file yet)
+
+The cases below illustrate RFC 8785 behaviour. They have no vector files in this directory.
+
+### Unicode
 
 Unicode handling per RFC 8785.
 
@@ -44,7 +52,7 @@ Unicode handling per RFC 8785.
 {"emoji":"🔒","japanese":"日本語"}
 ```
 
-### test-003-numbers.json
+### Numbers
 
 Number formatting (no trailing zeros, no exponential for integers).
 
@@ -63,7 +71,7 @@ Number formatting (no trailing zeros, no exponential for integers).
 {"float":3.14,"integer":42,"negative":-17,"zero":0}
 ```
 
-### test-004-nested.json
+### Nested objects
 
 Nested object key ordering.
 
@@ -85,17 +93,17 @@ Nested object key ordering.
 
 ## Verification
 
+Use an RFC 8785 implementation, for example the `rfc8785` package for Python or the `canonicalize` package for JavaScript. `json.dumps(obj, sort_keys=True, separators=(',', ':'))` is **not** RFC 8785: it formats numbers differently (for example `0.0` instead of `0`) and sorts keys by code point rather than by UTF-16 code unit.
+
 ```python
-import json
 import hashlib
+import rfc8785  # pip install rfc8785
 
-def canonicalize(obj):
-    """Simple JCS implementation for testing"""
-    return json.dumps(obj, sort_keys=True, separators=(',', ':'), ensure_ascii=False)
-
-def compute_hash(canonical_json):
-    return "sha256:" + hashlib.sha256(canonical_json.encode('utf-8')).hexdigest()
+def compute_hash(obj):
+    return "sha256:" + hashlib.sha256(rfc8785.dumps(obj)).hexdigest()
 ```
+
+`expectedHash` in `test-001-basic-object.json` was corrected on 2026-10-25; the earlier value was a placeholder.
 
 ## References
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Japan Copyright Act Article 30-4** (著作権法第30条の4) establishes a statutory exception allowing AI training on copyrighted works under certain conditions. This document explains how CAP provides evidentiary support for demonstrating compliance with Article 30-4 requirements.
+**Japan Copyright Act Article 30-4** (著作権法第30条の4) establishes a statutory exception allowing AI training on copyrighted works under certain conditions. This document explains which CAP records may be relevant evidence when Article 30-4 is at issue. CAP records do not determine whether the exception applies (VAP v1.2 §1.6).
 
 ---
 
@@ -25,7 +25,7 @@
 
 ---
 
-## CAP Support for Article 30-4 Compliance
+## CAP Records Relevant to Article 30-4
 
 ### INGEST Event Documentation
 
@@ -90,7 +90,7 @@ Training activities should record:
 
 ## Evidential Value
 
-### What CAP Proves
+### What CAP Records Show
 
 | Question | CAP Evidence |
 |----------|--------------|
@@ -100,7 +100,7 @@ Training activities should record:
 | What processing occurred? | TRAIN event details |
 | Was output different from input? | OutputAssetHash ≠ InputAssetHash |
 
-### What CAP Does NOT Prove
+### What CAP Records Do NOT Show
 
 | Legal Question | Reason |
 |----------------|--------|
@@ -243,7 +243,7 @@ This document provides technical capability mapping only. Article 30-4 interpret
 
 - [Japan Copyright Act (English)](https://www.cric.or.jp/english/)
 - [Agency for Cultural Affairs AI Guidelines](https://www.bunka.go.jp/)
-- [CAP Specification](../CAP-Specification-v0.2.md)
+- [CAP Specification v1.0](../CAP-Specification-v1.0.md)
 
 ---
 

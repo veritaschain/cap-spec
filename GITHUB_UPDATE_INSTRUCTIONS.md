@@ -1,3 +1,5 @@
+> **Historical record (2026-01-13).** These are the release-preparation instructions for CAP v1.0. Their wording is not a current VSO claim: "the world's first" designation is not used for CAP, SRP records refusal decisions and does not prove non-generation or enforce policy, CAP v1.0 conformance to VAP v1.2 has not been established, and the VAP repository is [`veritaschain/vap-spec`](https://github.com/veritaschain/vap-spec). See the [README](README.md) for current status. Annotated 2026-10-25.
+
 # CAP v1.0 GitHub Update Instructions
 
 ## Overview
@@ -164,7 +166,7 @@ The first official release of **Content / Creative AI Profile (CAP)**, the world
 
 ## Related
 
-- [VAP Framework v1.2](https://github.com/veritaschain/vap-framework) - Parent framework
+- [VAP Framework v1.2](https://github.com/veritaschain/vap-spec) - Parent framework
 - [VCP v1.1](https://github.com/veritaschain/vcp-spec) - Finance profile
 - [Reference Implementation](https://github.com/veritaschain/cap-safe-refusal-provenance)
 
