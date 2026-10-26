@@ -255,4 +255,4 @@ This document provides technical capability mapping only. Article 30-4 interpret
 
 ---
 
-*Last updated: 2026-10-25*
+*Last updated: 2026-10-26*

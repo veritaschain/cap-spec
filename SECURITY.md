@@ -126,4 +126,4 @@ We thank security researchers who responsibly disclose vulnerabilities. Contribu
 
 ---
 
-*Last updated: 2026-10-25*
+*Last updated: 2026-10-26*

@@ -266,4 +266,4 @@ Standards organization maintaining the VAP, VCP and CAP specifications, operated
 
 ---
 
-*Last updated: 2026-10-25*
+*Last updated: 2026-10-26*
