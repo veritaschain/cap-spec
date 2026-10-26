@@ -128,6 +128,9 @@ CAP fields provide evidence for investigation and deterrence:
 | TH-4: Persona Abuse | ConsentBasis, GEN_ATTEMPT, GEN_DENY | Consent state and moderation |
 | TH-5: Brand Mimicry | AssetHash, PromptHash, OutputAssetHash | Input/output fingerprints |
 
+`TrainingType`, `ConfidentialityLevel` and `OutputAssetHash` are CAP v0.2 fields (v0.2 repository
+schemas); CAP v1.0 does not define them.
+
 ### Integrity Mechanisms
 
 | Mechanism | Threat Mitigated | How |
@@ -200,7 +203,7 @@ SRP records decisions; it does not block generation, and it cannot reveal reques
 
 ### What CAP Does NOT Assume
 
-1. **Trusted operators**: alteration and post-anchor omission of recorded events are detectable without relying on operator honesty. An operator can still fail to record an event in the first place (see Residual Risks)
+1. **Trusted operators**: for anchored records (Silver/Gold), given trusted keys and anchors and subject to [draft mapping](conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) I16/I27, alteration and post-anchor omission of recorded events are detectable without relying on operator honesty. An operator can still fail to record an event in the first place (see Residual Risks)
 2. **Network security**: Hash chains detect tampering regardless of transport
 3. **Single point of trust**: External anchoring provides independent verification
 
@@ -258,4 +261,4 @@ CAP cannot mitigate:
 
 ---
 
-*Last updated: 2026-01-13*
+*Last updated: 2026-10-25*

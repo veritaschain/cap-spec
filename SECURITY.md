@@ -66,8 +66,9 @@ Implementers SHOULD:
 
 The hash chain provides tamper detection but not prevention. Implementers MUST:
 - Store events in append-only storage where possible
-- Implement external anchoring of Merkle roots (CAP v1.0 makes it optional at Bronze; VAP v1.2 INT-006 requires it at every conformance level)
 - Verify chain integrity on every access
+
+Implementers SHOULD implement external anchoring of Merkle roots. CAP v1.0 requires it at Silver (daily) and Gold (hourly) and makes it optional at Bronze (§9.3); anchorless Bronze cannot support a VAP v1.2 claim (INT-006).
 
 #### 2. Time Source Security
 
@@ -125,4 +126,4 @@ We thank security researchers who responsibly disclose vulnerabilities. Contribu
 
 ---
 
-*Last updated: 2026-01-13*
+*Last updated: 2026-10-25*

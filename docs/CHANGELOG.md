@@ -11,9 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 These notes do not rewrite the entries below.
 
-- **[1.0] "VAP Reference: v1.1 → v1.2" and "aligned with VAP v1.2".** The released CAP v1.0 text references VAP v1.1 (Informative References). VAP v1.2 was first drafted in June 2026 and is a Draft Specification (Draft 3). CAP v1.0 conformance to VAP v1.2 has not been established; see the [draft conformance mapping](conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md).
-- **[1.0] "Breaking Changes: None".** CAP v1.0 replaced the v0.2 outcome event types GEN_WARN, GEN_ESCALATE and GEN_QUARANTINE with GEN_ERROR and `ModelDecision` values on GEN_DENY. Under [VERSIONING.md](../VERSIONING.md), removing event types is a breaking change. The repository schemas still use the v0.2 model (README, "JSON Schema").
-- **[0.1.0] link.** No `v0.1.0` tag exists in this repository.
+- **[1.0] "VAP Reference: v1.1 → v1.2" and "aligned with VAP v1.2".** The released CAP v1.0 text references VAP v1.1 (Informative References). No VAP v1.2 text had been published when CAP v1.0 was released (2026-01-13); the earliest dated VAP v1.2 text on record is Draft 2 (2026-06-10). VAP v1.2 is a Draft Specification (Draft 3). CAP v1.0 conformance to VAP v1.2 has not been established; see the [draft conformance mapping](conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md).
+- **[1.0] "Breaking Changes: None".** CAP v1.0 removed GEN_WARN, GEN_ESCALATE, GEN_QUARANTINE and AUDIT_ANCHOR from the event-type enumeration and added GEN_ERROR; WARN/ESCALATE/QUARANTINE remain ModelDecision values on GEN_DENY. Under [VERSIONING.md](../VERSIONING.md), removing event types is a breaking change. The repository schemas still use the v0.2 model (README, "JSON Schema").
+- **[0.1.0] and [0.2.0] links.** No `v0.1.0` tag exists in this repository, so the `[0.1.0]` release link and the `[0.2.0]` compare link (`v0.1.0...v0.2.0`) do not resolve.
 
 ---
 

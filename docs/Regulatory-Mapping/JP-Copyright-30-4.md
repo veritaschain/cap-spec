@@ -4,6 +4,14 @@
 
 **Japan Copyright Act Article 30-4** (著作権法第30条の4) establishes a statutory exception allowing AI training on copyrighted works under certain conditions. This document explains which CAP records may be relevant evidence when Article 30-4 is at issue. CAP records do not determine whether the exception applies (VAP v1.2 §1.6).
 
+> **Field names.** Field names follow the v0.2 repository schemas (`schemas/cap/`), not the
+> CAP v1.0 text. `STATUTORY_EXCEPTION`, `StatutoryBasis`, `Confidentiality` /
+> `ConfidentialityLevel`, `TrainingType`, `InputAssetIDs`, `OutputModelID`, `TrainingContext`
+> and `OutputAssetHash`, and the `ConsentBasis` values `OPTED_OUT` and `EXPLICIT_WRITTEN`, do
+> not occur in CAP v1.0, whose §7.3 lists `RightsBasis` OWNED | LICENSED | PUBLIC_DOMAIN |
+> FAIR_USE | UNKNOWN and `ConsentBasis` EXPLICIT | IMPLIED | NOT_REQUIRED | UNKNOWN.
+> `OptOutReference` and `InputAssetHash` are illustrative and are defined in neither.
+
 ---
 
 ## Article 30-4 Summary
@@ -243,8 +251,8 @@ This document provides technical capability mapping only. Article 30-4 interpret
 
 - [Japan Copyright Act (English)](https://www.cric.or.jp/english/)
 - [Agency for Cultural Affairs AI Guidelines](https://www.bunka.go.jp/)
-- [CAP Specification v1.0](../CAP-Specification-v1.0.md)
+- [CAP Specification v1.0](../CAP-Specification-v1.0.md) (field names on this page follow the v0.2 repository schemas; see the Overview)
 
 ---
 
-*Last updated: 2026-01-13*
+*Last updated: 2026-10-25*

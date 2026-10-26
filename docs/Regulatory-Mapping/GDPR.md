@@ -73,7 +73,7 @@ photo of [person]"                        (hash only)
 | Court order | Hash cannot reveal original content |
 | Data breach | Hash exposure can still expose personal data where inputs are guessable |
 
-**Important**: A hash cannot be inverted directly, but a short or predictable input can be recovered by hashing candidate inputs. Hashes of personal data are pseudonymous data, which remains personal data under the GDPR.
+**Important**: A hash cannot be inverted directly, but a short or predictable input can be recovered by hashing candidate inputs. Hashes of personal data are generally pseudonymised data; they are personal data for any party that can re-identify the person by means reasonably likely to be used (GDPR Recital 26; cf. CJEU C-413/23 P, EDPS v SRB, 4 September 2025).
 
 ### Article 25: Data Protection by Design
 
@@ -95,7 +95,7 @@ CAP audit trails support Article 30 obligations:
 | Processing purposes | EventType, Context |
 | Data subject categories | Role field |
 | Data categories | AssetType, InputType |
-| Recipients | Destination (EXPORT) |
+| Recipients | Destination (EXPORT; a CAP v0.2 field, not defined in CAP v1.0) |
 | Retention periods | Evidence Pack metadata |
 | Technical measures | Hash chain, signatures |
 
@@ -147,6 +147,9 @@ CAP supports crypto-shredding. Crypto-shredding may support erasure obligations 
   }
 }
 ```
+
+`ActorContext`, `EncryptedActorID` and `KeyReference` are illustrative names; CAP v1.0 defines
+none of them (its Context object, §7.4, carries `UserID` and `UserHash`).
 
 When deletion required:
 1. Delete key from key vault

@@ -166,7 +166,7 @@ The first official release of **Content / Creative AI Profile (CAP)**, the world
 
 ## Related
 
-- [VAP Framework v1.2](https://github.com/veritaschain/vap-spec) - Parent framework
+- [VAP Framework v1.2](https://github.com/veritaschain/vap-framework) - Parent framework
 - [VCP v1.1](https://github.com/veritaschain/vcp-spec) - Finance profile
 - [Reference Implementation](https://github.com/veritaschain/cap-safe-refusal-provenance)
 
