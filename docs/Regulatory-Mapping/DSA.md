@@ -10,15 +10,19 @@ The **Digital Services Act** (Regulation (EU) 2022/2065) establishes obligations
 
 ### Article 15: Transparency Reporting
 
-Very large online platforms (VLOPs) must publish transparency reports on content moderation.
+Article 15 requires providers of intermediary services to publish, at least once a year,
+reports on the content moderation they engaged in; micro and small enterprises that are not
+very large online platforms are exempt (Art. 15(2)). Article 24 adds items for online
+platforms, and Article 42 adds reporting obligations for very large online platforms and
+search engines.
 
-| Requirement | CAP Implementation | Status |
-|-------------|-------------------|--------|
-| Number of content moderation decisions | refusal_stats.json counts | ✓ Supported |
-| Categories of moderation | RiskCategory taxonomy | ✓ Supported |
-| Automated vs human decisions | HumanOverride field | ✓ Supported |
-| Time for decision | Timestamp precision | ✓ Supported |
-| Accuracy of automated tools | RiskScore field | ✓ Supported |
+| Report content | CAP records relevant | Limit |
+|----------------|----------------------|-------|
+| Number of content moderation decisions | GEN_DENY counts (manifest `CompletenessVerification`, CAP v1.0 §15.3; `refusal_stats.json` in the v0.2 sample Evidence Pack) | Recorded generation refusals only |
+| Categories of moderation | RiskCategory taxonomy | Needs mapping to the categories used in the report |
+| Automated vs human decisions | HumanOverride field | Records human overrides of refusals |
+| Time for decision | Timestamps on GEN_ATTEMPT and the outcome event | Recorded decision times |
+| Accuracy of automated tools | RiskScore field | A per-decision score, not an accuracy or error-rate measure |
 
 ### Article 34: Risk Assessment
 
@@ -51,7 +55,7 @@ VLOPs must undergo independent audits.
 |--------------|-------------------|
 | Access to logs | Evidence Pack export |
 | Verification capability | Third-party verification guide |
-| Statistical analysis | refusal_stats.json |
+| Statistical analysis | Manifest `CompletenessVerification` counts (CAP v1.0 §15.3); `refusal_stats.json` in the v0.2 sample Evidence Pack |
 | Outcome check over recorded attempts | SRP attempt–outcome invariant (§13) |
 
 ### Article 40: Data Access for Research

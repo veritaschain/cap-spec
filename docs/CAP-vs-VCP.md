@@ -51,7 +51,7 @@ page. Neither CAP v1.0 nor VCP v1.2 has established conformance to VAP v1.2 (VAP
 | **Domain** | Algorithmic and AI-driven trading | Content creation, creative industries |
 | **Subject** | Signals, orders, executions, risk controls | Content assets, AI-generated media |
 | **Core Events** | SIG, ORD, ACK, EXE, CLS (also PRT, CXL, REJ, MOD) | INGEST, TRAIN, GEN, EXPORT |
-| **Refusal records** | — | SRP: GEN_ATTEMPT, GEN_DENY, GEN_ERROR |
+| **Refusal records** | — | SRP: GEN_ATTEMPT; outcomes GEN, GEN_DENY, GEN_ERROR |
 | **Conformance levels** | Silver / Gold / Platinum (anchoring every 24 h / 1 h / 10 min) | Bronze / Silver / Gold (anchoring optional / daily / hourly) |
 | **Regulatory relevance** | MiFID II (Art. 17, RTS 25), EU AI Act Art. 12, CAT | EU AI Act Art. 50, DSA, copyright |
 | **Specification Status** | v1.2 Released (tag `v1.2.0`) | v1.0 Released (tag `v1.0`) |
@@ -75,7 +75,7 @@ Regulatory relevance is not compliance (VAP v1.2 §1.6).
 
 | Mechanism | VCP v1.2 | CAP v1.0 |
 |-----------|----------|----------|
-| PrevHash chain | OPTIONAL (tier-dependent) | Required |
+| PrevHash chain | OPTIONAL at every tier (RECOMMENDED for Gold/Platinum, VCP v1.2 §9.1.3 HCH-002) | Required |
 | Merkle tree | Required | Required at Silver and Gold |
 | External anchoring | Required at every tier | Optional at Bronze; required at Silver and Gold |
 | Crypto agility (`HashAlgo`, `SignAlgo`) | Yes | Yes |
@@ -111,7 +111,8 @@ Input → Training → Generation → Export
 INGEST   TRAIN       GEN      EXPORT
 ```
 
-Key concepts: `AssetID`, `RightsBasis`, `ConsentBasis`, `ConfidentialityLevel`.
+Key concepts: `AssetID`, `RightsBasis`, `ConsentBasis` (CAP v1.0 §7.2–§7.3). `ConfidentialityLevel`
+is a CAP v0.2 field (v0.2 repository schemas) and is not defined in CAP v1.0.
 
 ### CAP-SRP (Safe Refusal Provenance)
 
@@ -141,7 +142,8 @@ it is not a protocol extension. Those repositories are first-party reference cod
 | Automated market commentary | ✓ Signal data | ✓ Text generation |
 
 Events from different profiles can be related through cross-references in context fields
-or, where both parties log corresponding events, through VAP XREF (TRC-005). Neither
+or, where both parties log corresponding events, through VAP XREF (TRC-005) (VCP-XREF only;
+CAP v1.0 defines none). Neither
 profile defines a cross-profile chain format.
 
 Organizations implementing both can share cryptographic libraries, serialization code,
@@ -157,4 +159,4 @@ verification tools and anchoring infrastructure.
 
 ---
 
-*Last updated: 2026-10-25*
+*Last updated: 2026-10-26*

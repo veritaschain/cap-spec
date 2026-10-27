@@ -44,10 +44,10 @@ UUID identifying an evidence chain. All events in a chain share the same ChainID
 In CAP v1.0 (§13), the SRP attempt–outcome invariant: every recorded `GEN_ATTEMPT` must have exactly one corresponding outcome event (`GEN`, `GEN_DENY` or `GEN_ERROR`). It is checked over recorded events; a request that was never recorded leaves nothing to detect. It is a profile-level invariant and is distinct from the VAP v1.2 Completeness Invariant (INT-008), which binds event count, first and last event identifiers and policy identifier in each AnchorRecord.
 
 ### Confidentiality Level
-Classification of asset sensitivity: PUBLIC, INTERNAL, CONFIDENTIAL, SECRET, or PRE_RELEASE.
+Classification of asset sensitivity: PUBLIC, INTERNAL, CONFIDENTIAL, SECRET, or PRE_RELEASE. CAP v0.2 field (`ConfidentialityLevel`, v0.2 repository schemas); CAP v1.0 does not define it.
 
 ### Consent Basis
-The state of consent for asset usage: EXPLICIT_WRITTEN, EXPLICIT_VERBAL, IMPLIED, NOT_REQUIRED, OPTED_OUT, or UNKNOWN.
+The state of consent for asset usage. CAP v1.0 (§7.3): EXPLICIT, IMPLIED, NOT_REQUIRED or UNKNOWN. The v0.2 values EXPLICIT_WRITTEN, EXPLICIT_VERBAL and OPTED_OUT appear in the v0.2 repository schemas only.
 
 ### Crypto Agility
 Design principle enabling migration to new cryptographic algorithms without breaking compatibility.
@@ -97,14 +97,17 @@ SRP event type recording that a generation request was received (before risk ass
 ### GEN_DENY
 SRP event type recording that a generation request was refused.
 
+### GEN_ERROR
+SRP outcome event recording a failed generation (a system error, not a policy decision) (CAP v1.0 §12.1).
+
 ### GEN_ESCALATE
-SRP event type recording that a request was escalated to human review.
+SRP event type recording that a request was escalated to human review (CAP v0.2 event type; in CAP v1.0, `ESCALATE` is a `ModelDecision` value on GEN_DENY, Appendix A.3).
 
 ### GEN_QUARANTINE
-SRP event type recording that content was generated but quarantined for review.
+SRP event type recording that content was generated but quarantined for review (CAP v0.2 event type; in CAP v1.0, `QUARANTINE` is a `ModelDecision` value on GEN_DENY, Appendix A.3).
 
 ### GEN_WARN
-SRP event type recording that generation was allowed with a warning.
+SRP event type recording that generation was allowed with a warning (CAP v0.2 event type; in CAP v1.0, `WARN` is a `ModelDecision` value on GEN_DENY, Appendix A.3).
 
 ### Genesis Event
 The first event in a hash chain. Has `PrevHash` set to null.
@@ -174,7 +177,7 @@ Explicit exclusions from CAP scope: prohibition, auto-detection, real-time contr
 ## P
 
 ### Permitted Use
-Object specifying allowed usage of an asset: Training, Generation, Distribution, Commercial, Derivative, Attribution, Restrictions.
+Object specifying allowed usage of an asset. CAP v1.0 (§7.3): Training, Generation, Distribution, Commercial. Derivative, Attribution and Restrictions are CAP v0.2 fields.
 
 ### Policy ID
 Identifier for the content moderation policy applied during risk assessment.
@@ -193,13 +196,13 @@ The origin and history of an asset, recorded as cryptographically verifiable eve
 ## R
 
 ### Refusal Stats
-Aggregated statistics in Evidence Packs showing total attempts, refusals, and breakdown by risk category.
+Aggregated statistics in Evidence Packs showing total attempts, refusals, and breakdown by risk category. The `statistics/refusal_stats.json` file belongs to the v0.2 sample Evidence Pack; a CAP v1.0 manifest carries `CompletenessVerification` counts (§15.3).
 
 ### Rights Basis
-The justification for using an asset: OWNED, LICENSED, PUBLIC_DOMAIN, FAIR_USE, STATUTORY_EXCEPTION, or UNKNOWN.
+The justification for using an asset. CAP v1.0 (§7.3): OWNED, LICENSED, PUBLIC_DOMAIN, FAIR_USE or UNKNOWN. STATUTORY_EXCEPTION appears in the v0.2 repository schemas only.
 
 ### Risk Category
-Classification of content risks: CSAM_RISK, NCII_RISK, MINOR_SEXUALIZATION, REAL_PERSON_DEEPFAKE, VIOLENCE_EXTREME, HATE_CONTENT, TERRORIST_CONTENT, SELF_HARM_PROMOTION, OTHER.
+Classification of content risks (CAP v1.0 §14.3, Appendix A.3): CSAM_RISK, NCII_RISK, MINOR_SEXUALIZATION, REAL_PERSON_DEEPFAKE, VIOLENCE_EXTREME, HATE_CONTENT, TERRORIST_CONTENT, SELF_HARM_PROMOTION, COPYRIGHT_VIOLATION, OTHER.
 
 ### Risk Score
 Numerical confidence (0.0-1.0) in risk assessment.
@@ -251,7 +254,7 @@ VAP profile for financial/trading domains. Sibling to CAP.
 The process of checking event integrity: hash validation, chain linkage, signature verification, completeness check.
 
 ### VSO (VeritasChain Standards Organization)
-Vendor-neutral standards body maintaining VAP, VCP, and CAP specifications.
+Standards organization maintaining the VAP, VCP and CAP specifications, operated by VeritasChain Co., Ltd. (see [GOVERNANCE.md](../GOVERNANCE.md)).
 
 ---
 
@@ -263,4 +266,4 @@ Vendor-neutral standards body maintaining VAP, VCP, and CAP specifications.
 
 ---
 
-*Last updated: 2026-01-13*
+*Last updated: 2026-10-26*

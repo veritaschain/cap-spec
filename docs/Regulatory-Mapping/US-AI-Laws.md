@@ -95,7 +95,7 @@ For financial AI systems, see [VCP Specification](https://github.com/veritaschai
 CAP-VCP integration enables:
 - Cross-reference between content decisions and trading actions
 - Unified audit trail across domains
-- Shared VAP infrastructure (CAP v1.0 and VCP v1.2 conformance to VAP v1.2 has not been established)
+- Shared VAP infrastructure (conformance to VAP v1.2 has been established for neither CAP v1.0 nor VCP v1.2)
 
 ---
 
@@ -121,7 +121,7 @@ Federal AI procurement requirements (effective October 2025):
 | Requirement | CAP Support |
 |-------------|-------------|
 | Ongoing testing/monitoring | SRP attempt–outcome invariant check |
-| Vendor performance standards | Declared CAP conformance level (self-declared; no certification scheme exists) |
+| Vendor performance standards | Declared CAP conformance level. Levels are declared by the implementer (CAP v1.0 §2.5); no CAP-specific certification is offered (VC-Certified covers VCP only) and no independent CAB is registered (VAP ERRATA E-2026-10-21). CAP v1.0 calls for third-party audit at Gold (§2.5 item 4; Appendix D.3); an audit is not a certification |
 | Risk management practices | Evidence Pack documentation |
 
 ### NIST AI RMF Integration

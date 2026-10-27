@@ -30,7 +30,7 @@ relevant to content and creative AI.
 
 | Provision | CAP record that may be relevant | Note |
 |-----------|---------------------------------|------|
-| Art. 50(2) marking of generated outputs | GEN event (`OutputAssetID`, `OutputAssetHash`), EXPORT event | CAP records that an output was generated and exported. It does not itself mark or watermark content; marking is performed by the provider (for example with C2PA manifests) |
+| Art. 50(2) marking of generated outputs | GEN event (CAP v1.0 §6.1; output-hash fields such as `OutputAssetHash` exist only in CAP v0.2 and its repository schema), EXPORT event with Asset object (§7.2 `AssetID`, `AssetHash`) | CAP records that an output was generated and exported. It does not itself mark or watermark content; marking is performed by the provider (for example with C2PA manifests) |
 | Art. 50(4) disclosure of deep fakes by deployers | EXPORT event | CAP can record export of generated content; the disclosure itself is the deployer's act |
 
 ### Article 12: Record-keeping (high-risk AI systems)
@@ -71,7 +71,7 @@ provenance. Article 53 is not the content-transparency provision; that is Articl
 
 | Provision | CAP record that may be relevant |
 |-----------|---------------------------------|
-| Post-market monitoring data | Event chain with timestamps; Evidence Pack statistics (§15) |
+| Post-market monitoring data | Event chain with timestamps; Evidence Pack manifest `CompletenessVerification` counts (§15.3) |
 
 ---
 
@@ -91,8 +91,10 @@ CAP v1.0 defines Bronze, Silver and Gold (§2). Silver adds daily external ancho
 SRP; Gold adds hourly anchoring and HSM-protected keys. In CAP v1.0, external anchoring is
 optional at Bronze; VAP v1.2 (INT-006) requires it at every conformance level, so a
 Bronze deployment cannot be described as meeting the VAP v1.2 requirement set (see the
-[README](../../README.md)). A declared conformance level is a self-declaration; no
-certification scheme exists for CAP.
+[README](../../README.md)). Levels are declared by the implementer (§2.5); no
+CAP-specific certification is offered (VC-Certified covers VCP only) and no independent
+CAB is registered (VAP ERRATA E-2026-10-21). CAP v1.0 calls for third-party audit at Gold
+(§2.5 item 4; Appendix D.3, annual); an audit is not a certification.
 
 ---
 
@@ -130,4 +132,4 @@ requirements.
 
 ---
 
-*Last updated: 2026-10-25*
+*Last updated: 2026-10-26*

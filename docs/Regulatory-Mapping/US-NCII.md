@@ -110,7 +110,7 @@ any mandatory reporting are the provider's obligations.
 {
   "EventType": "GEN_DENY",
   "RiskCategory": "CSAM_RISK",
-  "RiskScore": "0.99",
+  "RiskScore": 0.99,
   "ModelDecision": "DENY",
   "HumanOverride": false
 }
@@ -160,4 +160,4 @@ advice or a compliance determination.
 
 ---
 
-*Last updated: 2026-10-25*
+*Last updated: 2026-10-26*

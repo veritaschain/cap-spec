@@ -169,7 +169,7 @@ See [CHANGELOG.md](docs/CHANGELOG.md) for detailed version history.
 ### Version Detection
 
 Implementations SHOULD:
-- Check `PackVersion` in Evidence Pack manifests (CAP v1.0 §15.3; the v0.2 sample manifest uses `capVersion`)
+- Check `PackVersion` in Evidence Pack manifests (CAP v1.0 §15.3). `PackVersion` is the Evidence Pack format version, not the CAP or VAP version of the events (draft mapping D02); CAP v1.0 events carry no per-event version field. The v0.2 sample manifest uses `capVersion`
 - Support graceful handling of unknown versions
 - Log warnings for version mismatches
 
@@ -195,4 +195,4 @@ Questions about versioning policy: standards@veritaschain.org
 
 ---
 
-*Last updated: 2026-01-13*
+*Last updated: 2026-10-26*
