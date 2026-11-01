@@ -318,4 +318,4 @@ This specification is published under [CC BY 4.0 International License](LICENSE)
 
 **© 2025-2026 VeritasChain Standards Organization (VSO).** Licensed under [CC BY 4.0](LICENSE).
 
-*VSO is a vendor-neutral standards body. References to specific products or organizations are for interoperability documentation purposes only and do not constitute endorsement.*
+*VSO is the specification-development initiative operated by VeritasChain Co., Ltd. Vendor neutrality is a stated governance objective; independent governance or independent conformity assessment is not established by publication of this specification. References to specific products or organizations are for interoperability documentation purposes only and do not constitute endorsement. See [GOVERNANCE.md](GOVERNANCE.md) for the published model and its status.*
