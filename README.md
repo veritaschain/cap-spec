@@ -55,6 +55,8 @@ The released text ([`docs/CAP-Specification-v1.0.md`](docs/CAP-Specification-v1.
 
 ## Research Records
 
+**Editorial correction — 2 November 2026:** the linked World-First report now carries its historical status and AI-assisted research limitations in the document itself. The obsolete internal `GITHUB_UPDATE_INSTRUCTIONS.md` work note has been removed from the current tree; Git history is unchanged.
+
 - **World-First Claims Verification: Final Consolidated Research Report** (historical research record)  
   https://github.com/veritaschain/cap-spec/blob/main/docs/CAP_WorldFirst_Final_Consolidated_Report.md  
   This report predates VSO's naming rule reserving the "world's first" designation for VCP. Its conclusion is retained as a research record and is not a current VSO claim about CAP.
@@ -318,4 +320,4 @@ This specification is published under [CC BY 4.0 International License](LICENSE)
 
 **© 2025-2026 VeritasChain Standards Organization (VSO).** Licensed under [CC BY 4.0](LICENSE).
 
-*VSO is a vendor-neutral standards body. References to specific products or organizations are for interoperability documentation purposes only and do not constitute endorsement.*
+*VSO is the specification-development initiative operated by VeritasChain Co., Ltd. Vendor neutrality is a stated governance objective; independent governance or independent conformity assessment is not established by publication of this specification. References to specific products or organizations are for interoperability documentation purposes only and do not constitute endorsement. See [GOVERNANCE.md](GOVERNANCE.md) for the published model and its status.*

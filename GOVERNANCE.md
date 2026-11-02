@@ -2,7 +2,9 @@
 
 ## VeritasChain Standards Organization (VSO)
 
-The **VeritasChain Standards Organization (VSO), operated by VeritasChain Co., Ltd.**, is a vendor-neutral standards organization responsible for developing and maintaining the VeritasChain Protocol (VCP), Content/Creative AI Profile (CAP), and the broader Verifiable AI Provenance (VAP) Framework. VSO's neutrality rests on published mechanisms — specifications under CC BY 4.0 and a published non-endorsement policy — not on legal form. Independence of a Conformity Assessment Body is a requirement for conformity assessment. This document designates no Conformity Assessment Body.
+The **VeritasChain Standards Organization (VSO), operated by VeritasChain Co., Ltd.**, is a specification-development initiative responsible for developing and maintaining the VeritasChain Protocol (VCP), Content/Creative AI Profile (CAP), and the broader Verifiable AI Provenance (VAP) Framework. Its specifications are published under CC BY 4.0 and it publishes a non-endorsement policy. Those facts describe publication and policy choices; they do not by themselves demonstrate independent or vendor-neutral governance. Independence of a Conformity Assessment Body is a requirement for conformity assessment. This document designates no Conformity Assessment Body.
+
+> **Governance status clarification — 1 November 2026 (informative):** VSO is operated by VeritasChain Co., Ltd. The principles, roles and review procedures below describe the published governance model and its requirements; their publication is not evidence of an independently constituted standards body, an independent technical committee, stakeholder participation or independent conformity assessment. Vendor neutrality is an objective whose implementation needs evidence. This clarification does not establish a new body, change the published review periods or amend the released CAP specification.
 
 ### Mission
 
@@ -16,7 +18,7 @@ VSO's mission is to develop open, interoperable standards for cryptographically 
 
 ### 1. Vendor Neutrality
 
-VSO maintains strict vendor neutrality:
+The published vendor-neutrality principles are:
 - No single vendor controls the specification
 - All contributors participate on equal terms
 - References to specific products are for interoperability only
@@ -158,4 +160,4 @@ This governance document may be amended by:
 
 ---
 
-*Last updated: 2026-10-22*
+*Last updated: 2026-11-01 — informative status clarification; existing governance requirements retained.*
