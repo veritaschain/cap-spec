@@ -1,16 +1,19 @@
 # CAP (Content / Creative AI Profile) v0.2
 # World-First Claims Verification: Final Consolidated Research Report
 
+> **Historical research record — editorial correction, 2 November 2026.** This January 2026 report is retained to document an earlier first-party assessment. Its world-first conclusions and validation tables are historical claims, not current VSO assertions or independent verification. The four research inputs were AI-assisted research outputs, not independent external reviewers. They do not establish an exhaustive prior-art search, certification or regulatory compliance. See the [current research-record notice](../README.md#research-records).
+
 **Document ID:** VSO-RESEARCH-CAP-004  
 **Date:** January 13, 2026  
-**Classification:** Public  
+**Classification:** Public historical research record; not current substantiation
+
 **Version:** Final Consolidated (4-Source Integration)
 
 ---
 
 ## Executive Summary
 
-This report consolidates findings from **four independent research investigations** conducted to verify the "world-first" claims made by CAP (Content / Creative AI Profile) v0.2, specifically regarding its Safe Refusal Provenance (SRP) mechanism.
+This historical report consolidates **four AI-assisted research outputs (not independent external reviews)** that assessed the "world-first" claims made by CAP (Content / Creative AI Profile) v0.2, specifically regarding its Safe Refusal Provenance (SRP) mechanism.
 
 ### Research Scope
 - **170+ academic papers, standards, and regulatory documents examined**
@@ -360,7 +363,7 @@ While individual component technologies (cryptographic logging, hash chains, aud
 - Academic papers discuss tamper-evident logging but not refusal-specific mechanisms
 - EU AI Act mandates logging but provides no verifiable refusal framework
 - Industry implementations log internally without cryptographic proof
-- All four research sources independently validate this claim
+- The archived report treats agreement among four AI-assisted research outputs as support for this claim; that agreement is not independent validation
 
 **Unique Features:**
 - GEN_ATTEMPT → GEN_DENY event model
@@ -379,7 +382,7 @@ While individual component technologies (cryptographic logging, hash chains, aud
 - C2PA uses hard bindings but not 1:1 request-response guarantees
 - IEEE P7001 emphasizes traceability but not completeness invariants
 - Academic research highlights tamper-evidence but not selective logging prevention
-- All four research sources independently validate this claim
+- The archived report treats agreement among four AI-assisted research outputs as support for this claim; that agreement is not independent validation
 
 **Unique Features:**
 - Prevents omission attacks
@@ -397,7 +400,7 @@ While individual component technologies (cryptographic logging, hash chains, aud
 - C2PA covers creation/modification, not training or ingestion
 - IPTC metadata signals AI generation but omits full chains
 - NIST/ISO require lifecycle management but don't specify implementation
-- All four research sources independently validate this claim
+- The archived report treats agreement among four AI-assisted research outputs as support for this claim; that agreement is not independent validation
 
 **Unique Features:**
 - INGEST (0x0100): Rights and consent recording
@@ -416,7 +419,7 @@ While individual component technologies (cryptographic logging, hash chains, aud
 - SOC 2 evidence packages exist but not for AI refusal audits
 - EU AI Act/DSA define requirements but not standardized formats
 - No direct analog for regulatory submission with cryptographic verification
-- All four research sources independently validate this claim
+- The archived report treats agreement among four AI-assisted research outputs as support for this claim; that agreement is not independent validation
 
 **Unique Features:**
 - manifest.json with cryptographic verification
@@ -481,7 +484,7 @@ While individual component technologies (cryptographic logging, hash chains, aud
 
 ### Overall Assessment
 
-CAP v0.2 represents a **genuine innovation** in AI governance by addressing the "negative evidence" problem—proving what AI systems did NOT do. The comprehensive analysis across four independent research streams confirms:
+CAP v0.2 represents a **genuine innovation** in AI governance by addressing the "negative evidence" problem—proving what AI systems did NOT do. The historical analysis across four AI-assisted research outputs asserted the following; those assertions are not independently validated here:
 
 1. **Safe Refusal Provenance (SRP):** No prior public specification exists for cryptographic AI refusal proof
 2. **Completeness Invariant:** Novel application to AI generation events with mathematical enforcement
@@ -499,7 +502,7 @@ The paradigm shift from "trust-based" to "evidence-based" AI governance that CAP
 | Source C (Technical Deep-Dive) | ✅ Validated | ✅ Validated | ✅ Validated | ✅ Validated |
 | Source D (Global Comparison) | ✅ Validated | ✅ Validated | ✅ Validated | ✅ Validated |
 
-**Consensus: All four independent research sources validate CAP's world-first claims.**
+**Historical assessment: all four AI-assisted research outputs agreed with CAP's world-first claims. They were not independent reviewers, and their agreement does not establish those claims.**
 
 ---
 
@@ -533,9 +536,16 @@ The paradigm shift from "trust-based" to "evidence-based" AI governance that CAP
 
 ---
 
-**Document Classification:** Public  
+**Document Classification:** Public historical research record; not current substantiation
+
 **License:** CC BY 4.0
 
 *VeritasChain Standards Organization (VSO)*  
 *info@veritaschain.org*  
 *https://github.com/veritaschain*
+
+## Editorial history
+
+| Date | Change |
+|------|--------|
+| 2026-11-02 | Mark the report as historical; distinguish AI-assisted research outputs from independent review. The historical assessment tables remain a record of earlier claims, not current substantiation. |

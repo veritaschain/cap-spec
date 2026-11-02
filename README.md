@@ -55,6 +55,8 @@ The released text ([`docs/CAP-Specification-v1.0.md`](docs/CAP-Specification-v1.
 
 ## Research Records
 
+**Editorial correction — 2 November 2026:** the linked World-First report now carries its historical status and AI-assisted research limitations in the document itself. The obsolete internal `GITHUB_UPDATE_INSTRUCTIONS.md` work note has been removed from the current tree; Git history is unchanged.
+
 - **World-First Claims Verification: Final Consolidated Research Report** (historical research record)  
   https://github.com/veritaschain/cap-spec/blob/main/docs/CAP_WorldFirst_Final_Consolidated_Report.md  
   This report predates VSO's naming rule reserving the "world's first" designation for VCP. Its conclusion is retained as a research record and is not a current VSO claim about CAP.
