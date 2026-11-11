@@ -211,12 +211,31 @@ CAP's own version policy, not VAP's version number, controls the CAP release num
 
 ## Addendum — 25 October 2026 (VSO)
 
-This addendum does not change the rows above or their pinned baseline.
+This historical addendum does not change the rows above or their pinned baseline.
+Its commit references and the then-pending PR status describe the 25 October
+review only; they are not the current VAP source reference.
 
 - **VAP text since the pinned baseline.** As of vap-spec `b5ef931` (SHA-256 `24a961ddd419298d02b2cc2b8015d6e058501a2411ffa9a744a218bf110ac6bf`), the changes from the pinned `1771fdb` are in the header, the Normative Position Statement, the VCP status rows (§2.2.1, §4.5.2, §5.1, §12.3), §8.3, §10.1, §10.4, Appendices B and D, ERRATA and the Declaration. Errata E-2026-10-25, proposed in [vap-spec #25](https://github.com/veritaschain/vap-spec/pull/25) and not yet merged when this note was written (SHA-256 `da7c1b6e4bd7786459bf4ea6c25f0966314896cfed416ae3675eef97018a028b`), touches only the header date line, §2.2.1, §2.2.6, §5.1.2, §5.1.3, §11.4, Appendix B and ERRATA. The clauses cited in the I and P rows are unchanged. Of those cited in D rows, §4.5.2 changed only in its VCP row, and §10.4 only in its compatibility-matrix rows and the dated status notes beneath them (including a §1.7 precedence note); its `min_vap_version` and data-format rules are unchanged, so D01, D13 and D18 stand. Of those cited in E rows, §8.3 and §10.1 (E06) and §10.4 (E07) changed; see the next two items.
 - **E06.** The VAP errata of 2026-10-21 (E-2026-10-21) applies: the scheme requires CABs independent of the scheme owner, and the only registered CAB, VeritasChain Co., Ltd., operates VSO and is not independent. No CAP or VAP certificate can currently be issued by an independent CAB.
 - **E07.** VAP v1.2 §10.4 now records CAP v1.0 as "Draft mapping published; unresolved divergences; full conformance not established", citing this document at commit `beb0c44`. The finding that conformance is not established is unchanged.
 - **Out of scope here.** The repository schemas and examples use the v0.2 model; the test vectors follow the v1.0 outcome set and the I04 hash-input proposal (`EventHash` and `Signature` excluded). See the README ("JSON Schema", "Examples") and the test-vector READMEs. They are outside this mapping's scope, which is the released v1.0 text.
+
+## Source-status follow-up — 11 November 2026
+
+The VAP v1.2 Draft 3 source checked for this follow-up is
+[`spec/v1.2/VAP_Framework_Specification.md` at `1ce71a66f55d9a20728213b7c3a8bb79270ae579`](https://github.com/veritaschain/vap-spec/blob/1ce71a66f55d9a20728213b7c3a8bb79270ae579/spec/v1.2/VAP_Framework_Specification.md),
+SHA-256 `a35d5e082fd4b2f9921a78b1a71df263018320375e09fa18cf81533a18a19998`.
+It includes E-2026-10-25, E-2026-10-27 and E-2026-11-05. In particular,
+§10.1 describes vendor neutrality as an aim supported by public procedures and
+conflict-of-interest management, not an established organizational property.
+The CAB-independence limitation remains explicit, and §10.4 still records CAP
+v1.0 as a published draft mapping with unresolved divergences and full
+conformance not established.
+
+This is a dated source/status check, not a fresh clause-by-clause assessment.
+The §2 baseline, mapping rows, original 25 October observations and released
+CAP v1.0 bytes remain unchanged. A new conformance assessment must name its
+own pinned requirement set and disposition the outstanding rows.
 
 ## Attribution and change notice
 
