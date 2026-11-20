@@ -112,7 +112,6 @@ We request a 90-day disclosure window for critical vulnerabilities.
 
 Security advisories will be published:
 - In this repository's Security tab
-- On https://veritaschain.org/security
 - Via the security@veritaschain.org mailing list
 
 ## Acknowledgments
