@@ -53,7 +53,7 @@ page. Neither CAP v1.0 nor VCP v1.2 has established conformance to VAP v1.2 (VAP
 | **Core Events** | SIG, ORD, ACK, EXE, CLS (also PRT, CXL, REJ, MOD) | INGEST, TRAIN, GEN, EXPORT |
 | **Refusal records** | — | SRP: GEN_ATTEMPT; outcomes GEN, GEN_DENY, GEN_ERROR |
 | **Conformance levels** | Silver / Gold / Platinum (anchoring every 24 h / 1 h / 10 min) | Bronze / Silver / Gold (anchoring optional / daily / hourly) |
-| **Regulatory relevance** | MiFID II (Art. 17, RTS 25), EU AI Act Art. 12, CAT | EU AI Act Art. 50, DSA, copyright |
+| **Regulatory relevance** | MiFID II (Art. 17), EU clock synchronisation (Delegated Regulation (EU) 2025/1155; replaced RTS 25 on 2 March 2026), EU AI Act Art. 12, CAT | EU AI Act Art. 50, DSA, copyright |
 | **Specification Status** | v1.2 Released (tag `v1.2.0`) | v1.0 Released (tag `v1.0`) |
 
 Regulatory relevance is not compliance (VAP v1.2 §1.6).
