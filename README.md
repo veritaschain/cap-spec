@@ -28,7 +28,7 @@ As of 25 October 2026: **zero external implementations** of CAP or any other VAP
 
 **Commercial disclosure correction — 24 October 2026:** the previously published paid-service contract figure and associated commercial details have not been substantiated through reconciliation with primary records. The claim is withdrawn pending verification; this does **not** establish a count of zero. No verified contract count, customer count or revenue figure is asserted here. Commercial activity is separate from external implementation, independent validation and Evidence Pack acceptance. See the [dated correction and counting criteria](https://github.com/veritaschain/vap-spec/blob/main/disclosures/2026-10-24-commercial-contracts.md). Fixed distributions and historical evidence remain unchanged.
 
-The reference implementation below is first-party: VSO and VeritasChain Co., Ltd. share a founder.
+The reference implementation below is first-party: VSO is a specification initiative operated by VeritasChain Co., Ltd.
 
 **VAP v1.2 status.** CAP v1.0 predates VAP v1.2. A [draft conformance mapping against VAP v1.2 Draft 3](docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) and an [unadopted change proposal](docs/conformance/CAP-VAP-v1.2-Minimal-Change-Proposal.md) are available for review. The mapping identifies unresolved normative divergences, including Bronze external anchoring and shared batch-verification, continuity, policy and data-model requirements. **CAP v1.0 conformance to VAP v1.2 has not been established.** Publication of these review documents is not a conformance declaration or certification. The released CAP v1.0 specification remains unchanged.
 
